@@ -1,32 +1,29 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ВИЕДА (Whieda) — независимый партнёр Лариса | Продукция и партнёрство без давления</title>
+<title>VIEDA (Whieda) — partner indipendente Larisa | Prodotti e collaborazione, senza pressioni</title>
+<meta name="description" content="Partner indipendente dell'associazione internazionale VIEDA (Whieda). Con calma e onestà: cosa sono i prodotti — BEM, Attivatore Cellulare, articoli in grafene, prodotti a base di erbe — e cosa comporta davvero diventare partner. Senza promesse di miracoli.">
+<meta name="author" content="Larisa, partner indipendente dell'associazione VIEDA">
 
-<!-- Языковые версии: русская — здесь, итальянская — в папке /it/ -->
-<link rel="alternate" hreflang="ru" href="https://pavelpopov108-cloud.github.io/viyeda-partner/">
-<link rel="alternate" hreflang="it" href="https://pavelpopov108-cloud.github.io/viyeda-partner/it/">
-<link rel="alternate" hreflang="x-default" href="https://pavelpopov108-cloud.github.io/viyeda-partner/">
-<meta name="description" content="Независимый партнёр международной ассоциации ВИЕДА (Whieda). Спокойно и честно: что за продукция — БЭМ, Активатор клеток, графеновые изделия, фитопрепараты, и что реально даёт партнёрство. Без обещаний чуда и без уговоров.">
-<meta name="author" content="Лариса, независимый партнёр ассоциации ВИЕДА">
+<!-- Одна страница на шести языках, переключение — на клиенте -->
+<link rel="canonical" href="https://pavelpopov108-cloud.github.io/viyeda-partner/">
 
-<!-- ===== Open Graph (превью при отправке ссылки в мессенджерах) ===== -->
+<!-- ===== Open Graph (anteprima quando il link viene inviato in chat) ===== -->
 <meta property="og:type" content="website">
-<meta property="og:locale" content="ru_RU">
-<meta property="og:title" content="ВИЕДА (Whieda) — разговор, а не продажа">
-<meta property="og:description" content="Восточная рецептура, современная лаборатория и честный разбор партнёрской модели. Пишет независимый партнёр ассоциации ВИЕДА.">
-<meta property="og:site_name" content="Лариса · независимый партнёр ВИЕДА">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="VIEDA (Whieda) — una conversazione, non una vendita">
+<meta property="og:description" content="Ricette d'Oriente, laboratorio di oggi e un racconto onesto di come funziona la collaborazione. Scrive una partner indipendente dell'associazione VIEDA.">
+<meta property="og:site_name" content="Larisa · partner indipendente VIEDA">
 <meta name="twitter:card" content="summary">
 
-<!-- ===== Favicon: инлайновая SVG-иконка (дуга меридиана и точка) ===== -->
+<!-- ===== Favicon: icona SVG inline (arco del meridiano e punto) ===== -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23123B33'/%3E%3Cpath d='M10 24c0-9 4-16 12-16' stroke='%23D9B872' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='12.5' cy='13.5' r='2.4' fill='none' stroke='%23F7F4EE' stroke-width='1.4'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 /* =========================================================================
    ЦВЕТА И РАЗМЕРЫ — правь только здесь, всё остальное подхватится само
@@ -386,63 +383,94 @@ footer a{ color: var(--gold-soft); }
 
 /* ===== Переключатель языка RU / IT ===== */
 .lang{
-  display: inline-flex; align-items: center; gap: 4px; flex: none;
-  font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 7px; flex: none;
   color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 8px 11px; transition: .25s;
+  padding: 6px 9px 6px 11px; transition: .25s; cursor: pointer;
 }
-.lang:hover{ border-color: var(--jade); color: var(--jade); }
-.lang span{ opacity: .45; font-weight: 500; }
+.lang:hover, .lang:focus-within{ border-color: var(--jade); color: var(--jade); }
+.lang-ico{ display: flex; opacity: .75; }
+.lang select{
+  appearance: none; -webkit-appearance: none; border: 0; background: transparent;
+  font-family: var(--sans); font-size: .82rem; font-weight: 700; letter-spacing: .04em;
+  color: inherit; cursor: pointer; padding: 2px 16px 2px 0;
+  /* стрелка вниз нарисована фоном, чтобы не тащить иконку отдельным элементом */
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: right 6px center, right 2px center;
+  background-size: 4px 4px, 4px 4px; background-repeat: no-repeat;
+}
+.lang select:focus{ outline: none; }
+.lang select:focus-visible{ outline: 2px solid var(--gold); outline-offset: 3px; }
 .top-in{ gap: 12px; }
+/* На узких экранах кнопка из шапки убирается: рядом с выбором языка ей не
+   хватает места при длинных словах («Написать», «Escríbeme»), а главная
+   кнопка всё равно стоит сразу в первом экране. */
+@media (max-width: 559px){
+  .top .btn{ display: none; }
+}
 @media (max-width: 420px){
-  .lang{ padding: 7px 8px; font-size: .72rem; }
-  .top .btn-sm{ padding: 10px 13px; font-size: .82rem; }
+  .lang{ padding: 5px 7px 5px 9px; gap: 5px; }
+  .lang select{ font-size: .76rem; }
 }
 </style>
 </head>
 <body>
 
-<a class="skip" href="#whieda">Перейти к содержанию</a>
+<a class="skip" href="#whieda">Vai al contenuto</a>
 
-<!-- ======================= МЕРИДИАН (навигация-точки) ======================= -->
-<nav class="meridian" aria-label="Навигация по разделам">
+<!-- ======================= MERIDIANO (navigazione a punti) ======================= -->
+<nav class="meridian" aria-label="Navigazione tra le sezioni">
   <div class="meridian-line"></div>
   <div class="meridian-dots">
-    <a href="#hero"     data-label="Начало"   aria-label="Начало"></a>
-    <a href="#whieda"   data-label="О ВИЕДА"  aria-label="Что такое ВИЕДА"></a>
-    <a href="#products" data-label="Продукция" aria-label="Направления продукции"></a>
-    <a href="#why"      data-label="Почему"   aria-label="Почему это имеет смысл"></a>
-    <a href="#paths"    data-label="Два пути" aria-label="Два пути"></a>
-    <a href="#about"    data-label="Обо мне"  aria-label="Обо мне"></a>
-    <a href="#faq"      data-label="Вопросы"  aria-label="Частые вопросы"></a>
-    <a href="#contact"  data-label="Связь"    aria-label="Связаться"></a>
+    <a href="#hero"     data-label="Inizio"       aria-label="Inizio"></a>
+    <a href="#whieda"   data-label="Associazione" aria-label="Che cos'è VIEDA"></a>
+    <a href="#products" data-label="Prodotti"     aria-label="Le direzioni dei prodotti"></a>
+    <a href="#why"      data-label="Perché"       aria-label="Perché ha senso"></a>
+    <a href="#paths"    data-label="Due strade"   aria-label="Due strade"></a>
+    <a href="#about"    data-label="Chi sono"     aria-label="Chi sono"></a>
+    <a href="#faq"      data-label="Domande"      aria-label="Domande frequenti"></a>
+    <a href="#contact"  data-label="Contatti"     aria-label="Contatti"></a>
   </div>
 </nav>
 
-<!-- ======================= ШАПКА ======================= -->
+<!-- ======================= INTESTAZIONE ======================= -->
 <header class="top">
   <div class="wrap top-in">
-    <a class="logo" href="#hero" aria-label="ВИЕДА — на начало страницы">
+    <a class="logo" href="#hero" aria-label="VIEDA — torna all'inizio della pagina">
       <svg class="logo-mark" width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
         <circle cx="17" cy="17" r="16" stroke="#123B33" stroke-opacity=".25"/>
         <path d="M8 25C8 15 12.5 8 21 8" stroke="#B08C4F" stroke-width="1.25" stroke-linecap="round"/>
         <circle cx="11.5" cy="14.5" r="3" stroke="#123B33" stroke-width="1.25"/>
         <circle cx="22.5" cy="21.5" r="1.6" fill="#123B33"/>
       </svg>
-      <span class="logo-txt">ВИЕДА
-        <small class="logo-sub">Независимый партнёр</small>
+      <span class="logo-txt">VIEDA
+        <small class="logo-sub">Partner indipendente</small>
       </span>
     </a>
-    <nav class="nav" aria-label="Основная навигация">
-      <a href="#whieda">Об ассоциации</a>
-      <a href="#products">Продукция</a>
-      <a href="#paths">Два пути</a>
-      <a href="#about">Обо мне</a>
-      <a href="#faq">Вопросы</a>
+    <nav class="nav" aria-label="Navigazione principale">
+      <a href="#whieda">L'associazione</a>
+      <a href="#products">Prodotti</a>
+      <a href="#paths">Due strade</a>
+      <a href="#about">Chi sono</a>
+      <a href="#faq">Domande</a>
     </nav>
-    <!-- Переключатель языка: ведёт на итальянскую версию в /it/ -->
-    <a class="lang" href="it/index.html" hreflang="it" lang="it" aria-label="Versione italiana del sito">IT <span>/ RU</span></a>
-    <a class="btn btn-main btn-sm" href="https://t.me/Gitavali1" target="_blank" rel="noopener">Написать</a>
+    <!-- Выбор языка. Порядок: итальянский по умолчанию, дальше основные. -->
+    <label class="lang">
+      <span class="lang-ico" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+          <circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2c2.6 2.2 2.6 13.6 0 16M10 2c-2.6 2.2-2.6 13.6 0 16"/>
+        </svg>
+      </span>
+      <select id="lang-select" aria-label="Lingua / Language">
+        <option value="it">Italiano</option>
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+      </select>
+    </label>
+    <a class="btn btn-main btn-sm" href="https://t.me/Gitavali1" target="_blank" rel="noopener">Scrivimi</a>
   </div>
 </header>
 
@@ -452,42 +480,36 @@ footer a{ color: var(--gold-soft); }
 <section class="hero" id="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="hero-tag"><span aria-hidden="true"></span>Международная ассоциация · с 2022 года</p>
-      <h1>Восточная рецептура, современная лаборатория — и <em>ни одного обещания чуда</em></h1>
-      <p class="lead">Я независимый партнёр ассоциации ВИЕДА. Помогаю спокойно разобраться: что это за продукция, кому она подходит и что на самом деле стоит за словом «партнёрство».</p>
+      <p class="hero-tag"><span aria-hidden="true"></span>Associazione internazionale · dal 2022</p>
+      <h1>Ricette d'Oriente, laboratorio di oggi — e <em>nessuna promessa di miracoli</em></h1>
+      <p class="lead">Sono partner indipendente dell'associazione VIEDA. Ti aiuto a capire con calma di che prodotti si tratta, a chi servono davvero e cosa si nasconde dietro la parola «collaborazione».</p>
       <div class="hero-cta">
         <a class="btn btn-main" href="https://t.me/Gitavali1" target="_blank" rel="noopener">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4 0 1.7l4.3 1.4 1.6 4.8c.3.8 1.3.9 1.8.2l2.3-3 4.2 3.1c.7.5 1.7.1 1.9-.7l3.4-13.6c.2-.9-.7-1.6-1.5-1.3Z"/><path d="m8.6 14.9 9.4-7.6-6.6 8.7"/></svg>
-          Написать в Telegram
+          Scrivimi su Telegram
         </a>
-        <a class="btn btn-ghost" href="#whieda">Сначала разобраться</a>
+        <a class="btn btn-ghost" href="#whieda">Prima voglio capire</a>
       </div>
-      <p class="hero-note">Ничего не продаю с первого сообщения. Сначала — вопросы и честные ответы; продукция ВИЕДА не является лекарственным средством и не заменяет назначения врача.</p>
+      <p class="hero-note">Non vendo nulla al primo messaggio. Prima le domande e le risposte oneste; i prodotti VIEDA non sono medicinali e non sostituiscono le indicazioni del medico.</p>
     </div>
 
-    <!-- Главный визуальный приём: абстрактный «меридиан» — дуги, точки, пульс -->
+    <!-- Elemento visivo principale: un «meridiano» astratto — archi, punti, pulsazione -->
     <div class="hero-art" aria-hidden="true">
       <svg viewBox="0 0 460 520" fill="none" stroke-linecap="round">
-        <!-- концентрические дуги -->
         <circle cx="250" cy="250" r="196" stroke="#123B33" stroke-opacity=".13"/>
         <circle cx="250" cy="250" r="150" stroke="#123B33" stroke-opacity=".18"/>
         <circle cx="250" cy="250" r="104" stroke="#B08C4F" stroke-opacity=".38"/>
         <path d="M54 250a196 196 0 0 1 196-196" stroke="#B08C4F" stroke-width="1.5"/>
-        <!-- линия меридиана через полотно -->
         <path d="M18 428c92 0 118-64 152-140C207 205 232 96 322 74" stroke="#123B33" stroke-width="1.25" stroke-opacity=".55"/>
-        <!-- точки акупунктуры на линии -->
         <circle cx="86" cy="424" r="4.5" fill="#123B33" fill-opacity=".75"/>
         <circle cx="170" cy="366" r="3" fill="#123B33" fill-opacity=".5"/>
         <circle cx="222" cy="266" r="9" stroke="#B08C4F" stroke-width="1.5"/>
         <circle cx="222" cy="266" r="3" fill="#B08C4F"/>
         <circle cx="274" cy="150" r="3" fill="#123B33" fill-opacity=".5"/>
         <circle cx="318" cy="76" r="4.5" fill="#B08C4F" fill-opacity=".85"/>
-        <!-- пульс -->
         <path d="M312 330h34l14-30 15 58 13-28h48" stroke="#123B33" stroke-width="1.25" stroke-opacity=".65"/>
-        <!-- лист как отсылка к траве, одной линией -->
         <path d="M118 168c50-42 108-40 138-8-34 34-92 40-138 8Z" stroke="#123B33" stroke-opacity=".3"/>
         <path d="M118 168c46 6 92-2 138-8" stroke="#123B33" stroke-opacity=".3"/>
-        <!-- горизонтальные штрихи-ритм -->
         <path d="M330 440h96M354 462h72M378 484h48" stroke="#B08C4F" stroke-opacity=".45"/>
       </svg>
     </div>
@@ -496,89 +518,89 @@ footer a{ color: var(--gold-soft); }
 
 <hr class="rule">
 
-<!-- ======================= 2. ЧТО ТАКОЕ ВИЕДА ======================= -->
+<!-- ======================= 2. CHE COS'È VIEDA ======================= -->
 <section id="whieda">
   <div class="wrap split sticky-left">
     <div class="reveal">
-      <p class="eyebrow">01 · Об ассоциации</p>
-      <h2>Что такое ВИЕДА, если убрать пафос</h2>
+      <p class="eyebrow">01 · L'associazione</p>
+      <h2>Che cos'è VIEDA, senza retorica</h2>
     </div>
     <div class="reveal">
-      <p class="lead">Международная ассоциация ВИЕДА (Whieda) начала работу в 2022 году по инициативе биотехнологической корпорации FOHERB. Сегодня у неё есть представительства в странах СНГ и Европе — и это значит, что заказать продукцию можно, живя в Милане, Алматы или Минске.</p>
-      <p>За ассоциацией стоит китайское производство, которое десятилетиями работает с травяными рецептурами. Ассоциация — это способ, которым эта продукция доходит до человека напрямую: без розничной наценки, без полки в магазине и без продавца, которому всё равно, что вы купили.</p>
-      <p>Ассортимент делится на две очень разные части. Первая — приборы для домашних процедур: биоэнергомассажёр, активатор клеток, графеновые изделия. Вторая — фитопродукция: пасты, напитки и добавки на растительном сырье. Общее у них одно: они рассчитаны на регулярность, а не на разовый эффект. В восточной традиции это вообще главная мысль — понемногу и долго работает лучше, чем сильно и один раз.</p>
-      <p>И сразу о рамке, чтобы дальше читать было спокойнее: это не аптека и не медицина. Здесь нет лечения, нет диагнозов и нет замены врачу. Есть уход за собой, который можно встроить в обычный вечер, и есть возможность — если захотите — участвовать в распространении продукции и получать за это вознаграждение.</p>
+      <p class="lead">L'associazione internazionale VIEDA (Whieda) ha iniziato l'attività nel 2022 su iniziativa della corporazione biotecnologica FOHERB. Oggi ha rappresentanze in Europa e nei paesi della CSI: significa che puoi ordinare i prodotti vivendo a Milano, a Palermo o a Vienna.</p>
+      <p>Dietro l'associazione c'è una produzione cinese che lavora da decenni con le ricette a base di erbe. L'associazione è il modo in cui questi prodotti arrivano direttamente alla persona: senza ricarico del negozio, senza scaffale e senza un commesso a cui è indifferente cosa hai comprato.</p>
+      <p>L'assortimento si divide in due parti molto diverse. La prima: apparecchi per l'uso domestico — il massaggiatore bioenergetico, l'attivatore cellulare, gli articoli in grafene. La seconda: prodotti a base di erbe — paste, bevande e integratori vegetali. Una cosa li unisce: sono pensati per la regolarità, non per il colpo singolo. Nella tradizione orientale è proprio questo il punto — poco e a lungo funziona meglio di molto e una volta sola.</p>
+      <p>E subito la cornice, così il resto si legge con più calma: questa non è una farmacia e non è medicina. Non c'è cura, non ci sono diagnosi, non c'è alcuna sostituzione del medico. C'è la cura di sé che si può inserire in una sera normale, e c'è la possibilità — se lo vuoi — di partecipare alla distribuzione dei prodotti e ricevere un compenso.</p>
     </div>
   </div>
 </section>
 
 <hr class="rule">
 
-<!-- ======================= 3. НАПРАВЛЕНИЯ ПРОДУКЦИИ ======================= -->
+<!-- ======================= 3. LE DIREZIONI DEI PRODOTTI ======================= -->
 <section id="products">
   <div class="wrap">
     <div class="reveal" style="max-width:56ch">
-      <p class="eyebrow">02 · Продукция</p>
-      <h2>Четыре направления</h2>
-      <p class="lead">Ниже — как я сама объясняю их людям: что это, кому подходит и чем отличается от похожих вещей на рынке. Без списков «показаний» — их здесь не будет.</p>
+      <p class="eyebrow">02 · Prodotti</p>
+      <h2>Quattro direzioni</h2>
+      <p class="lead">Qui sotto le spiego come le spiego alle persone: cosa sono, a chi servono e in cosa si distinguono da cose simili sul mercato. Senza elenchi di «indicazioni»: qui non ci saranno.</p>
     </div>
 
     <div class="cards" style="margin-top:52px">
 
-      <!-- Карточка 1: БЭМ -->
+      <!-- Scheda 1: BEM -->
       <article class="card reveal">
         <svg class="card-ico" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" aria-hidden="true">
           <circle cx="20" cy="20" r="6"/><circle cx="20" cy="20" r="1.6" fill="currentColor" stroke="none"/>
           <path d="M20 6v5M20 29v5M6 20h5M29 20h5"/>
           <path d="M9.5 9.5a15 15 0 0 0 0 21M30.5 30.5a15 15 0 0 0 0-21" stroke-opacity=".55"/>
         </svg>
-        <h3>БЭМ — биоэнергомассажёр</h3>
+        <h3>BEM — massaggiatore bioenergetico</h3>
         <dl>
-          <dt>Что это</dt>
-          <dd>Прибор для домашних процедур: мягкое тепло и точечная проработка зон. Технология запатентована компанией — это, пожалуй, главный её продукт.</dd>
-          <dt>Кому</dt>
-          <dd>Тем, кто много сидит, к вечеру чувствует себя «выжатым» и хочет двадцать минут тишины для себя, не записываясь к специалисту.</dd>
-          <dt>Чем отличается</dt>
-          <dd>Работает по конкретным зонам, а не «греет спину целиком», как массажная накидка. Рассчитан на короткие регулярные сеансы, а не на один героический час.</dd>
+          <dt>Che cos'è</dt>
+          <dd>Un apparecchio per l'uso domestico: calore delicato e lavoro puntuale sulle zone. La tecnologia è brevettata dall'azienda ed è, probabilmente, il suo prodotto principale.</dd>
+          <dt>A chi serve</dt>
+          <dd>A chi sta seduto tutto il giorno, arriva a sera «spremuto» e vuole venti minuti di silenzio per sé senza prenotare da un professionista.</dd>
+          <dt>In cosa si distingue</dt>
+          <dd>Lavora su zone precise, non «scalda tutta la schiena» come un coprisedile massaggiante. È pensato per sedute brevi e regolari, non per un'unica ora eroica.</dd>
         </dl>
       </article>
 
-      <!-- Карточка 2: Активатор клеток -->
+      <!-- Scheda 2: Attivatore Cellulare -->
       <article class="card reveal">
         <svg class="card-ico" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="20" cy="20" r="14" stroke-opacity=".45"/>
           <path d="M7 20h5l3-7 4 14 3.5-9 2.5 4h8"/>
         </svg>
-        <h3>Активатор клеток PRO</h3>
+        <h3>Attivatore Cellulare PRO</h3>
         <dl>
-          <dt>Что это</dt>
-          <dd>Аппарат для курсовых процедур дома. Название звучит громко, поэтому скажу прямо: это бытовой прибор для регулярного ухода, а не медицинское оборудование.</dd>
-          <dt>Кому</dt>
-          <dd>Тем, кто умеет в системность: включить по расписанию, как зарядку, и не ждать чуда после первого раза.</dd>
-          <dt>Чем отличается</dt>
-          <dd>Логика курса, а не разового применения. Именно поэтому я всегда сначала спрашиваю: у вас есть двадцать спокойных минут в день? Если нет — начинать лучше с другого.</dd>
+          <dt>Che cos'è</dt>
+          <dd>Un apparecchio per cicli di trattamento a casa. Il nome suona altisonante, quindi lo dico chiaro: è un dispositivo domestico per la cura regolare, non un'apparecchiatura medica.</dd>
+          <dt>A chi serve</dt>
+          <dd>A chi sa essere sistematico: accenderlo secondo un programma, come la ginnastica, e non aspettarsi miracoli dopo la prima volta.</dd>
+          <dt>In cosa si distingue</dt>
+          <dd>Logica del ciclo, non dell'uso occasionale. Per questo la mia prima domanda è sempre: hai venti minuti tranquilli al giorno? Se non li hai, meglio iniziare da altro.</dd>
         </dl>
       </article>
 
-      <!-- Карточка 3: Графеновые изделия -->
+      <!-- Scheda 3: Articoli in grafene -->
       <article class="card reveal">
         <svg class="card-ico" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" aria-hidden="true">
           <path d="M20 5.5 28 10v9l-8 4.5-8-4.5v-9l8-4.5Z"/>
           <path d="M20 23.5v11M12 19l-7 4M28 19l7 4" stroke-opacity=".6"/>
           <path d="m8.5 27.5 3.5 2M31.5 27.5 28 29.5" stroke-opacity=".4"/>
         </svg>
-        <h3>Графеновые изделия</h3>
+        <h3>Articoli in grafene</h3>
         <dl>
-          <dt>Что это</dt>
-          <dd>Очки, изделия для сна и текстиль с графеновой нитью — бытовые вещи, а не приборы.</dd>
-          <dt>Кому</dt>
-          <dd>Тем, кто вечно мёрзнет, тяжело засыпает или проводит перед экраном весь день.</dd>
-          <dt>Чем отличается</dt>
-          <dd>Здесь работает физика материала: графен ровно распределяет тепло и держит его, не раскаляясь. Это свойство ткани, а не обещание — и проверяется оно просто, на собственных ощущениях за неделю.</dd>
+          <dt>Che cos'è</dt>
+          <dd>Occhiali, articoli per il sonno e tessuti con filo di grafene: oggetti di uso quotidiano, non apparecchi.</dd>
+          <dt>A chi serve</dt>
+          <dd>A chi ha sempre freddo, fa fatica ad addormentarsi o passa la giornata davanti a uno schermo.</dd>
+          <dt>In cosa si distingue</dt>
+          <dd>Qui lavora la fisica del materiale: il grafene distribuisce il calore in modo uniforme e lo trattiene senza scaldare fino al fastidio. È una proprietà del tessuto, non una promessa — e si verifica in una settimana, sulle proprie sensazioni.</dd>
         </dl>
       </article>
 
-      <!-- Карточка 4: Фитопродукция -->
+      <!-- Scheda 4: Prodotti a base di erbe -->
       <article class="card reveal">
         <svg class="card-ico" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" aria-hidden="true">
           <path d="M20 35V14"/>
@@ -586,14 +608,14 @@ footer a{ color: var(--gold-soft); }
           <path d="M20 26c7 0 11-3.5 11-9-5.5 0-11 3-11 9Z" stroke-opacity=".6"/>
           <path d="M14 33h12" stroke-opacity=".4"/>
         </svg>
-        <h3>Фитопродукция FOHERB</h3>
+        <h3>Prodotti a base di erbe FOHERB</h3>
         <dl>
-          <dt>Что это</dt>
-          <dd>Пасты, напитки и добавки на растительном сырье — рецептуры традиционной китайской медицины, собранные на современном производстве.</dd>
-          <dt>Кому</dt>
-          <dd>Тем, кто хочет поддержать себя травами и питанием, но не готов заказывать безымянные баночки из интернета.</dd>
-          <dt>Чем отличается</dt>
-          <dd>У продукции есть международные сертификаты — GMP, ISO 22000, халяль, кошер. Документы можно посмотреть, а не верить на слово. И да: это добавки к рациону, не лекарства.</dd>
+          <dt>Che cos'è</dt>
+          <dd>Paste, bevande e integratori di origine vegetale: ricette della medicina tradizionale cinese realizzate in uno stabilimento moderno.</dd>
+          <dt>A chi serve</dt>
+          <dd>A chi vuole sostenersi con le erbe e l'alimentazione, ma non ha intenzione di ordinare barattoli senza nome su internet.</dd>
+          <dt>In cosa si distingue</dt>
+          <dd>I prodotti hanno certificazioni internazionali: GMP, ISO 22000, halal, kosher. I documenti si possono guardare, invece di credere sulla parola. E sì: sono integratori alimentari, non medicinali.</dd>
         </dl>
       </article>
 
@@ -601,7 +623,7 @@ footer a{ color: var(--gold-soft); }
   </div>
 </section>
 
-<!-- ======================= 4. ПОЧЕМУ ЭТО ИМЕЕТ СМЫСЛ ======================= -->
+<!-- ======================= 4. PERCHÉ HA SENSO ======================= -->
 <section class="dark" id="why">
   <svg class="dark-art" viewBox="0 0 400 400" fill="none" stroke="#D9B872" stroke-width="1" aria-hidden="true">
     <circle cx="200" cy="200" r="180"/><circle cx="200" cy="200" r="130"/><circle cx="200" cy="200" r="80"/>
@@ -610,9 +632,9 @@ footer a{ color: var(--gold-soft); }
   </svg>
   <div class="wrap">
     <div class="reveal" style="max-width:60ch">
-      <p class="eyebrow">03 · Как это устроено</p>
-      <h2>Почему сочетание традиции и биотехнологии — это не красивая фраза</h2>
-      <p class="lead">Традиционная китайская медицина — это не магия. Это очень длинная практика наблюдения: какие растения в каком сочетании и в какое время суток человеку помогают чувствовать себя лучше. Слабое место такой практики всегда было одно — воспроизводимость.</p>
+      <p class="eyebrow">03 · Come funziona</p>
+      <h2>Perché unire tradizione e biotecnologia non è solo una bella frase</h2>
+      <p class="lead">La medicina tradizionale cinese non è magia. È una pratica di osservazione molto lunga: quali piante, in quali combinazioni e in quali momenti della giornata fanno sentire meglio una persona. Il punto debole di questa pratica è sempre stato uno — la riproducibilità.</p>
     </div>
 
     <div class="pillars">
@@ -620,78 +642,78 @@ footer a{ color: var(--gold-soft); }
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" aria-hidden="true">
           <path d="M6 24c0-9 4-16 12-18"/><circle cx="9" cy="15" r="3"/><circle cx="20" cy="8" r="1.8" fill="currentColor" stroke="none"/>
         </svg>
-        <h3>Рецептура</h3>
-        <p>Составы приходят не из маркетингового отдела, а из традиции, где сочетания трав отбирались столетиями. <strong>Новизна здесь не самоцель.</strong></p>
+        <h3>La ricetta</h3>
+        <p>Le formule non arrivano dall'ufficio marketing, ma da una tradizione in cui le combinazioni di erbe sono state selezionate per secoli. <strong>Qui la novità non è un obiettivo.</strong></p>
       </div>
       <div class="pillar reveal">
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" aria-hidden="true">
           <rect x="5" y="5" width="20" height="20" rx="2"/><path d="M10 20l4-6 3 4 3-7" /><path d="M5 12h20" stroke-opacity=".5"/>
         </svg>
-        <h3>Производство</h3>
-        <p>Современная лаборатория даёт то, чего не даст домашний отвар: контроль сырья, стабильную дозировку и <strong>одинаковый состав в каждой партии</strong>.</p>
+        <h3>La produzione</h3>
+        <p>Un laboratorio moderno dà ciò che un decotto fatto in casa non può dare: controllo della materia prima, dosaggio stabile e <strong>la stessa composizione in ogni lotto</strong>.</p>
       </div>
       <div class="pillar reveal">
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" aria-hidden="true">
           <circle cx="15" cy="15" r="10"/><path d="M15 9v6l4 3"/>
         </svg>
-        <h3>Регулярность</h3>
-        <p>Самая скучная и самая честная часть. Без ежедневного повторения ни прибор, ни фитопродукт не покажут ничего. <strong>Работает не покупка, а привычка.</strong></p>
+        <h3>La regolarità</h3>
+        <p>La parte più noiosa e più onesta. Senza ripetizione quotidiana né l'apparecchio né il prodotto a base di erbe mostrano nulla. <strong>Non funziona l'acquisto, funziona l'abitudine.</strong></p>
       </div>
     </div>
 
     <div class="dark-note reveal">
-      <p>Чего в этой логике нет — и не появится на моей странице: обещаний, что прибор или паста от чего-то избавят; чужих историй «до и после»; ссылок на исследования, которых я не читала. Если вам нужна медицинская помощь — она нужна вам от врача, а не от меня.</p>
+      <p>Cosa in questa logica non c'è — e non comparirà sulla mia pagina: promesse che un apparecchio o una pasta liberino da qualcosa; storie «prima e dopo» di altre persone; riferimenti a studi che non ho letto. Se ti serve assistenza medica, ti serve da un medico e non da me.</p>
     </div>
   </div>
 </section>
 
-<!-- ======================= 5. ДВА ПУТИ ======================= -->
+<!-- ======================= 5. DUE STRADE ======================= -->
 <section id="paths">
   <div class="wrap">
     <div class="reveal" style="max-width:58ch">
-      <p class="eyebrow">04 · Два пути</p>
-      <h2>Можно быть просто клиентом. А можно партнёром</h2>
-      <p class="lead">Это два разных решения, и второе совсем не «лучше» первого. Ниже — что даёт каждый путь и что он потребует от вас. Второй столбец я написала честно, включая неприятное.</p>
+      <p class="eyebrow">04 · Due strade</p>
+      <h2>Puoi restare solo cliente. Oppure diventare partner</h2>
+      <p class="lead">Sono due decisioni diverse, e la seconda non è affatto «migliore» della prima. Qui sotto cosa dà ciascuna strada e cosa richiede. La seconda colonna l'ho scritta onestamente, compresa la parte scomoda.</p>
     </div>
 
     <div class="paths">
       <div class="path reveal">
-        <div class="path-h"><h3>Быть клиентом</h3><span>Путь первый</span></div>
-        <p>Вы просто пользуетесь продукцией. Никакого бизнеса, никаких людей, никакой отчётности.</p>
-        <h4>Что вы получаете</h4>
+        <div class="path-h"><h3>Da cliente</h3><span>Prima strada</span></div>
+        <p>Usi semplicemente i prodotti. Nessuna attività, nessuna persona da coinvolgere, nessun rendiconto.</p>
+        <h4>Cosa ottieni</h4>
         <ul>
-          <li>Цену ассоциации вместо розничной — вы покупаете напрямую.</li>
-          <li>Мою помощь в выборе: с чего начать и что вам, скорее всего, не нужно.</li>
-          <li>Сопровождение по ходу: как встроить в день, что делать, если не идёт.</li>
-          <li>Полную свободу: заказали один раз — и всё, никто не напомнит о себе.</li>
+          <li>Il prezzo dell'associazione invece di quello al dettaglio: acquisti direttamente.</li>
+          <li>Il mio aiuto nella scelta: da dove iniziare e cosa, molto probabilmente, non ti serve.</li>
+          <li>L'accompagnamento lungo il percorso: come inserirlo nella giornata, cosa fare se non ingrana.</li>
+          <li>Piena libertà: ordini una volta e basta, nessuno verrà a ricordarti di sé.</li>
         </ul>
-        <h4>Что требуется от вас</h4>
+        <h4>Cosa serve da te</h4>
         <ul>
-          <li class="minus">Выбрать одно направление и попробовать, а не брать всё сразу.</li>
-          <li class="minus">Держать регулярность хотя бы месяц — иначе выводы делать не о чем.</li>
-          <li class="minus">Согласиться, что это не лечение, и не отменять назначения врача.</li>
+          <li class="minus">Scegliere una direzione e provarla, invece di prendere tutto insieme.</li>
+          <li class="minus">Mantenere la regolarità almeno un mese: prima non c'è nulla su cui trarre conclusioni.</li>
+          <li class="minus">Accettare che non è una cura e non sospendere le indicazioni del medico.</li>
         </ul>
-        <a class="btn btn-ghost" href="https://t.me/Gitavali1" target="_blank" rel="noopener">Спросить как клиент</a>
+        <a class="btn btn-ghost" href="https://t.me/Gitavali1" target="_blank" rel="noopener">Chiedere da cliente</a>
       </div>
 
       <div class="path accent reveal">
-        <div class="path-h"><h3>Быть партнёром</h3><span>Путь второй</span></div>
-        <p>Вы пользуетесь продукцией и получаете вознаграждение за оборот — свой и тех, кто пришёл через вас.</p>
-        <h4>Что вы получаете</h4>
+        <div class="path-h"><h3>Da partner</h3><span>Seconda strada</span></div>
+        <p>Usi i prodotti e ricevi un compenso sul volume d'affari: il tuo e quello di chi è arrivato tramite te.</p>
+        <h4>Cosa ottieni</h4>
         <ul>
-          <li>Комбинированный маркетинг-план: доход складывается из нескольких видов вознаграждения, а не из одной ставки.</li>
-          <li>Отсутствие обязательных ежемесячных закупок — «выкупить план до конца месяца» здесь не нужно.</li>
-          <li>Обучение и материалы ассоциации плюс мою личную помощь на старте.</li>
-          <li>Дело, которое можно вести из дома и с телефона — для меня в декрете это было решающим.</li>
+          <li>Un piano marketing combinato: il compenso si compone di più voci, non di un'unica percentuale.</li>
+          <li>Nessun acquisto mensile obbligatorio: qui non serve «coprire il piano» entro la fine del mese.</li>
+          <li>Formazione e materiali dell'associazione, più il mio aiuto personale all'inizio.</li>
+          <li>Un'attività che si porta avanti da casa e dal telefono: per me, in congedo di maternità, è stato decisivo.</li>
         </ul>
-        <h4>Что требуется от вас</h4>
+        <h4>Cosa serve da te</h4>
         <ul>
-          <li class="minus">Разобраться в продукции самому и пользоваться ею. Продавать то, чего не пробовал, — тупик.</li>
-          <li class="minus">Готовность разговаривать с людьми и слышать «нет» — часто.</li>
-          <li class="minus">Несколько часов в неделю стабильно, а не рывками раз в месяц.</li>
-          <li class="minus">Принять, что первые месяцы могут не принести дохода вообще. Никаких гарантированных сумм здесь нет и быть не может.</li>
+          <li class="minus">Capire i prodotti in prima persona e usarli. Vendere ciò che non hai provato è un vicolo cieco.</li>
+          <li class="minus">La disponibilità a parlare con le persone e a sentirti dire «no» — spesso.</li>
+          <li class="minus">Qualche ora a settimana con costanza, non a strappi una volta al mese.</li>
+          <li class="minus">Accettare che i primi mesi possano non portare alcun guadagno. Qui non ci sono e non possono esserci somme garantite.</li>
         </ul>
-        <a class="btn btn-main" href="https://t.me/Gitavali1" target="_blank" rel="noopener">Обсудить партнёрство</a>
+        <a class="btn btn-main" href="https://t.me/Gitavali1" target="_blank" rel="noopener">Parlare della collaborazione</a>
       </div>
     </div>
   </div>
@@ -699,18 +721,18 @@ footer a{ color: var(--gold-soft); }
 
 <hr class="rule">
 
-<!-- ======================= 6. ОБО МНЕ ======================= -->
+<!-- ======================= 6. CHI SONO ======================= -->
 <section id="about">
   <div class="wrap split">
     <div class="reveal">
-      <p class="eyebrow">05 · Обо мне</p>
-      <h2>Кто с вами будет разговаривать</h2>
-      <p class="lead">Сайт принадлежит мне, а не компании. Значит, отвечаю за слова на нём тоже я.</p>
+      <p class="eyebrow">05 · Chi sono</p>
+      <h2>Con chi parlerai</h2>
+      <p class="lead">Questo sito è mio, non dell'azienda. Quindi delle parole che ci sono scritte rispondo io.</p>
     </div>
     <div class="reveal">
       <div class="about-card">
         <div class="about-portrait">
-          <!-- Абстрактный «портрет» линиями: без стоковых фото -->
+          <!-- «Ritratto» astratto a linee: nessuna foto d'archivio -->
           <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#123B33" stroke-width="1.25" aria-hidden="true">
             <circle cx="32" cy="32" r="31" stroke-opacity=".2"/>
             <circle cx="32" cy="26" r="9"/>
@@ -718,19 +740,19 @@ footer a{ color: var(--gold-soft); }
             <path d="M46 14a13 13 0 0 1 0 18" stroke="#B08C4F" stroke-linecap="round"/>
           </svg>
           <div>
-            <b>Лариса</b>
-            <small>Италия · независимый партнёр ассоциации ВИЕДА</small>
+            <b>Larisa</b>
+            <small>Italia · partner indipendente dell'associazione VIEDA</small>
           </div>
         </div>
 
-        <p>Сейчас я в декрете — и это, вопреки открыткам, время, когда учишься считать свой ресурс до последней минуты. Именно тогда вопрос «а что я делаю для собственного здоровья и для семейного бюджета» перестал быть отвлечённым.</p>
-        <p>По первой профессии я к медицине отношения не имею: цифры, документы, порядок в отчётах. Поэтому к восточной медицине я пришла скептиком — сначала читала и переспрашивала, потом полгода пробовала на себе, и только после этого стала партнёром. Ровно в таком порядке.</p>
-        <p>Живу в Италии, работаю онлайн — с людьми из Европы и СНГ. Разница часовых поясов решается одним сообщением: напишите, я отвечу, когда освобожусь, обычно в тот же день.</p>
+        <p>In questo periodo sono in congedo di maternità e, al contrario delle cartoline, è il momento in cui impari a contare le tue energie fino all'ultimo minuto. È proprio allora che la domanda «e io, cosa faccio per la mia salute e per il bilancio di famiglia?» ha smesso di essere astratta.</p>
+        <p>Per prima formazione con la medicina non ho nulla a che fare: numeri, documenti, ordine nei rendiconti. Per questo alla medicina orientale sono arrivata da scettica — prima ho letto e fatto domande, poi ho provato su di me per sei mesi, e solo dopo sono diventata partner. Esattamente in quest'ordine.</p>
+        <p>Vivo in Italia e lavoro online, con persone in Europa e nei paesi della CSI. Il fuso orario si risolve con un messaggio: scrivimi e ti rispondo appena sono libera, di solito lo stesso giorno.</p>
 
         <ul class="about-list">
-          <li><b>Чем помогаю:</b> объясняю без терминов, подбираю, с чего начать, честно отговариваю, если вижу, что вам это сейчас не нужно.</li>
-          <li><b>Как со мной работать:</b> вы пишете в Telegram, задаёте вопросы — можно неудобные. Дальше решаете сами и в своём темпе.</li>
-          <li><b>Чего я не делаю:</b> не ставлю диагнозы, не обещаю доходов, не отменяю назначения врача и не пишу через неделю «ну что, ты подумала?».</li>
+          <li><b>Come aiuto:</b> spiego senza termini tecnici, ti indico da dove iniziare, e ti dissuado onestamente se vedo che adesso non ti serve.</li>
+          <li><b>Come si lavora con me:</b> mi scrivi su Telegram e fai le tue domande, anche quelle scomode. Poi decidi tu, con i tuoi tempi.</li>
+          <li><b>Cosa non faccio:</b> non faccio diagnosi, non prometto guadagni, non sospendo le cure del medico e non ti scrivo dopo una settimana «allora, ci hai pensato?».</li>
         </ul>
       </div>
     </div>
@@ -739,78 +761,78 @@ footer a{ color: var(--gold-soft); }
 
 <hr class="rule">
 
-<!-- ======================= 7. FAQ ======================= -->
+<!-- ======================= 7. DOMANDE FREQUENTI ======================= -->
 <section id="faq">
   <div class="wrap split sticky-left">
     <div class="reveal">
-      <p class="eyebrow">06 · Вопросы</p>
-      <h2>Неудобные вопросы — сюда</h2>
-      <p class="lead">Я собрала те, которые мне задают чаще всего. Если вашего здесь нет — напишите, отвечу так же прямо.</p>
+      <p class="eyebrow">06 · Domande</p>
+      <h2>Le domande scomode: qui</h2>
+      <p class="lead">Ho raccolto quelle che mi fanno più spesso. Se la tua non c'è, scrivimi: risponderò con la stessa franchezza.</p>
     </div>
 
     <div class="faq reveal">
 
       <div class="q">
-        <h3><button type="button" aria-expanded="false">Это пирамида?<span class="plus" aria-hidden="true"></span></button></h3>
+        <h3><button type="button" aria-expanded="false">È uno schema piramidale?<span class="plus" aria-hidden="true"></span></button></h3>
         <div class="q-body"><div class="q-body-in">
-          <p>Пирамида — это когда деньги приходят из взносов новых участников, а товар либо отсутствует, либо служит предлогом. Здесь вознаграждение начисляется с оборота реальной продукции, за вход платить не нужно, и можно навсегда остаться просто покупателем.</p>
-          <p>Похоже ли это внешне на пирамиду? Структура из людей — да, похоже, и я не буду делать вид, что нет. Разница в том, откуда берутся деньги: из проданного товара или из кошельков новичков. Проверить это можно до старта — попросите у меня маркетинг-план и посмотрите, за что именно платят.</p>
+          <p>Uno schema piramidale è quello in cui il denaro arriva dalle quote dei nuovi iscritti, mentre il prodotto manca o serve da pretesto. Qui il compenso si calcola sul volume d'affari di prodotti reali, per entrare non si paga nulla, e puoi restare per sempre semplicemente un cliente.</p>
+          <p>Dall'esterno assomiglia a una piramide? La struttura di persone sì, e non farò finta del contrario. La differenza è da dove arrivano i soldi: dal prodotto venduto o dal portafoglio di chi è appena entrato. In Italia la vendita diretta è disciplinata dalla legge 173/2005, che vieta espressamente le forme di vendita piramidali — quindi non devi fidarti della mia parola: chiedimi il piano marketing e guarda per cosa, esattamente, viene pagato.</p>
         </div></div>
       </div>
 
       <div class="q">
-        <h3><button type="button" aria-expanded="false">Нужно ли уговаривать друзей и родственников?<span class="plus" aria-hidden="true"></span></button></h3>
+        <h3><button type="button" aria-expanded="false">Devo convincere amici e parenti?<span class="plus" aria-hidden="true"></span></button></h3>
         <div class="q-body"><div class="q-body-in">
-          <p>Уговаривать не нужно — и, по моему опыту, это единственное, что гарантированно не работает. Человек, которого уговорили, уходит через месяц и ещё обижается.</p>
-          <p>Рабочий вариант скучнее: вы сами пользуетесь продукцией, вам есть что рассказать, и вы отвечаете тем, кто спросил. Список «сто контактов из телефона» я никому не выдаю.</p>
+          <p>Convincere non serve e, per la mia esperienza, è l'unica cosa che di sicuro non funziona. Chi è stato convinto se ne va dopo un mese e per di più se ne risente.</p>
+          <p>La versione che funziona è più noiosa: usi tu i prodotti, hai qualcosa da raccontare e rispondi a chi te lo chiede. La lista dei «cento contatti in rubrica» non la consegno a nessuno.</p>
         </div></div>
       </div>
 
       <div class="q">
-        <h3><button type="button" aria-expanded="false">Сколько нужно вложить на старте?<span class="plus" aria-hidden="true"></span></button></h3>
+        <h3><button type="button" aria-expanded="false">Quanto bisogna investire all'inizio?<span class="plus" aria-hidden="true"></span></button></h3>
         <div class="q-body"><div class="q-body-in">
-          <p>Регистрация бесплатна: за право быть партнёром здесь не платят. Единственные деньги на старте — это покупка продукции для себя, и сумма целиком зависит от того, что вы выберете: фитопродукт и прибор стоят очень по-разному.</p>
-          <p>Точные цены я называю в переписке — на сайте держать их бессмысленно, они меняются, и я не хочу, чтобы вы ориентировались на устаревшие цифры. Спросите — скажу актуальную и без «а если добавите ещё вот это».</p>
+          <p>L'iscrizione è gratuita: qui non si paga per il diritto di essere partner. L'unica spesa iniziale è l'acquisto dei prodotti per te, e la cifra dipende interamente da cosa scegli: un prodotto a base di erbe e un apparecchio costano molto diversamente.</p>
+          <p>I prezzi esatti li dico in chat: tenerli sul sito non ha senso, cambiano, e non voglio che ti orienti su numeri vecchi. Chiedi e ti dico quello attuale, senza «e se aggiungi anche questo».</p>
         </div></div>
       </div>
 
       <div class="q">
-        <h3><button type="button" aria-expanded="false">Это лечит? У меня есть проблемы со здоровьем<span class="plus" aria-hidden="true"></span></button></h3>
+        <h3><button type="button" aria-expanded="false">Cura qualcosa? Ho dei problemi di salute<span class="plus" aria-hidden="true"></span></button></h3>
         <div class="q-body"><div class="q-body-in">
-          <p>Нет. Продукция ассоциации не является лекарственным средством, не лечит и не заменяет назначения врача. Если у вас есть заболевание, назначения делает врач — и я не тот человек, который будет их комментировать.</p>
-          <p>Что я могу: рассказать, что это за продукт и как им пользуются в бытовом уходе. Что мне обязательно нужно от вас: сказать врачу, что вы что-то начали принимать, особенно если уже есть терапия.</p>
+          <p>No. I prodotti dell'associazione non sono medicinali, non curano e non sostituiscono le indicazioni del medico. Se hai una patologia, la terapia la decide il medico — e non sono io la persona che la commenterà.</p>
+          <p>Quello che posso fare: raccontarti che prodotto è e come si usa nella cura quotidiana. Quello che mi serve da te: dire al tuo medico che hai iniziato a prendere qualcosa, soprattutto se sei già in terapia.</p>
         </div></div>
       </div>
 
       <div class="q">
-        <h3><button type="button" aria-expanded="false">Обязательны ли ежемесячные закупки?<span class="plus" aria-hidden="true"></span></button></h3>
+        <h3><button type="button" aria-expanded="false">Gli acquisti mensili sono obbligatori?<span class="plus" aria-hidden="true"></span></button></h3>
         <div class="q-body"><div class="q-body-in">
-          <p>Нет. Маркетинг-план комбинированный, обязательного месячного объёма нет — и для меня это было одним из решающих аргументов. Не нужно в последние дни месяца выкупать продукцию на склад под кровать.</p>
-          <p>Оговорка, впрочем, есть: если вы не пользуетесь продукцией вообще, рассказывать о ней вам будет нечего. Формально не обязаны — практически бессмысленно.</p>
+          <p>No. Il piano marketing è combinato, non esiste un volume mensile obbligatorio — e per me è stato uno degli argomenti decisivi. Non serve comprare prodotti negli ultimi giorni del mese per stoccarli sotto il letto.</p>
+          <p>Una precisazione però c'è: se non usi i prodotti, non avrai nulla da raccontare. Formalmente non sei obbligato, in pratica non ha senso.</p>
         </div></div>
       </div>
 
       <div class="q">
-        <h3><button type="button" aria-expanded="false">Я уже обжигался о сетевые компании<span class="plus" aria-hidden="true"></span></button></h3>
+        <h3><button type="button" aria-expanded="false">Mi sono già scottato con il network marketing<span class="plus" aria-hidden="true"></span></button></h3>
         <div class="q-body"><div class="q-body-in">
-          <p>Тогда вы задаёте правильные вопросы, и я предпочитаю такой разговор восторженному. Обычно обжигаются о три вещи: обязательные закупки, давление наставника и обещания дохода, которые не сбылись.</p>
-          <p>Что можно проверить до того, как что-то платить: маркетинг-план (за что именно платят), сертификаты на продукцию, условия выхода. Попросите у меня всё это до регистрации — это нормальная просьба, а не признак недоверия.</p>
+          <p>Allora fai le domande giuste, e preferisco questo tipo di conversazione a quella entusiasta. Di solito si resta scottati da tre cose: gli acquisti obbligatori, la pressione di chi ti ha portato dentro e le promesse di guadagno che non si sono realizzate.</p>
+          <p>Cosa puoi verificare prima di pagare qualsiasi cosa: il piano marketing (per cosa viene pagato), le certificazioni dei prodotti, le condizioni di uscita. Chiedimi tutto questo prima dell'iscrizione: è una richiesta normale, non un segno di sfiducia.</p>
         </div></div>
       </div>
 
       <div class="q">
-        <h3><button type="button" aria-expanded="false">Я живу не в Италии. Это работает?<span class="plus" aria-hidden="true"></span></button></h3>
+        <h3><button type="button" aria-expanded="false">Non vivo in Italia. Funziona comunque?<span class="plus" aria-hidden="true"></span></button></h3>
         <div class="q-body"><div class="q-body-in">
-          <p>Да. У ассоциации есть представительства в странах СНГ и Европе, доставка идёт от местного склада, а не посылкой из Китая на ваш страх и риск.</p>
-          <p>Общение целиком онлайн: Telegram, звонок, если нужно. Напишите, из какой вы страны — скажу, как именно там устроены заказ и доставка.</p>
+          <p>Sì. L'associazione ha rappresentanze in Europa e nei paesi della CSI, la spedizione parte dal magazzino locale e non come un pacco dalla Cina a tuo rischio.</p>
+          <p>Il contatto è tutto online: Telegram, una chiamata se serve. Scrivimi da quale paese sei e ti dico come funzionano ordine e consegna lì.</p>
         </div></div>
       </div>
 
       <div class="q">
-        <h3><button type="button" aria-expanded="false">Что если мне не подойдёт или я передумаю?<span class="plus" aria-hidden="true"></span></button></h3>
+        <h3><button type="button" aria-expanded="false">E se non mi va bene o cambio idea?<span class="plus" aria-hidden="true"></span></button></h3>
         <div class="q-body"><div class="q-body-in">
-          <p>Значит, не подойдёт — это нормальный исход, и он случается. Никаких обязательств продолжать у вас нет: закупок по расписанию нет, «выйти» — это просто перестать заказывать.</p>
-          <p>Я в такой ситуации прошу об одном: скажите мне, что именно не пошло. Это полезнее любого вежливого молчания — и вам, и мне.</p>
+          <p>Vuol dire che non ti va bene: è un esito normale e capita. Non hai alcun obbligo di continuare — non ci sono acquisti a scadenza, «uscire» significa semplicemente smettere di ordinare.</p>
+          <p>In quel caso ti chiedo una cosa sola: dimmi cosa non ha funzionato. È più utile di qualsiasi silenzio gentile — per te e per me.</p>
         </div></div>
       </div>
 
@@ -818,51 +840,51 @@ footer a{ color: var(--gold-soft); }
   </div>
 </section>
 
-<!-- ======================= 8. ФИНАЛЬНЫЙ CTA + ФОРМА ======================= -->
+<!-- ======================= 8. CTA FINALE + MODULO ======================= -->
 <section class="cta" id="contact">
   <div class="wrap cta-grid">
     <div class="reveal">
-      <p class="eyebrow">07 · Связь</p>
-      <h2>Начнём с разговора, а не с покупки</h2>
-      <p class="lead">Оставьте имя и удобный контакт — или просто напишите мне в Telegram, так быстрее. Первое сообщение ни к чему вас не обязывает: я задам два вопроса, вы зададите свои.</p>
-      <p style="font-size:.92rem;color:var(--ink-muted)">Отвечаю обычно в тот же день. Если молчу дольше — значит, у меня ребёнок не спит, а не «менеджер потерял заявку».</p>
+      <p class="eyebrow">07 · Contatti</p>
+      <h2>Iniziamo da una conversazione, non da un acquisto</h2>
+      <p class="lead">Lascia il tuo nome e un contatto comodo — oppure scrivimi direttamente su Telegram, è più rapido. Il primo messaggio non ti impegna a nulla: io farò due domande, tu farai le tue.</p>
+      <p style="font-size:.92rem;color:var(--ink-muted)">Di solito rispondo lo stesso giorno. Se tardo più del solito, significa che il bambino non dorme, non che «un operatore ha perso la richiesta».</p>
       <a class="btn btn-main" href="https://t.me/Gitavali1" target="_blank" rel="noopener" style="margin-top:8px">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 4.5 2.8 11.6c-.8.3-.8 1.4 0 1.7l4.3 1.4 1.6 4.8c.3.8 1.3.9 1.8.2l2.3-3 4.2 3.1c.7.5 1.7.1 1.9-.7l3.4-13.6c.2-.9-.7-1.6-1.5-1.3Z"/><path d="m8.6 14.9 9.4-7.6-6.6 8.7"/></svg>
-        Написать напрямую
+        Scrivimi direttamente
       </a>
     </div>
 
     <div class="reveal">
-      <!-- Форма без бэкенда: собирает текст и открывает Telegram с заготовкой -->
+      <!-- Modulo senza backend: compone il testo e apre Telegram -->
       <form id="lead" novalidate>
         <div class="field">
-          <label for="f-name">Как вас зовут</label>
-          <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Например, Ирина">
+          <label for="f-name">Come ti chiami</label>
+          <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Per esempio, Giulia">
         </div>
         <div class="field">
-          <label for="f-contact">Telegram, телефон или e-mail</label>
-          <input id="f-contact" name="contact" type="text" required autocomplete="tel" placeholder="@nickname или +39 ...">
+          <label for="f-contact">Telegram, telefono o e-mail</label>
+          <input id="f-contact" name="contact" type="text" required autocomplete="tel" placeholder="@nickname oppure +39 ...">
         </div>
         <fieldset>
-          <legend>Что вам ближе</legend>
+          <legend>Cosa ti interessa</legend>
           <div class="choice">
-            <label><input type="radio" name="role" value="клиент" checked><span>Я как клиент</span></label>
-            <label><input type="radio" name="role" value="партнёр"><span>Мне про партнёрство</span></label>
+            <label><input type="radio" name="role" value="cliente" checked><span>Come cliente</span></label>
+            <label><input type="radio" name="role" value="partner"><span>La collaborazione</span></label>
           </div>
         </fieldset>
         <div class="field">
-          <label for="f-msg">Вопрос или пара слов о себе <span style="text-transform:none;letter-spacing:0">(необязательно)</span></label>
-          <textarea id="f-msg" name="msg" placeholder="Например: много сижу за компьютером, интересует БЭМ — с чего начать?"></textarea>
+          <label for="f-msg">Una domanda o due parole su di te <span style="text-transform:none;letter-spacing:0">(facoltativo)</span></label>
+          <textarea id="f-msg" name="msg" placeholder="Per esempio: sto molte ore al computer, mi interessa il BEM — da dove inizio?"></textarea>
         </div>
-        <button class="btn btn-main" type="submit">Отправить и открыть Telegram</button>
-        <p class="form-note">Данные никуда не уходят автоматически: кнопка формирует готовое сообщение и открывает чат со мной. Вы увидите текст до отправки и сможете его исправить.</p>
+        <button class="btn btn-main" type="submit">Invia e apri Telegram</button>
+        <p class="form-note">I dati non vengono inviati da nessuna parte in automatico: il pulsante compone il messaggio e apre la chat con me. Vedrai il testo prima di inviarlo e potrai modificarlo.</p>
       </form>
 
-      <!-- Сообщение об успехе -->
+      <!-- Messaggio di conferma -->
       <div class="ok" id="ok" role="status" aria-live="polite">
-        <h3>Сообщение готово</h3>
-        <p id="ok-text">Текст скопирован в буфер обмена. Если Telegram не открылся автоматически — нажмите кнопку ниже и вставьте сообщение в чат.</p>
-        <a class="btn btn-main" id="ok-link" href="https://t.me/Gitavali1" target="_blank" rel="noopener">Открыть чат в Telegram</a>
+        <h3>Il messaggio è pronto</h3>
+        <p id="ok-text">Il testo è stato copiato negli appunti. Se Telegram non si è aperto da solo, premi il pulsante qui sotto e incolla il messaggio in chat.</p>
+        <a class="btn btn-main" id="ok-link" href="https://t.me/Gitavali1" target="_blank" rel="noopener">Apri la chat su Telegram</a>
       </div>
     </div>
   </div>
@@ -870,59 +892,59 @@ footer a{ color: var(--gold-soft); }
 
 </main>
 
-<!-- ======================= ФУТЕР ======================= -->
+<!-- ======================= PIÈ DI PAGINA ======================= -->
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot">
-        <h4>Связаться</h4>
+        <h4>Contatti</h4>
         <ul>
           <li><a href="https://t.me/Gitavali1" target="_blank" rel="noopener">Telegram — @Gitavali1</a></li>
-          <!-- ДОБАВИТЬ ПОЗЖЕ: WhatsApp и телефон.
-               Раскомментируйте строку и подставьте номер без плюса и пробелов:
+          <!-- DA AGGIUNGERE: WhatsApp e telefono.
+               Togli il commento e inserisci il numero senza «+» e senza spazi:
           <li><a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="tel:+39XXXXXXXXXX">+39 XXX XXX XX XX</a></li>
-          <li><a href="mailto:почта@example.com">почта@example.com</a></li>
+          <li><a href="mailto:posta@example.com">posta@example.com</a></li>
           -->
         </ul>
       </div>
       <div class="foot">
-        <h4>Разделы</h4>
+        <h4>Sezioni</h4>
         <ul>
-          <li><a href="#whieda">Об ассоциации</a></li>
-          <li><a href="#products">Продукция</a></li>
-          <li><a href="#paths">Два пути</a></li>
-          <li><a href="#faq">Вопросы</a></li>
+          <li><a href="#whieda">L'associazione</a></li>
+          <li><a href="#products">Prodotti</a></li>
+          <li><a href="#paths">Due strade</a></li>
+          <li><a href="#faq">Domande</a></li>
         </ul>
       </div>
       <div class="foot">
-        <h4>Важное</h4>
-        <p>Продукция не является лекарственным средством, не предназначена для диагностики, лечения или профилактики заболеваний и не заменяет консультацию врача. Перед применением проконсультируйтесь со специалистом.</p>
-        <p>Этот сайт принадлежит независимому партнёру ассоциации ВИЕДА (Whieda) и не является официальным ресурсом компании. Мнения и формулировки на нём — мои личные.</p>
-        <p>Результаты в бизнесе индивидуальны и зависят от ваших усилий. Ни доход, ни его сроки не гарантируются.</p>
+        <h4>Importante</h4>
+        <p>I prodotti non sono medicinali, non sono destinati alla diagnosi, alla cura o alla prevenzione di malattie e non sostituiscono il parere del medico. Gli integratori alimentari non vanno intesi come sostituti di una dieta variata ed equilibrata e di uno stile di vita sano.</p>
+        <p>Questo sito appartiene a una partner indipendente dell'associazione VIEDA (Whieda) e non è una risorsa ufficiale dell'azienda. Le opinioni e le formulazioni che contiene sono personali.</p>
+        <p>I risultati nell'attività sono individuali e dipendono dal tuo impegno. Non sono garantiti né il guadagno né i suoi tempi.</p>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="year">2026</span> Лариса · независимый партнёр ассоциации ВИЕДА</span>
-      <span>Италия · работаю онлайн со СНГ и Европой</span>
+      <span>© <span id="year">2026</span> Larisa · partner indipendente dell'associazione VIEDA</span>
+      <span>Italia · lavoro online con l'Europa e i paesi della CSI</span>
     </div>
   </div>
 </footer>
 
 <script>
 /* =========================================================================
-   НАСТРОЙКИ — единственное место, где нужно править контакты
+   IMPOSTAZIONI — l'unico punto in cui modificare i contatti
    ========================================================================= */
 const CONTACTS = {
-  telegram: 'Gitavali1',   // ник без «@»
-  regUrl:   ''             // ссылка регистрации по рекомендации; пока пусто — кнопки её не показывают
+  telegram: 'Gitavali1',   // nickname senza «@»
+  regUrl:   ''             // link di registrazione su tua raccomandazione; se vuoto, i pulsanti non lo mostrano
 };
 
-/* Год в футере — чтобы не править вручную каждый январь */
+/* Anno nel piè di pagina — per non correggerlo a mano ogni gennaio */
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* =========================================================================
-   1. Плавное появление секций при скролле
+   1. Comparsa graduale delle sezioni durante lo scorrimento
    ========================================================================= */
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const targets = document.querySelectorAll('.reveal');
@@ -932,7 +954,7 @@ if (reduced || !('IntersectionObserver' in window)) {
   const io = new IntersectionObserver((entries, obs) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        // небольшая каскадная задержка для карточек в одном ряду
+        // piccolo ritardo a cascata per le schede sulla stessa riga
         e.target.style.transitionDelay = (i * 70) + 'ms';
         e.target.classList.add('in');
         obs.unobserve(e.target);
@@ -943,9 +965,9 @@ if (reduced || !('IntersectionObserver' in window)) {
 }
 
 /* =========================================================================
-   2. Меридиан: подсветка активной точки при скролле.
-   Считаем сами по позиции секций — надёжнее, чем наблюдатель:
-   активна та секция, которая пересекает середину экрана.
+   2. Meridiano: evidenzia il punto attivo durante lo scorrimento.
+   Calcoliamo noi la posizione delle sezioni: più affidabile di un observer —
+   è attiva la sezione che incrocia la metà dello schermo.
    ========================================================================= */
 const dots = Array.from(document.querySelectorAll('.meridian a'));
 const spots = dots
@@ -956,7 +978,7 @@ function markActive() {
   const mid = window.innerHeight / 2;
   let current = spots[0];
   spots.forEach(x => {
-    // последняя секция, чей верх уже выше середины экрана
+    // l'ultima sezione il cui bordo superiore è già sopra la metà dello schermo
     if (x.sec.getBoundingClientRect().top <= mid) current = x;
   });
   spots.forEach(x => x.dot.classList.toggle('active', x === current));
@@ -974,9 +996,9 @@ if (spots.length) {
   markActive();
 }
 
-/* Страховка: если наблюдатель почему-то не отработал (например, страница
-   открылась в фоновой вкладке) — через 1,5 секунды показываем всё как есть,
-   чтобы текст ни при каких условиях не остался невидимым. */
+/* Rete di sicurezza: se l'observer non è entrato in funzione (per esempio la
+   pagina si è aperta in una scheda in background), dopo 1,5 secondi mostriamo
+   tutto così com'è, perché il testo non resti invisibile in nessun caso. */
 setTimeout(() => {
   if (![...targets].some(el => el.classList.contains('in'))) {
     targets.forEach(el => el.classList.add('in'));
@@ -984,14 +1006,14 @@ setTimeout(() => {
 }, 1500);
 
 /* =========================================================================
-   3. FAQ-аккордеон (доступный: кнопка + aria-expanded, работает с клавиатуры)
+   3. Fisarmonica delle domande (accessibile: button + aria-expanded, tastiera)
    ========================================================================= */
 document.querySelectorAll('.q button').forEach(btn => {
   const item = btn.closest('.q');
   const body = item.querySelector('.q-body');
   btn.addEventListener('click', () => {
     const open = btn.getAttribute('aria-expanded') === 'true';
-    // закрываем остальные — аккордеон, а не набор независимых блоков
+    // chiudiamo le altre: è una fisarmonica, non un insieme di blocchi indipendenti
     document.querySelectorAll('.q').forEach(other => {
       if (other !== item) {
         other.classList.remove('open');
@@ -1004,13 +1026,13 @@ document.querySelectorAll('.q button').forEach(btn => {
     body.style.maxHeight = open ? '0px' : body.scrollHeight + 'px';
   });
 });
-/* Пересчёт высоты открытого ответа при смене ширины окна */
+/* Ricalcolo dell'altezza della risposta aperta quando cambia la larghezza */
 window.addEventListener('resize', () => {
   document.querySelectorAll('.q.open .q-body').forEach(b => { b.style.maxHeight = b.scrollHeight + 'px'; });
 });
 
 /* =========================================================================
-   4. Форма: без бэкенда — собирает текст, копирует его и открывает Telegram
+   4. Modulo: senza backend — compone il testo, lo copia e apre Telegram
    ========================================================================= */
 const form = document.getElementById('lead');
 const ok   = document.getElementById('ok');
@@ -1025,7 +1047,7 @@ form.addEventListener('submit', e => {
   const role    = form.querySelector('input[name="role"]:checked').value;
   const msg     = form.msg.value.trim();
 
-  // простая проверка обязательных полей
+  // semplice controllo dei campi obbligatori
   if (!name || !contact) {
     const empty = !name ? form.name : form.contact;
     empty.style.borderColor = '#B08C4F';
@@ -1033,37 +1055,992 @@ form.addEventListener('submit', e => {
     return;
   }
 
-  // текст, который увидит Лариса
-  let text = 'Здравствуйте, Лариса! Меня зовут ' + name + '.';
-  text += ' Интересует ' + (role === 'партнёр' ? 'партнёрство в ВИЕДА' : 'продукция ВИЕДА как клиенту') + '.';
+  // il testo che leggerà Larisa — nella lingua scelta (vedi MSG più sotto)
+  let text = MSG.hi + name + '.';
+  text += ' ' + (role === 'partner' ? MSG.wantP : MSG.wantC) + '.';
   if (msg) text += ' ' + msg;
-  text += ' Мой контакт: ' + contact + '.';
+  text += ' ' + MSG.my + contact + '.';
 
   const url = 'https://t.me/' + CONTACTS.telegram + '?text=' + encodeURIComponent(text);
   okLink.href = url;
 
-  // копируем текст в буфер: Telegram не всегда подставляет его сам
+  // copiamo il testo negli appunti: Telegram non sempre lo inserisce da solo
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(text).catch(() => {});
   }
 
   form.style.display = 'none';
   ok.classList.add('show');
-  okText.textContent = 'Готовое сообщение: «' + text + '» Текст скопирован в буфер обмена. Если чат не открылся сам — нажмите кнопку ниже и вставьте его.';
+  okText.textContent = MSG.okPre + text + MSG.okPost;
   ok.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
 
-  // открываем чат в новой вкладке
+  // apriamo la chat in una nuova scheda
   window.open(url, '_blank', 'noopener');
 });
 
 /* =========================================================================
-   5. Ссылка регистрации: показываем кнопки только если ссылка заполнена
+   5. Link di registrazione: i pulsanti compaiono solo se il link è compilato
    ========================================================================= */
 if (CONTACTS.regUrl) {
   document.querySelectorAll('[data-reg]').forEach(a => {
     a.href = CONTACTS.regUrl;
     a.hidden = false;
   });
+}
+
+/* =========================================================================
+   6. ПЕРЕКЛЮЧЕНИЕ ЯЗЫКОВ
+   Итальянский — язык разметки, он снимается с самой страницы при загрузке
+   (поэтому его не нужно дублировать в словаре и он всегда точный).
+   Остальные языки лежат в объекте DICT ниже: каждый пункт — массив строк
+   в том же порядке, в каком элементы идут на странице.
+   ========================================================================= */
+
+/* Группы: ключ → [селектор, режим].
+   text = заменить текст, html = заменить разметку внутри,
+   attr:имя = заменить атрибут. */
+const GROUPS = {
+  skip:        ['.skip', 'text'],
+  logoSub:     ['.logo-sub', 'text'],
+  nav:         ['.nav a', 'text'],
+  dots:        ['.meridian a', 'attr:data-label'],
+  topBtn:      ['.top .btn', 'text'],
+  heroTag:     ['.hero-tag', 'html'],
+  h1:          ['h1', 'html'],
+  leads:       ['.lead', 'html'],
+  heroBtns:    ['.hero-cta .btn', 'text'],
+  heroNote:    ['.hero-note', 'text'],
+  eyebrows:    ['.eyebrow', 'text'],
+  h2s:         ['main h2', 'text'],
+  whiedaP:     ['#whieda p:not(.lead):not(.eyebrow)', 'text'],
+  cardTitles:  ['.card h3', 'text'],
+  cardDt:      ['.card dt', 'text'],
+  cardDd:      ['.card dd', 'text'],
+  pillarH:     ['.pillar h3', 'text'],
+  pillarP:     ['.pillar p', 'html'],
+  darkNote:    ['.dark-note p', 'text'],
+  pathTitles:  ['.path h3', 'text'],
+  pathTags:    ['.path-h span', 'text'],
+  pathIntros:  ['.path > p', 'text'],
+  pathH4:      ['.path h4', 'text'],
+  pathLis:     ['.path li', 'text'],
+  pathBtns:    ['.path > .btn', 'text'],
+  qButtons:    ['.q button', 'text'],
+  qBodies:     ['.q-body p', 'text'],
+  aboutSmall:  ['.about-portrait small', 'text'],
+  aboutParas:  ['.about-card > p', 'text'],
+  aboutList:   ['.about-list li', 'html'],
+  ctaExtra:    ['#contact .lead + p', 'text'],
+  ctaBtns:     ['#contact a.btn-main', 'text'],
+  formLabels:  ['.field label', 'html'],
+  holders:     ['#lead input[placeholder], #lead textarea[placeholder]', 'attr:placeholder'],
+  legend:      ['#lead legend', 'text'],
+  choices:     ['.choice span', 'text'],
+  submitBtn:   ['#lead button[type=submit]', 'text'],
+  formNote:    ['.form-note', 'text'],
+  okH3:        ['#ok h3', 'text'],
+  okText:      ['#ok p', 'text'],
+  footH4:      ['.foot h4', 'text'],
+  footLinks:   ['.foot ul li a', 'text'],
+  footP:       ['.foot p', 'text'],
+  footBottom:  ['.foot-bottom > span', 'html']
+};
+
+/* Заменяет последний текстовый узел элемента — так не теряются вложенные
+   иконки и значки внутри кнопок. */
+function setText(el, value) {
+  const nodes = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim());
+  if (nodes.length) nodes[nodes.length - 1].textContent = value;
+  else el.textContent = value;
+}
+
+/* Снимок итальянского текста прямо со страницы */
+const BASE = {};
+for (const key in GROUPS) {
+  const [sel, mode] = GROUPS[key];
+  BASE[key] = [...document.querySelectorAll(sel)].map(el => {
+    if (mode === 'html') return el.innerHTML;
+    if (mode.startsWith('attr:')) return el.getAttribute(mode.slice(5));
+    const nodes = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim());
+    return nodes.length ? nodes[nodes.length - 1].textContent : el.textContent;
+  });
+}
+
+const META_IT = {
+  title: document.title,
+  desc: document.querySelector('meta[name=description]').content,
+  hi: 'Ciao Larisa! Mi chiamo ',
+  wantP: 'Mi interessa la collaborazione con VIEDA',
+  wantC: 'Mi interessa i prodotti VIEDA come cliente',
+  my: 'Il mio contatto: ',
+  okPre: 'Messaggio pronto: «',
+  okPost: '» Il testo è stato copiato negli appunti. Se la chat non si è aperta da sola, premi il pulsante qui sotto e incollalo.'
+};
+
+const DICT = { it: { ...BASE, meta: META_IT } };
+
+/* ---------------------------- ENGLISH ---------------------------- */
+DICT.en = {
+  meta: {
+    title: "VIEDA (Whieda) — independent partner Larisa | Products and partnership, no pressure",
+    desc: "Independent partner of the international VIEDA (Whieda) association. Calmly and honestly: what the products are — BEM, Cell Activator, graphene items, herbal products — and what becoming a partner actually involves.",
+    hi: "Hello Larisa! My name is ",
+    wantP: "I am interested in partnership with VIEDA",
+    wantC: "I am interested in VIEDA products as a customer",
+    my: "My contact: ",
+    okPre: "Message ready: «",
+    okPost: "» The text has been copied to your clipboard. If the chat did not open by itself, press the button below and paste it."
+  },
+  skip: ["Skip to content"],
+  logoSub: ["Independent partner"],
+  nav: ["The association", "Products", "Two paths", "About me", "Questions"],
+  dots: ["Start", "Association", "Products", "Why", "Two paths", "About me", "Questions", "Contact"],
+  topBtn: ["Write to me"],
+  heroTag: ["<span aria-hidden=\"true\"></span>International association · since 2022"],
+  h1: ["Eastern formulas, a modern laboratory — and <em>no promises of miracles</em>"],
+  leads: [
+    "I am an independent partner of the VIEDA association. I help you work out calmly what these products are, who actually needs them, and what the word «partnership» really hides.",
+    "The international VIEDA (Whieda) association started in 2022 on the initiative of the biotechnology corporation FOHERB. Today it has offices across Europe and the CIS: you can order the products living in Milan, Palermo or Vienna.",
+    "Below is how I explain them to people: what they are, who they are for and how they differ from similar things on the market. No lists of «indications» — there will be none here.",
+    "Traditional Chinese medicine is not magic. It is a very long practice of observation: which plants, in which combinations and at which time of day make a person feel better. This practice always had one weak spot — reproducibility.",
+    "These are two different decisions, and the second is not «better» than the first at all. Below is what each path gives and what it requires. I wrote the second column honestly, including the uncomfortable part.",
+    "This site is mine, not the company’s. So I am the one answering for the words on it.",
+    "I have collected the ones I am asked most often. If yours is missing, write to me: I will answer just as plainly.",
+    "Leave your name and a convenient contact — or write to me on Telegram directly, that is quicker. The first message commits you to nothing: I will ask two questions, you will ask yours."
+  ],
+  heroBtns: ["Write to me on Telegram", "First I want to understand"],
+  heroNote: ["I sell nothing in the first message. Questions and honest answers come first; VIEDA products are not medicines and do not replace your doctor’s instructions."],
+  eyebrows: ["01 · The association", "02 · Products", "03 · How it works", "04 · Two paths", "05 · About me", "06 · Questions", "07 · Contact"],
+  h2s: [
+    "What VIEDA is, without the rhetoric",
+    "Four directions",
+    "Why joining tradition and biotechnology is not just a nice phrase",
+    "You can stay just a customer. Or become a partner",
+    "Who you will be talking to",
+    "The uncomfortable questions: here",
+    "Let us start with a conversation, not a purchase"
+  ],
+  whiedaP: [
+    "Behind the association there is a Chinese production that has worked with herbal formulas for decades. The association is the way those products reach a person directly: without the shop’s mark-up, without a shelf and without a salesperson who does not care what you bought.",
+    "The range splits into two very different parts. The first: devices for home use — the bio-energy massager, the cell activator, graphene items. The second: herbal products — pastes, drinks and plant-based supplements. One thing unites them: they are built for regularity, not for a single hit. In the Eastern tradition that is exactly the point — a little for a long time works better than a lot just once.",
+    "And the frame right away, so the rest reads more calmly: this is not a pharmacy and not medicine. There is no cure, no diagnoses, no replacing a doctor. There is self-care you can fit into an ordinary evening, and there is the option — if you want it — of taking part in distributing the products and being paid for it."
+  ],
+  cardTitles: ["BEM — bio-energy massager", "Cell Activator PRO", "Graphene items", "FOHERB herbal products"],
+  cardDt: ["What it is", "Who it is for", "How it differs", "What it is", "Who it is for", "How it differs", "What it is", "Who it is for", "How it differs", "What it is", "Who it is for", "How it differs"],
+  cardDd: [
+    "A device for home use: gentle warmth and point work on specific areas. The technology is patented by the company and is probably its main product.",
+    "For people who sit all day, reach the evening squeezed dry and want twenty minutes of quiet without booking a specialist.",
+    "It works on precise areas instead of «warming the whole back» like a massage seat cover. It is designed for short regular sessions, not for one heroic hour.",
+    "A device for courses of treatment at home. The name sounds grand, so let me be clear: it is a household device for regular care, not medical equipment.",
+    "For people who can be systematic: switch it on by schedule, like morning exercise, and not expect miracles after the first time.",
+    "The logic of a course, not of occasional use. That is why my first question is always: do you have twenty quiet minutes a day? If not, it is better to start with something else.",
+    "Glasses, sleep items and textiles with graphene thread — everyday objects, not devices.",
+    "For people who are always cold, struggle to fall asleep or spend the whole day in front of a screen.",
+    "Here the physics of the material does the work: graphene spreads heat evenly and holds it without getting uncomfortably hot. That is a property of the fabric, not a promise — and you can check it in a week, on your own sensations.",
+    "Pastes, drinks and plant-based supplements: traditional Chinese medicine formulas made in a modern facility.",
+    "For people who want to support themselves with herbs and food, but have no intention of ordering nameless jars online.",
+    "The products have international certificates: GMP, ISO 22000, halal, kosher. The documents can be looked at instead of taken on trust. And yes: these are food supplements, not medicines."
+  ],
+  pillarH: ["The formula", "The production", "The regularity"],
+  pillarP: [
+    "The formulas do not come from a marketing department but from a tradition where herb combinations were selected over centuries. <strong>Here novelty is not a goal.</strong>",
+    "A modern laboratory gives what a home decoction cannot: control of raw material, stable dosage and <strong>the same composition in every batch</strong>.",
+    "The most boring and most honest part. Without daily repetition neither the device nor the herbal product shows anything. <strong>It is not the purchase that works, it is the habit.</strong>"
+  ],
+  darkNote: ["What this logic does not contain — and what will not appear on my page: promises that a device or a paste will free you from something; other people’s «before and after» stories; references to studies I have not read. If you need medical help, you need it from a doctor and not from me."],
+  pathTitles: ["As a customer", "As a partner"],
+  pathTags: ["First path", "Second path"],
+  pathIntros: [
+    "You simply use the products. No business, no people to bring in, no reporting.",
+    "You use the products and receive a reward on turnover: yours and that of the people who came through you."
+  ],
+  pathH4: ["What you get", "What is required of you", "What you get", "What is required of you"],
+  pathLis: [
+    "The association price instead of the retail one: you buy directly.",
+    "My help with choosing: where to start and what you most likely do not need.",
+    "Support along the way: how to fit it into the day, what to do if it does not click.",
+    "Full freedom: you order once and that is it, nobody will remind you of themselves.",
+    "Choose one direction and try it, instead of taking everything at once.",
+    "Keep it regular for at least a month: before that there is nothing to draw conclusions from.",
+    "Accept that it is not a cure, and do not stop what your doctor prescribed.",
+    "A combined marketing plan: the reward is made of several parts, not one single percentage.",
+    "No compulsory monthly purchases: there is no «covering the plan» by the end of the month here.",
+    "Training and materials from the association, plus my personal help at the start.",
+    "Work you can run from home and from your phone: for me, on maternity leave, that was decisive.",
+    "Understand the products yourself and use them. Selling what you have not tried is a dead end.",
+    "Readiness to talk to people and to hear «no» — often.",
+    "A few hours a week consistently, not in bursts once a month.",
+    "Accept that the first months may bring no income at all. There are no guaranteed sums here and there cannot be."
+  ],
+  pathBtns: ["Ask as a customer", "Discuss partnership"],
+  qButtons: [
+    "Is it a pyramid scheme?",
+    "Do I have to talk friends and relatives into it?",
+    "How much do I need to invest at the start?",
+    "Does it cure anything? I have health problems",
+    "Are monthly purchases compulsory?",
+    "I have already been burned by network marketing",
+    "I do not live in Italy. Does it still work?",
+    "What if it does not suit me or I change my mind?"
+  ],
+  qBodies: [
+    "A pyramid scheme is one where the money comes from the fees of new members while the product is missing or serves as a pretext. Here the reward is calculated on the turnover of real products, there is no entry fee, and you can stay simply a customer forever.",
+    "Does it look like a pyramid from the outside? The structure of people does, and I will not pretend otherwise. The difference is where the money comes from: the product sold or the pockets of newcomers. So do not take my word for it — ask me for the marketing plan and look at what exactly is being paid for.",
+    "There is no need to talk anyone into it and, in my experience, it is the one thing that definitely does not work. Someone who was talked into it leaves after a month and resents it too.",
+    "The version that works is more boring: you use the products yourself, you have something to tell, and you answer those who ask. I hand nobody a list of «a hundred contacts from your phone».",
+    "Registration is free: nobody pays for the right to be a partner. The only cost at the start is buying products for yourself, and the amount depends entirely on what you choose: a herbal product and a device cost very differently.",
+    "I give exact prices in chat: keeping them on the site makes no sense, they change, and I do not want you working from old numbers. Ask and I will tell you the current one, with no «and if you add this as well».",
+    "No. The association’s products are not medicines, do not cure and do not replace your doctor’s instructions. If you have a condition, the treatment is decided by your doctor — and I am not the person who will comment on it.",
+    "What I can do: tell you what the product is and how it is used in everyday care. What I need from you: tell your doctor you have started taking something, especially if you are already on treatment.",
+    "No. The marketing plan is combined, there is no compulsory monthly volume — and for me that was one of the decisive arguments. There is no need to buy products in the last days of the month to store them under the bed.",
+    "There is one caveat though: if you do not use the products, you will have nothing to tell. Formally you are not obliged, in practice it makes no sense.",
+    "Then you are asking the right questions, and I prefer that kind of conversation to an enthusiastic one. People usually get burned by three things: compulsory purchases, pressure from the person who brought them in, and income promises that did not come true.",
+    "What you can check before paying for anything: the marketing plan (what exactly is paid for), the product certificates, the conditions for leaving. Ask me for all of it before registering: that is a normal request, not a sign of distrust.",
+    "Yes. The association has offices across Europe and the CIS, delivery goes from the local warehouse and not as a parcel from China at your own risk.",
+    "Everything happens online: Telegram, a call if needed. Write and tell me which country you are in and I will explain how ordering and delivery work there.",
+    "Then it does not suit you: that is a normal outcome and it happens. You have no obligation to continue — there are no scheduled purchases, «leaving» simply means stopping ordering.",
+    "In that case I ask one thing: tell me what did not work. That is more useful than any polite silence — for you and for me."
+  ],
+  aboutSmall: ["Italy · independent partner of the VIEDA association"],
+  aboutParas: [
+    "Right now I am on maternity leave and, contrary to the postcards, it is the time when you learn to count your energy down to the last minute. That is exactly when the question «and what am I doing for my health and for the family budget?» stopped being abstract.",
+    "By my first profession I have nothing to do with medicine: numbers, documents, order in the reports. That is why I came to Eastern medicine as a sceptic — first I read and asked questions, then I tried it on myself for six months, and only after that did I become a partner. In exactly that order.",
+    "I live in Italy and work online, with people in Europe and the CIS. The time difference is solved with one message: write to me and I will answer as soon as I am free, usually the same day."
+  ],
+  aboutList: [
+    "<b>How I help:</b> I explain without technical terms, I show you where to start, and I honestly talk you out of it if I see that you do not need it right now.",
+    "<b>How working with me looks:</b> you write to me on Telegram and ask your questions, including the uncomfortable ones. Then you decide, at your own pace.",
+    "<b>What I do not do:</b> I do not diagnose, I do not promise income, I do not cancel your doctor’s treatment and I do not write a week later «so, have you thought about it?»."
+  ],
+  ctaExtra: ["I usually answer the same day. If I take longer, it means the baby is not sleeping, not that «an operator lost your request»."],
+  ctaBtns: ["Write to me directly", "Open the chat on Telegram"],
+  formLabels: [
+    "What is your name",
+    "Telegram, phone or e-mail",
+    "A question or a couple of words about yourself <span style=\"text-transform:none;letter-spacing:0\">(optional)</span>"
+  ],
+  holders: ["For example, Anna", "@nickname or +39 ...", "For example: I spend hours at the computer, I am interested in the BEM — where do I start?"],
+  legend: ["What interests you"],
+  choices: ["As a customer", "Partnership"],
+  submitBtn: ["Send and open Telegram"],
+  formNote: ["Nothing is sent anywhere automatically: the button composes the message and opens the chat with me. You will see the text before sending and can edit it."],
+  okH3: ["Your message is ready"],
+  okText: ["The text has been copied to your clipboard. If Telegram did not open by itself, press the button below and paste the message into the chat."],
+  footH4: ["Contact", "Sections", "Important"],
+  footLinks: ["Telegram — @Gitavali1", "The association", "Products", "Two paths", "Questions"],
+  footP: [
+    "The products are not medicines, are not intended for the diagnosis, treatment or prevention of disease and do not replace a doctor’s opinion. Food supplements should not be regarded as a substitute for a varied, balanced diet and a healthy lifestyle.",
+    "This site belongs to an independent partner of the VIEDA (Whieda) association and is not an official company resource. The opinions and wording on it are personal.",
+    "Results in the business are individual and depend on your effort. Neither the income nor its timing is guaranteed."
+  ],
+  footBottom: [
+    "© <span id=\"year\">2026</span> Larisa · independent partner of the VIEDA association",
+    "Italy · working online with Europe and the CIS"
+  ]
+};
+
+/* ---------------------------- РУССКИЙ ---------------------------- */
+DICT.ru = {
+  meta: {
+    title: "ВИЕДА (Whieda) — независимый партнёр Лариса | Продукция и партнёрство без давления",
+    desc: "Независимый партнёр международной ассоциации ВИЕДА (Whieda). Спокойно и честно: что за продукция — БЭМ, Активатор клеток, графеновые изделия, фитопродукция, и что реально даёт партнёрство.",
+    hi: "Здравствуйте, Лариса! Меня зовут ",
+    wantP: "Интересует партнёрство в ВИЕДА",
+    wantC: "Интересует продукция ВИЕДА как клиенту",
+    my: "Мой контакт: ",
+    okPre: "Готовое сообщение: «",
+    okPost: "» Текст скопирован в буфер обмена. Если чат не открылся сам — нажмите кнопку ниже и вставьте его."
+  },
+  skip: ["Перейти к содержанию"],
+  logoSub: ["Независимый партнёр"],
+  nav: ["Об ассоциации", "Продукция", "Два пути", "Обо мне", "Вопросы"],
+  dots: ["Начало", "О ВИЕДА", "Продукция", "Почему", "Два пути", "Обо мне", "Вопросы", "Связь"],
+  topBtn: ["Написать"],
+  heroTag: ["<span aria-hidden=\"true\"></span>Международная ассоциация · с 2022 года"],
+  h1: ["Восточная рецептура, современная лаборатория — и <em>ни одного обещания чуда</em>"],
+  leads: [
+    "Я независимый партнёр ассоциации ВИЕДА. Помогаю спокойно разобраться: что это за продукция, кому она подходит и что на самом деле стоит за словом «партнёрство».",
+    "Международная ассоциация ВИЕДА (Whieda) начала работу в 2022 году по инициативе биотехнологической корпорации FOHERB. Сегодня у неё есть представительства в странах СНГ и Европе — и это значит, что заказать продукцию можно, живя в Милане, Алматы или Минске.",
+    "Ниже — как я сама объясняю их людям: что это, кому подходит и чем отличается от похожих вещей на рынке. Без списков «показаний» — их здесь не будет.",
+    "Традиционная китайская медицина — это не магия. Это очень длинная практика наблюдения: какие растения в каком сочетании и в какое время суток человеку помогают чувствовать себя лучше. Слабое место такой практики всегда было одно — воспроизводимость.",
+    "Это два разных решения, и второе совсем не «лучше» первого. Ниже — что даёт каждый путь и что он потребует от вас. Второй столбец я написала честно, включая неприятное.",
+    "Сайт принадлежит мне, а не компании. Значит, отвечаю за слова на нём тоже я.",
+    "Я собрала те, которые мне задают чаще всего. Если вашего здесь нет — напишите, отвечу так же прямо.",
+    "Оставьте имя и удобный контакт — или просто напишите мне в Telegram, так быстрее. Первое сообщение ни к чему вас не обязывает: я задам два вопроса, вы зададите свои."
+  ],
+  heroBtns: ["Написать в Telegram", "Сначала разобраться"],
+  heroNote: ["Ничего не продаю с первого сообщения. Сначала — вопросы и честные ответы; продукция ВИЕДА не является лекарственным средством и не заменяет назначения врача."],
+  eyebrows: ["01 · Об ассоциации", "02 · Продукция", "03 · Как это устроено", "04 · Два пути", "05 · Обо мне", "06 · Вопросы", "07 · Связь"],
+  h2s: [
+    "Что такое ВИЕДА, если убрать пафос",
+    "Четыре направления",
+    "Почему сочетание традиции и биотехнологии — это не красивая фраза",
+    "Можно быть просто клиентом. А можно партнёром",
+    "Кто с вами будет разговаривать",
+    "Неудобные вопросы — сюда",
+    "Начнём с разговора, а не с покупки"
+  ],
+  whiedaP: [
+    "За ассоциацией стоит китайское производство, которое десятилетиями работает с травяными рецептурами. Ассоциация — это способ, которым эта продукция доходит до человека напрямую: без розничной наценки, без полки в магазине и без продавца, которому всё равно, что вы купили.",
+    "Ассортимент делится на две очень разные части. Первая — приборы для домашних процедур: биоэнергомассажёр, активатор клеток, графеновые изделия. Вторая — фитопродукция: пасты, напитки и добавки на растительном сырье. Общее у них одно: они рассчитаны на регулярность, а не на разовый эффект. В восточной традиции это вообще главная мысль — понемногу и долго работает лучше, чем сильно и один раз.",
+    "И сразу о рамке, чтобы дальше читать было спокойнее: это не аптека и не медицина. Здесь нет лечения, нет диагнозов и нет замены врачу. Есть уход за собой, который можно встроить в обычный вечер, и есть возможность — если захотите — участвовать в распространении продукции и получать за это вознаграждение."
+  ],
+  cardTitles: ["БЭМ — биоэнергомассажёр", "Активатор клеток PRO", "Графеновые изделия", "Фитопродукция FOHERB"],
+  cardDt: ["Что это", "Кому", "Чем отличается", "Что это", "Кому", "Чем отличается", "Что это", "Кому", "Чем отличается", "Что это", "Кому", "Чем отличается"],
+  cardDd: [
+    "Прибор для домашних процедур: мягкое тепло и точечная проработка зон. Технология запатентована компанией — это, пожалуй, главный её продукт.",
+    "Тем, кто много сидит, к вечеру чувствует себя «выжатым» и хочет двадцать минут тишины для себя, не записываясь к специалисту.",
+    "Работает по конкретным зонам, а не «греет спину целиком», как массажная накидка. Рассчитан на короткие регулярные сеансы, а не на один героический час.",
+    "Аппарат для курсовых процедур дома. Название звучит громко, поэтому скажу прямо: это бытовой прибор для регулярного ухода, а не медицинское оборудование.",
+    "Тем, кто умеет в системность: включить по расписанию, как зарядку, и не ждать чуда после первого раза.",
+    "Логика курса, а не разового применения. Именно поэтому я всегда сначала спрашиваю: у вас есть двадцать спокойных минут в день? Если нет — начинать лучше с другого.",
+    "Очки, изделия для сна и текстиль с графеновой нитью — бытовые вещи, а не приборы.",
+    "Тем, кто вечно мёрзнет, тяжело засыпает или проводит перед экраном весь день.",
+    "Здесь работает физика материала: графен ровно распределяет тепло и держит его, не раскаляясь. Это свойство ткани, а не обещание — и проверяется оно просто, на собственных ощущениях за неделю.",
+    "Пасты, напитки и добавки на растительном сырье — рецептуры традиционной китайской медицины, собранные на современном производстве.",
+    "Тем, кто хочет поддержать себя травами и питанием, но не готов заказывать безымянные баночки из интернета.",
+    "У продукции есть международные сертификаты — GMP, ISO 22000, халяль, кошер. Документы можно посмотреть, а не верить на слово. И да: это добавки к рациону, не лекарства."
+  ],
+  pillarH: ["Рецептура", "Производство", "Регулярность"],
+  pillarP: [
+    "Составы приходят не из маркетингового отдела, а из традиции, где сочетания трав отбирались столетиями. <strong>Новизна здесь не самоцель.</strong>",
+    "Современная лаборатория даёт то, чего не даст домашний отвар: контроль сырья, стабильную дозировку и <strong>одинаковый состав в каждой партии</strong>.",
+    "Самая скучная и самая честная часть. Без ежедневного повторения ни прибор, ни фитопродукт не покажут ничего. <strong>Работает не покупка, а привычка.</strong>"
+  ],
+  darkNote: ["Чего в этой логике нет — и не появится на моей странице: обещаний, что прибор или паста от чего-то избавят; чужих историй «до и после»; ссылок на исследования, которых я не читала. Если вам нужна медицинская помощь — она нужна вам от врача, а не от меня."],
+  pathTitles: ["Быть клиентом", "Быть партнёром"],
+  pathTags: ["Путь первый", "Путь второй"],
+  pathIntros: [
+    "Вы просто пользуетесь продукцией. Никакого бизнеса, никаких людей, никакой отчётности.",
+    "Вы пользуетесь продукцией и получаете вознаграждение за оборот — свой и тех, кто пришёл через вас."
+  ],
+  pathH4: ["Что вы получаете", "Что требуется от вас", "Что вы получаете", "Что требуется от вас"],
+  pathLis: [
+    "Цену ассоциации вместо розничной — вы покупаете напрямую.",
+    "Мою помощь в выборе: с чего начать и что вам, скорее всего, не нужно.",
+    "Сопровождение по ходу: как встроить в день, что делать, если не идёт.",
+    "Полную свободу: заказали один раз — и всё, никто не напомнит о себе.",
+    "Выбрать одно направление и попробовать, а не брать всё сразу.",
+    "Держать регулярность хотя бы месяц — иначе выводы делать не о чем.",
+    "Согласиться, что это не лечение, и не отменять назначения врача.",
+    "Комбинированный маркетинг-план: доход складывается из нескольких видов вознаграждения, а не из одной ставки.",
+    "Отсутствие обязательных ежемесячных закупок — «выкупить план до конца месяца» здесь не нужно.",
+    "Обучение и материалы ассоциации плюс мою личную помощь на старте.",
+    "Дело, которое можно вести из дома и с телефона — для меня в декрете это было решающим.",
+    "Разобраться в продукции самому и пользоваться ею. Продавать то, чего не пробовал, — тупик.",
+    "Готовность разговаривать с людьми и слышать «нет» — часто.",
+    "Несколько часов в неделю стабильно, а не рывками раз в месяц.",
+    "Принять, что первые месяцы могут не принести дохода вообще. Никаких гарантированных сумм здесь нет и быть не может."
+  ],
+  pathBtns: ["Спросить как клиент", "Обсудить партнёрство"],
+  qButtons: [
+    "Это пирамида?",
+    "Нужно ли уговаривать друзей и родственников?",
+    "Сколько нужно вложить на старте?",
+    "Это лечит? У меня есть проблемы со здоровьем",
+    "Обязательны ли ежемесячные закупки?",
+    "Я уже обжигался о сетевые компании",
+    "Я живу не в Италии. Это работает?",
+    "Что если мне не подойдёт или я передумаю?"
+  ],
+  qBodies: [
+    "Пирамида — это когда деньги приходят из взносов новых участников, а товар либо отсутствует, либо служит предлогом. Здесь вознаграждение начисляется с оборота реальной продукции, за вход платить не нужно, и можно навсегда остаться просто покупателем.",
+    "Похоже ли это внешне на пирамиду? Структура из людей — да, похоже, и я не буду делать вид, что нет. Разница в том, откуда берутся деньги: из проданного товара или из кошельков новичков. Проверить это можно до старта — попросите у меня маркетинг-план и посмотрите, за что именно платят.",
+    "Уговаривать не нужно — и, по моему опыту, это единственное, что гарантированно не работает. Человек, которого уговорили, уходит через месяц и ещё обижается.",
+    "Рабочий вариант скучнее: вы сами пользуетесь продукцией, вам есть что рассказать, и вы отвечаете тем, кто спросил. Список «сто контактов из телефона» я никому не выдаю.",
+    "Регистрация бесплатна: за право быть партнёром здесь не платят. Единственные деньги на старте — это покупка продукции для себя, и сумма целиком зависит от того, что вы выберете: фитопродукт и прибор стоят очень по-разному.",
+    "Точные цены я называю в переписке — на сайте держать их бессмысленно, они меняются, и я не хочу, чтобы вы ориентировались на устаревшие цифры. Спросите — скажу актуальную и без «а если добавите ещё вот это».",
+    "Нет. Продукция ассоциации не является лекарственным средством, не лечит и не заменяет назначения врача. Если у вас есть заболевание, назначения делает врач — и я не тот человек, который будет их комментировать.",
+    "Что я могу: рассказать, что это за продукт и как им пользуются в бытовом уходе. Что мне обязательно нужно от вас: сказать врачу, что вы что-то начали принимать, особенно если уже есть терапия.",
+    "Нет. Маркетинг-план комбинированный, обязательного месячного объёма нет — и для меня это было одним из решающих аргументов. Не нужно в последние дни месяца выкупать продукцию на склад под кровать.",
+    "Оговорка, впрочем, есть: если вы не пользуетесь продукцией вообще, рассказывать о ней вам будет нечего. Формально не обязаны — практически бессмысленно.",
+    "Тогда вы задаёте правильные вопросы, и я предпочитаю такой разговор восторженному. Обычно обжигаются о три вещи: обязательные закупки, давление наставника и обещания дохода, которые не сбылись.",
+    "Что можно проверить до того, как что-то платить: маркетинг-план (за что именно платят), сертификаты на продукцию, условия выхода. Попросите у меня всё это до регистрации — это нормальная просьба, а не признак недоверия.",
+    "Да. У ассоциации есть представительства в странах СНГ и Европе, доставка идёт от местного склада, а не посылкой из Китая на ваш страх и риск.",
+    "Общение целиком онлайн: Telegram, звонок, если нужно. Напишите, из какой вы страны — скажу, как именно там устроены заказ и доставка.",
+    "Значит, не подойдёт — это нормальный исход, и он случается. Никаких обязательств продолжать у вас нет: закупок по расписанию нет, «выйти» — это просто перестать заказывать.",
+    "Я в такой ситуации прошу об одном: скажите мне, что именно не пошло. Это полезнее любого вежливого молчания — и вам, и мне."
+  ],
+  aboutSmall: ["Италия · независимый партнёр ассоциации ВИЕДА"],
+  aboutParas: [
+    "Сейчас я в декрете — и это, вопреки открыткам, время, когда учишься считать свой ресурс до последней минуты. Именно тогда вопрос «а что я делаю для собственного здоровья и для семейного бюджета» перестал быть отвлечённым.",
+    "По первой профессии я к медицине отношения не имею: цифры, документы, порядок в отчётах. Поэтому к восточной медицине я пришла скептиком — сначала читала и переспрашивала, потом полгода пробовала на себе, и только после этого стала партнёром. Ровно в таком порядке.",
+    "Живу в Италии, работаю онлайн — с людьми из Европы и СНГ. Разница часовых поясов решается одним сообщением: напишите, я отвечу, когда освобожусь, обычно в тот же день."
+  ],
+  aboutList: [
+    "<b>Чем помогаю:</b> объясняю без терминов, подбираю, с чего начать, честно отговариваю, если вижу, что вам это сейчас не нужно.",
+    "<b>Как со мной работать:</b> вы пишете в Telegram, задаёте вопросы — можно неудобные. Дальше решаете сами и в своём темпе.",
+    "<b>Чего я не делаю:</b> не ставлю диагнозы, не обещаю доходов, не отменяю назначения врача и не пишу через неделю «ну что, ты подумала?»."
+  ],
+  ctaExtra: ["Отвечаю обычно в тот же день. Если молчу дольше — значит, у меня ребёнок не спит, а не «менеджер потерял заявку»."],
+  ctaBtns: ["Написать напрямую", "Открыть чат в Telegram"],
+  formLabels: [
+    "Как вас зовут",
+    "Telegram, телефон или e-mail",
+    "Вопрос или пара слов о себе <span style=\"text-transform:none;letter-spacing:0\">(необязательно)</span>"
+  ],
+  holders: ["Например, Ирина", "@nickname или +39 ...", "Например: много сижу за компьютером, интересует БЭМ — с чего начать?"],
+  legend: ["Что вам ближе"],
+  choices: ["Я как клиент", "Мне про партнёрство"],
+  submitBtn: ["Отправить и открыть Telegram"],
+  formNote: ["Данные никуда не уходят автоматически: кнопка формирует готовое сообщение и открывает чат со мной. Вы увидите текст до отправки и сможете его исправить."],
+  okH3: ["Сообщение готово"],
+  okText: ["Текст скопирован в буфер обмена. Если Telegram не открылся автоматически — нажмите кнопку ниже и вставьте сообщение в чат."],
+  footH4: ["Связаться", "Разделы", "Важное"],
+  footLinks: ["Telegram — @Gitavali1", "Об ассоциации", "Продукция", "Два пути", "Вопросы"],
+  footP: [
+    "Продукция не является лекарственным средством, не предназначена для диагностики, лечения или профилактики заболеваний и не заменяет консультацию врача. Перед применением проконсультируйтесь со специалистом.",
+    "Этот сайт принадлежит независимому партнёру ассоциации ВИЕДА (Whieda) и не является официальным ресурсом компании. Мнения и формулировки на нём — мои личные.",
+    "Результаты в бизнесе индивидуальны и зависят от ваших усилий. Ни доход, ни его сроки не гарантируются."
+  ],
+  footBottom: [
+    "© <span id=\"year\">2026</span> Лариса · независимый партнёр ассоциации ВИЕДА",
+    "Италия · работаю онлайн со СНГ и Европой"
+  ]
+};
+
+/* ---------------------------- DEUTSCH ---------------------------- */
+DICT.de = {
+  meta: {
+    title: "VIEDA (Whieda) — unabhängige Partnerin Larisa | Produkte und Partnerschaft, ohne Druck",
+    desc: "Unabhängige Partnerin der internationalen Vereinigung VIEDA (Whieda). Ruhig und ehrlich: was die Produkte sind — BEM, Zellaktivator, Graphen-Artikel, Kräuterprodukte — und was eine Partnerschaft wirklich bedeutet.",
+    hi: "Hallo Larisa! Ich heiße ",
+    wantP: "Mich interessiert die Partnerschaft mit VIEDA",
+    wantC: "Mich interessieren die VIEDA-Produkte als Kundin oder Kunde",
+    my: "Mein Kontakt: ",
+    okPre: "Nachricht fertig: „",
+    okPost: "“ Der Text ist in der Zwischenablage. Wenn sich der Chat nicht von selbst geöffnet hat, drücke den Knopf unten und füge ihn ein."
+  },
+  skip: ["Zum Inhalt springen"],
+  logoSub: ["Unabhängige Partnerin"],
+  nav: ["Die Vereinigung", "Produkte", "Zwei Wege", "Über mich", "Fragen"],
+  dots: ["Start", "Vereinigung", "Produkte", "Warum", "Zwei Wege", "Über mich", "Fragen", "Kontakt"],
+  topBtn: ["Schreib mir"],
+  heroTag: ["<span aria-hidden=\"true\"></span>Internationale Vereinigung · seit 2022"],
+  h1: ["Rezepturen des Ostens, ein Labor von heute — und <em>kein Versprechen von Wundern</em>"],
+  leads: [
+    "Ich bin unabhängige Partnerin der Vereinigung VIEDA. Ich helfe dir, in Ruhe zu verstehen, was diese Produkte sind, für wen sie wirklich taugen und was hinter dem Wort «Partnerschaft» steckt.",
+    "Die internationale Vereinigung VIEDA (Whieda) startete 2022 auf Initiative des Biotechnologie-Konzerns FOHERB. Heute gibt es Vertretungen in Europa und den GUS-Ländern: bestellen kannst du also auch aus München, Wien oder Mailand.",
+    "Hier erkläre ich sie so, wie ich sie Menschen erkläre: was sie sind, für wen sie taugen und wodurch sie sich von Ähnlichem unterscheiden. Ohne Listen von «Indikationen» — die gibt es hier nicht.",
+    "Traditionelle chinesische Medizin ist keine Magie. Sie ist eine sehr lange Praxis der Beobachtung: welche Pflanzen in welcher Kombination und zu welcher Tageszeit einem Menschen guttun. Ihre schwache Stelle war immer dieselbe — die Wiederholbarkeit.",
+    "Das sind zwei verschiedene Entscheidungen, und die zweite ist keineswegs «besser» als die erste. Unten steht, was jeder Weg gibt und was er verlangt. Die zweite Spalte habe ich ehrlich geschrieben, samt dem Unangenehmen.",
+    "Diese Seite gehört mir, nicht der Firma. Also stehe ich auch für die Worte darauf ein.",
+    "Ich habe die gesammelt, die mir am häufigsten gestellt werden. Fehlt deine, schreib mir: ich antworte genauso direkt.",
+    "Hinterlasse deinen Namen und einen Kontakt — oder schreib mir direkt auf Telegram, das geht schneller. Die erste Nachricht verpflichtet zu nichts: ich stelle zwei Fragen, du stellst deine."
+  ],
+  heroBtns: ["Auf Telegram schreiben", "Erst verstehen"],
+  heroNote: ["Ich verkaufe nichts in der ersten Nachricht. Zuerst Fragen und ehrliche Antworten; die VIEDA-Produkte sind keine Arzneimittel und ersetzen keine Anweisungen des Arztes."],
+  eyebrows: ["01 · Die Vereinigung", "02 · Produkte", "03 · Wie es funktioniert", "04 · Zwei Wege", "05 · Über mich", "06 · Fragen", "07 · Kontakt"],
+  h2s: [
+    "Was VIEDA ist, ohne Pathos",
+    "Vier Richtungen",
+    "Warum Tradition plus Biotechnologie kein schöner Satz ist",
+    "Du kannst einfach Kundin bleiben. Oder Partnerin werden",
+    "Mit wem du sprechen wirst",
+    "Die unbequemen Fragen: hier",
+    "Beginnen wir mit einem Gespräch, nicht mit einem Kauf"
+  ],
+  whiedaP: [
+    "Hinter der Vereinigung steht eine chinesische Produktion, die seit Jahrzehnten mit Kräuterrezepturen arbeitet. Die Vereinigung ist der Weg, auf dem diese Produkte direkt zum Menschen kommen: ohne Handelsaufschlag, ohne Regal und ohne Verkäufer, dem gleichgültig ist, was du gekauft hast.",
+    "Das Sortiment teilt sich in zwei sehr verschiedene Teile. Erstens Geräte für den Hausgebrauch: der bioenergetische Massagegerät, der Zellaktivator, die Graphen-Artikel. Zweitens Kräuterprodukte: Pasten, Getränke und pflanzliche Ergänzungen. Eines haben sie gemeinsam: sie sind auf Regelmäßigkeit angelegt, nicht auf einen einzelnen Effekt. In der östlichen Tradition ist genau das der Kern — wenig und lange wirkt besser als viel und einmal.",
+    "Und gleich der Rahmen, damit sich das Weitere ruhiger liest: das ist keine Apotheke und keine Medizin. Es gibt keine Heilung, keine Diagnosen, keinen Ersatz für den Arzt. Es gibt Selbstfürsorge, die in einen normalen Abend passt, und es gibt die Möglichkeit — wenn du willst — am Vertrieb teilzunehmen und dafür vergütet zu werden."
+  ],
+  cardTitles: ["BEM — bioenergetisches Massagegerät", "Zellaktivator PRO", "Graphen-Artikel", "Kräuterprodukte FOHERB"],
+  cardDt: ["Was es ist", "Für wen", "Was es unterscheidet", "Was es ist", "Für wen", "Was es unterscheidet", "Was es ist", "Für wen", "Was es unterscheidet", "Was es ist", "Für wen", "Was es unterscheidet"],
+  cardDd: [
+    "Ein Gerät für den Hausgebrauch: sanfte Wärme und punktuelle Arbeit an bestimmten Zonen. Die Technologie ist von der Firma patentiert und ist wohl ihr Hauptprodukt.",
+    "Für alle, die viel sitzen, abends ausgewrungen sind und zwanzig Minuten Ruhe für sich wollen, ohne einen Termin zu buchen.",
+    "Es arbeitet an genauen Zonen, statt «den ganzen Rücken zu wärmen» wie ein Massageauflage. Gedacht für kurze regelmäßige Anwendungen, nicht für eine heldenhafte Stunde.",
+    "Ein Gerät für Anwendungszyklen zu Hause. Der Name klingt groß, deshalb sage ich es klar: es ist ein Haushaltsgerät für regelmäßige Pflege, keine medizinische Ausrüstung.",
+    "Für alle, die systematisch sein können: nach Plan einschalten, wie Morgengymnastik, und nach dem ersten Mal keine Wunder erwarten.",
+    "Die Logik eines Zyklus, nicht des gelegentlichen Gebrauchs. Darum frage ich immer zuerst: hast du täglich zwanzig ruhige Minuten? Wenn nicht, fang besser mit etwas anderem an.",
+    "Brillen, Artikel für den Schlaf und Textilien mit Graphenfaden — Alltagsdinge, keine Geräte.",
+    "Für alle, die ständig frieren, schwer einschlafen oder den ganzen Tag vor einem Bildschirm sitzen.",
+    "Hier arbeitet die Physik des Materials: Graphen verteilt Wärme gleichmäßig und hält sie, ohne unangenehm heiß zu werden. Das ist eine Eigenschaft des Gewebes, kein Versprechen — und in einer Woche am eigenen Gefühl prüfbar.",
+    "Pasten, Getränke und pflanzliche Ergänzungen: Rezepturen der traditionellen chinesischen Medizin, hergestellt in einer modernen Anlage.",
+    "Für alle, die sich mit Kräutern und Ernährung unterstützen wollen, aber keine namenlosen Döschen im Internet bestellen.",
+    "Die Produkte haben internationale Zertifikate: GMP, ISO 22000, halal, koscher. Die Dokumente kann man ansehen, statt auf ein Wort zu vertrauen. Und ja: es sind Nahrungsergänzungsmittel, keine Arzneimittel."
+  ],
+  pillarH: ["Die Rezeptur", "Die Produktion", "Die Regelmäßigkeit"],
+  pillarP: [
+    "Die Zusammensetzungen kommen nicht aus der Marketingabteilung, sondern aus einer Tradition, in der Kräuterkombinationen über Jahrhunderte ausgewählt wurden. <strong>Neuheit ist hier kein Ziel.</strong>",
+    "Ein modernes Labor gibt, was ein Aufguss zu Hause nicht kann: Kontrolle der Rohstoffe, stabile Dosierung und <strong>dieselbe Zusammensetzung in jeder Charge</strong>.",
+    "Der langweiligste und ehrlichste Teil. Ohne tägliche Wiederholung zeigt weder das Gerät noch das Kräuterprodukt etwas. <strong>Es wirkt nicht der Kauf, es wirkt die Gewohnheit.</strong>"
+  ],
+  darkNote: ["Was in dieser Logik fehlt — und auf meiner Seite nicht erscheinen wird: Versprechen, dass ein Gerät oder eine Paste von etwas befreit; fremde «vorher und nachher»-Geschichten; Verweise auf Studien, die ich nicht gelesen habe. Wenn du medizinische Hilfe brauchst, brauchst du sie von einem Arzt und nicht von mir."],
+  pathTitles: ["Als Kundin", "Als Partnerin"],
+  pathTags: ["Erster Weg", "Zweiter Weg"],
+  pathIntros: [
+    "Du benutzt einfach die Produkte. Kein Geschäft, keine Menschen, die du gewinnen musst, keine Berichte.",
+    "Du benutzt die Produkte und erhältst eine Vergütung auf den Umsatz: deinen und den derjenigen, die über dich gekommen sind."
+  ],
+  pathH4: ["Was du bekommst", "Was von dir verlangt wird", "Was du bekommst", "Was von dir verlangt wird"],
+  pathLis: [
+    "Den Preis der Vereinigung statt des Ladenpreises: du kaufst direkt.",
+    "Meine Hilfe bei der Auswahl: womit anfangen und was du wahrscheinlich nicht brauchst.",
+    "Begleitung unterwegs: wie du es in den Tag einbaust, was zu tun ist, wenn es nicht läuft.",
+    "Volle Freiheit: einmal bestellt und fertig, niemand erinnert dich an sich.",
+    "Eine Richtung wählen und ausprobieren, statt alles auf einmal zu nehmen.",
+    "Mindestens einen Monat regelmäßig bleiben — vorher gibt es nichts zu bewerten.",
+    "Akzeptieren, dass es keine Heilung ist, und nichts abzusetzen, was der Arzt verordnet hat.",
+    "Einen kombinierten Marketingplan: die Vergütung besteht aus mehreren Teilen, nicht aus einem einzigen Satz.",
+    "Keine verpflichtenden Monatseinkäufe: «den Plan bis Monatsende erfüllen» gibt es hier nicht.",
+    "Schulung und Materialien der Vereinigung, plus meine persönliche Hilfe am Anfang.",
+    "Eine Tätigkeit von zu Hause und vom Telefon aus: für mich in der Elternzeit war das entscheidend.",
+    "Die Produkte selbst verstehen und benutzen. Zu verkaufen, was man nicht probiert hat, ist eine Sackgasse.",
+    "Die Bereitschaft, mit Menschen zu sprechen und «nein» zu hören — oft.",
+    "Ein paar Stunden pro Woche verlässlich, nicht ruckweise einmal im Monat.",
+    "Zu akzeptieren, dass die ersten Monate gar kein Einkommen bringen können. Garantierte Summen gibt es hier nicht und kann es nicht geben."
+  ],
+  pathBtns: ["Als Kundin fragen", "Über die Partnerschaft sprechen"],
+  qButtons: [
+    "Ist das ein Pyramidensystem?",
+    "Muss ich Freunde und Verwandte überreden?",
+    "Wie viel muss man am Anfang investieren?",
+    "Heilt das etwas? Ich habe gesundheitliche Probleme",
+    "Sind Monatseinkäufe verpflichtend?",
+    "Ich habe mir mit Network-Marketing schon die Finger verbrannt",
+    "Ich lebe nicht in Italien. Funktioniert es trotzdem?",
+    "Und wenn es mir nicht passt oder ich es mir anders überlege?"
+  ],
+  qBodies: [
+    "Ein Pyramidensystem ist eines, in dem das Geld aus den Beiträgen neuer Teilnehmer kommt, während das Produkt fehlt oder nur Vorwand ist. Hier wird die Vergütung auf den Umsatz echter Produkte berechnet, für den Eintritt zahlt man nichts, und du kannst für immer einfach Kundin bleiben.",
+    "Sieht es von außen wie eine Pyramide aus? Die Struktur aus Menschen ja, und ich tue nicht so, als wäre es anders. Der Unterschied liegt darin, woher das Geld kommt: aus verkauften Produkten oder aus den Taschen der Neuen. Also glaube nicht mir: frag mich nach dem Marketingplan und sieh nach, wofür genau bezahlt wird.",
+    "Überreden ist nicht nötig und funktioniert nach meiner Erfahrung als Einziges sicher nicht. Wer überredet wurde, geht nach einem Monat und ist dann noch verärgert.",
+    "Die Variante, die funktioniert, ist langweiliger: du benutzt die Produkte selbst, du hast etwas zu erzählen, und du antwortest denen, die fragen. Eine Liste mit «hundert Kontakten aus dem Telefon» gebe ich niemandem.",
+    "Die Registrierung ist kostenlos: für das Recht, Partnerin zu sein, zahlt hier niemand. Die einzige Ausgabe am Anfang ist der Kauf von Produkten für dich selbst, und die Summe hängt ganz davon ab, was du wählst: ein Kräuterprodukt und ein Gerät kosten sehr unterschiedlich.",
+    "Genaue Preise nenne ich im Chat: sie auf der Seite zu halten ist sinnlos, sie ändern sich, und ich will nicht, dass du mit alten Zahlen rechnest. Frag, und ich sage dir den aktuellen — ohne «und wenn du noch das dazunimmst».",
+    "Nein. Die Produkte der Vereinigung sind keine Arzneimittel, heilen nicht und ersetzen keine Anweisungen des Arztes. Wenn du eine Erkrankung hast, entscheidet der Arzt über die Therapie — und ich bin nicht die Person, die sie kommentiert.",
+    "Was ich kann: dir sagen, was das Produkt ist und wie es in der täglichen Pflege benutzt wird. Was ich von dir brauche: sag deinem Arzt, dass du etwas begonnen hast, besonders wenn du schon in Behandlung bist.",
+    "Nein. Der Marketingplan ist kombiniert, es gibt kein verpflichtendes Monatsvolumen — und für mich war das eines der entscheidenden Argumente. Niemand muss in den letzten Tagen des Monats Ware auf Lager unters Bett kaufen.",
+    "Eine Einschränkung gibt es aber: wenn du die Produkte nicht benutzt, hast du nichts zu erzählen. Formal bist du nicht verpflichtet, praktisch ist es sinnlos.",
+    "Dann stellst du die richtigen Fragen, und dieses Gespräch ist mir lieber als ein begeistertes. Meist verbrennt man sich an drei Dingen: verpflichtenden Einkäufen, dem Druck des Mentors und Einkommensversprechen, die nicht eintraten.",
+    "Was du prüfen kannst, bevor du irgendetwas zahlst: den Marketingplan (wofür genau bezahlt wird), die Produktzertifikate, die Bedingungen für den Ausstieg. Frag mich danach vor der Registrierung: das ist eine normale Bitte, kein Zeichen von Misstrauen.",
+    "Ja. Die Vereinigung hat Vertretungen in Europa und den GUS-Ländern, der Versand läuft über das lokale Lager und nicht als Paket aus China auf eigenes Risiko.",
+    "Der Kontakt läuft komplett online: Telegram, ein Anruf, wenn es nötig ist. Schreib mir, in welchem Land du bist, und ich sage dir, wie Bestellung und Lieferung dort funktionieren.",
+    "Dann passt es nicht: das ist ein normales Ergebnis und kommt vor. Du hast keine Pflicht weiterzumachen — es gibt keine terminierten Einkäufe, «aussteigen» heißt einfach aufhören zu bestellen.",
+    "In diesem Fall bitte ich nur um eines: sag mir, was nicht funktioniert hat. Das ist nützlicher als jedes höfliche Schweigen — für dich und für mich."
+  ],
+  aboutSmall: ["Italien · unabhängige Partnerin der Vereinigung VIEDA"],
+  aboutParas: [
+    "Zurzeit bin ich in Elternzeit, und anders als auf Postkarten ist das die Zeit, in der man lernt, seine Kräfte bis zur letzten Minute zu zählen. Genau dann hörte die Frage «und was tue ich für meine Gesundheit und für das Familienbudget?» auf, abstrakt zu sein.",
+    "Von meinem ersten Beruf her habe ich mit Medizin nichts zu tun: Zahlen, Dokumente, Ordnung in Berichten. Deshalb kam ich zur östlichen Medizin als Skeptikerin — erst habe ich gelesen und nachgefragt, dann ein halbes Jahr an mir selbst ausprobiert, und erst danach wurde ich Partnerin. Genau in dieser Reihenfolge.",
+    "Ich lebe in Italien und arbeite online, mit Menschen in Europa und den GUS-Ländern. Die Zeitverschiebung löst eine Nachricht: schreib mir, ich antworte, sobald ich frei bin, meist am selben Tag."
+  ],
+  aboutList: [
+    "<b>Womit ich helfe:</b> ich erkläre ohne Fachbegriffe, zeige, womit man anfängt, und rate dir ehrlich ab, wenn ich sehe, dass du es jetzt nicht brauchst.",
+    "<b>Wie die Arbeit mit mir aussieht:</b> du schreibst mir auf Telegram und stellst deine Fragen, auch die unbequemen. Dann entscheidest du, in deinem Tempo.",
+    "<b>Was ich nicht tue:</b> ich stelle keine Diagnosen, verspreche keine Einkommen, setze keine Therapie ab und schreibe nicht nach einer Woche «und, hast du nachgedacht?»."
+  ],
+  ctaExtra: ["Meist antworte ich am selben Tag. Dauert es länger, schläft das Kind nicht — es heißt nicht, dass «ein Mitarbeiter die Anfrage verloren hat»."],
+  ctaBtns: ["Direkt schreiben", "Chat auf Telegram öffnen"],
+  formLabels: [
+    "Wie heißt du",
+    "Telegram, Telefon oder E-Mail",
+    "Eine Frage oder zwei Worte über dich <span style=\"text-transform:none;letter-spacing:0\">(freiwillig)</span>"
+  ],
+  holders: ["Zum Beispiel Anna", "@nickname oder +39 ...", "Zum Beispiel: ich sitze viel am Computer, mich interessiert das BEM — womit fange ich an?"],
+  legend: ["Was interessiert dich"],
+  choices: ["Als Kundin", "Die Partnerschaft"],
+  submitBtn: ["Senden und Telegram öffnen"],
+  formNote: ["Die Daten gehen nirgendwohin automatisch: der Knopf stellt die Nachricht zusammen und öffnet den Chat mit mir. Du siehst den Text vor dem Senden und kannst ihn ändern."],
+  okH3: ["Die Nachricht ist fertig"],
+  okText: ["Der Text ist in der Zwischenablage. Wenn Telegram sich nicht von selbst geöffnet hat, drücke den Knopf unten und füge die Nachricht in den Chat ein."],
+  footH4: ["Kontakt", "Bereiche", "Wichtig"],
+  footLinks: ["Telegram — @Gitavali1", "Die Vereinigung", "Produkte", "Zwei Wege", "Fragen"],
+  footP: [
+    "Die Produkte sind keine Arzneimittel, nicht zur Diagnose, Behandlung oder Vorbeugung von Krankheiten bestimmt und ersetzen nicht den Rat eines Arztes. Nahrungsergänzungsmittel sind kein Ersatz für eine abwechslungsreiche, ausgewogene Ernährung und eine gesunde Lebensweise.",
+    "Diese Seite gehört einer unabhängigen Partnerin der Vereinigung VIEDA (Whieda) und ist keine offizielle Ressource des Unternehmens. Meinungen und Formulierungen darauf sind persönlich.",
+    "Ergebnisse im Geschäft sind individuell und hängen von deinem Einsatz ab. Weder das Einkommen noch sein Zeitpunkt sind garantiert."
+  ],
+  footBottom: [
+    "© <span id=\"year\">2026</span> Larisa · unabhängige Partnerin der Vereinigung VIEDA",
+    "Italien · online tätig in Europa und den GUS-Ländern"
+  ]
+};
+
+/* ---------------------------- FRANÇAIS ---------------------------- */
+DICT.fr = {
+  meta: {
+    title: "VIEDA (Whieda) — partenaire indépendante Larisa | Produits et collaboration, sans pression",
+    desc: "Partenaire indépendante de l’association internationale VIEDA (Whieda). Calmement et honnêtement : ce que sont les produits — BEM, Activateur cellulaire, articles en graphène, produits à base de plantes — et ce qu’implique vraiment la collaboration.",
+    hi: "Bonjour Larisa ! Je m’appelle ",
+    wantP: "La collaboration avec VIEDA m’intéresse",
+    wantC: "Les produits VIEDA m’intéressent en tant que client",
+    my: "Mon contact : ",
+    okPre: "Message prêt : «",
+    okPost: "» Le texte est copié dans le presse-papiers. Si la discussion ne s’est pas ouverte d’elle-même, appuyez sur le bouton ci-dessous et collez-le."
+  },
+  skip: ["Aller au contenu"],
+  logoSub: ["Partenaire indépendante"],
+  nav: ["L’association", "Produits", "Deux voies", "À propos de moi", "Questions"],
+  dots: ["Début", "Association", "Produits", "Pourquoi", "Deux voies", "À propos", "Questions", "Contact"],
+  topBtn: ["Écrivez-moi"],
+  heroTag: ["<span aria-hidden=\"true\"></span>Association internationale · depuis 2022"],
+  h1: ["Recettes d’Orient, laboratoire d’aujourd’hui — et <em>aucune promesse de miracle</em>"],
+  leads: [
+    "Je suis partenaire indépendante de l’association VIEDA. Je vous aide à comprendre calmement ce que sont ces produits, à qui ils servent vraiment et ce que cache le mot «collaboration».",
+    "L’association internationale VIEDA (Whieda) a démarré en 2022 à l’initiative de la corporation biotechnologique FOHERB. Elle a aujourd’hui des représentations en Europe et dans les pays de la CEI : vous pouvez donc commander depuis Milan, Lyon ou Bruxelles.",
+    "Voici comment je les explique aux gens : ce qu’ils sont, à qui ils servent et en quoi ils diffèrent de choses semblables sur le marché. Sans listes d’«indications» — il n’y en aura pas ici.",
+    "La médecine traditionnelle chinoise n’est pas de la magie. C’est une très longue pratique d’observation : quelles plantes, dans quelles combinaisons et à quel moment de la journée font qu’une personne se sent mieux. Son point faible a toujours été le même — la reproductibilité.",
+    "Ce sont deux décisions différentes, et la seconde n’est pas du tout «meilleure» que la première. Ci-dessous ce que donne chaque voie et ce qu’elle exige. J’ai écrit la seconde colonne honnêtement, y compris la partie désagréable.",
+    "Ce site est le mien, pas celui de l’entreprise. C’est donc moi qui réponds des mots qui s’y trouvent.",
+    "J’ai réuni celles qu’on me pose le plus souvent. Si la vôtre manque, écrivez-moi : je répondrai aussi franchement.",
+    "Laissez votre nom et un contact — ou écrivez-moi directement sur Telegram, c’est plus rapide. Le premier message ne vous engage à rien : je poserai deux questions, vous poserez les vôtres."
+  ],
+  heroBtns: ["Écrire sur Telegram", "D’abord comprendre"],
+  heroNote: ["Je ne vends rien dès le premier message. D’abord les questions et les réponses honnêtes ; les produits VIEDA ne sont pas des médicaments et ne remplacent pas les prescriptions du médecin."],
+  eyebrows: ["01 · L’association", "02 · Produits", "03 · Comment ça marche", "04 · Deux voies", "05 · À propos de moi", "06 · Questions", "07 · Contact"],
+  h2s: [
+    "Ce qu’est VIEDA, sans emphase",
+    "Quatre directions",
+    "Pourquoi unir tradition et biotechnologie n’est pas qu’une belle phrase",
+    "Vous pouvez rester simplement client. Ou devenir partenaire",
+    "Avec qui vous allez parler",
+    "Les questions gênantes : ici",
+    "Commençons par une conversation, pas par un achat"
+  ],
+  whiedaP: [
+    "Derrière l’association il y a une production chinoise qui travaille depuis des décennies avec des recettes à base de plantes. L’association est la façon dont ces produits arrivent directement à la personne : sans marge du magasin, sans rayon et sans vendeur indifférent à ce que vous avez acheté.",
+    "La gamme se divise en deux parties très différentes. D’abord les appareils pour un usage domestique : le masseur bioénergétique, l’activateur cellulaire, les articles en graphène. Ensuite les produits à base de plantes : pâtes, boissons et compléments végétaux. Une chose les unit : ils sont pensés pour la régularité, pas pour un effet unique. Dans la tradition orientale c’est justement l’essentiel — peu et longtemps agit mieux que beaucoup une seule fois.",
+    "Et tout de suite le cadre, pour lire la suite plus tranquillement : ce n’est pas une pharmacie et ce n’est pas de la médecine. Il n’y a pas de guérison, pas de diagnostics, aucun remplacement du médecin. Il y a un soin de soi qui tient dans une soirée ordinaire, et il y a la possibilité — si vous le voulez — de participer à la distribution et d’être rémunéré pour cela."
+  ],
+  cardTitles: ["BEM — masseur bioénergétique", "Activateur cellulaire PRO", "Articles en graphène", "Produits à base de plantes FOHERB"],
+  cardDt: ["Ce que c’est", "Pour qui", "Ce qui le distingue", "Ce que c’est", "Pour qui", "Ce qui le distingue", "Ce que c’est", "Pour qui", "Ce qui le distingue", "Ce que c’est", "Pour qui", "Ce qui le distingue"],
+  cardDd: [
+    "Un appareil pour un usage domestique : chaleur douce et travail ciblé sur des zones précises. La technologie est brevetée par l’entreprise et c’est probablement son produit principal.",
+    "Pour ceux qui restent assis toute la journée, arrivent au soir essorés et veulent vingt minutes de calme sans prendre rendez-vous.",
+    "Il travaille sur des zones précises, au lieu de «chauffer tout le dos» comme un couvre-siège massant. Il est pensé pour des séances courtes et régulières, pas pour une heure héroïque.",
+    "Un appareil pour des cures à la maison. Le nom sonne grand, alors je le dis clairement : c’est un appareil domestique pour un soin régulier, pas un équipement médical.",
+    "Pour ceux qui savent être réguliers : l’allumer selon un programme, comme la gymnastique, et ne pas attendre de miracle après la première fois.",
+    "La logique d’une cure, pas d’un usage occasionnel. C’est pourquoi ma première question est toujours : avez-vous vingt minutes tranquilles par jour ? Sinon, mieux vaut commencer autrement.",
+    "Lunettes, articles pour le sommeil et textiles au fil de graphène — des objets du quotidien, pas des appareils.",
+    "Pour ceux qui ont toujours froid, s’endorment difficilement ou passent la journée devant un écran.",
+    "Ici c’est la physique du matériau qui travaille : le graphène répartit la chaleur uniformément et la retient sans devenir désagréablement chaud. C’est une propriété du tissu, pas une promesse — et cela se vérifie en une semaine, sur ses propres sensations.",
+    "Pâtes, boissons et compléments d’origine végétale : des recettes de la médecine traditionnelle chinoise réalisées dans une usine moderne.",
+    "Pour ceux qui veulent se soutenir avec les plantes et l’alimentation, mais n’ont pas l’intention de commander des pots sans nom sur internet.",
+    "Les produits ont des certifications internationales : GMP, ISO 22000, halal, casher. On peut regarder les documents au lieu de croire sur parole. Et oui : ce sont des compléments alimentaires, pas des médicaments."
+  ],
+  pillarH: ["La recette", "La production", "La régularité"],
+  pillarP: [
+    "Les formules ne viennent pas d’un service marketing mais d’une tradition où les combinaisons de plantes ont été choisies pendant des siècles. <strong>Ici la nouveauté n’est pas un but.</strong>",
+    "Un laboratoire moderne donne ce qu’une décoction maison ne peut pas : contrôle de la matière première, dosage stable et <strong>la même composition dans chaque lot</strong>.",
+    "La partie la plus ennuyeuse et la plus honnête. Sans répétition quotidienne, ni l’appareil ni le produit à base de plantes ne montrent rien. <strong>Ce n’est pas l’achat qui agit, c’est l’habitude.</strong>"
+  ],
+  darkNote: ["Ce que cette logique ne contient pas — et qui n’apparaîtra pas sur ma page : des promesses qu’un appareil ou une pâte vous libérera de quelque chose ; des histoires «avant et après» d’autres personnes ; des renvois à des études que je n’ai pas lues. Si vous avez besoin d’une aide médicale, elle vous vient d’un médecin et non de moi."],
+  pathTitles: ["En tant que client", "En tant que partenaire"],
+  pathTags: ["Première voie", "Deuxième voie"],
+  pathIntros: [
+    "Vous utilisez simplement les produits. Aucune activité, personne à convaincre, aucun compte à rendre.",
+    "Vous utilisez les produits et recevez une rémunération sur le chiffre d’affaires : le vôtre et celui de ceux qui sont arrivés par vous."
+  ],
+  pathH4: ["Ce que vous obtenez", "Ce qui est demandé de vous", "Ce que vous obtenez", "Ce qui est demandé de vous"],
+  pathLis: [
+    "Le prix de l’association au lieu du prix de détail : vous achetez directement.",
+    "Mon aide pour choisir : par où commencer et ce dont vous n’avez probablement pas besoin.",
+    "L’accompagnement en route : comment l’intégrer à la journée, quoi faire si ça ne prend pas.",
+    "Une liberté totale : vous commandez une fois et c’est tout, personne ne vous relancera.",
+    "Choisir une seule direction et l’essayer, au lieu de tout prendre à la fois.",
+    "Tenir la régularité au moins un mois — avant, il n’y a rien à conclure.",
+    "Accepter que ce n’est pas un traitement, et ne pas arrêter ce que le médecin a prescrit.",
+    "Un plan marketing combiné : la rémunération se compose de plusieurs éléments, pas d’un seul taux.",
+    "Aucun achat mensuel obligatoire : ici, pas de «plan à couvrir avant la fin du mois».",
+    "La formation et les supports de l’association, plus mon aide personnelle au démarrage.",
+    "Une activité qu’on mène de chez soi et depuis son téléphone : pour moi, en congé maternité, cela a été décisif.",
+    "Comprendre les produits vous-même et les utiliser. Vendre ce qu’on n’a pas essayé est une impasse.",
+    "La disponibilité à parler aux gens et à entendre «non» — souvent.",
+    "Quelques heures par semaine avec constance, pas par à-coups une fois par mois.",
+    "Accepter que les premiers mois puissent ne rien rapporter du tout. Il n’y a ici aucune somme garantie et il ne peut pas y en avoir."
+  ],
+  pathBtns: ["Demander en tant que client", "Parler de la collaboration"],
+  qButtons: [
+    "Est-ce un système pyramidal ?",
+    "Faut-il convaincre amis et famille ?",
+    "Combien faut-il investir au départ ?",
+    "Est-ce que ça soigne ? J’ai des problèmes de santé",
+    "Les achats mensuels sont-ils obligatoires ?",
+    "Je me suis déjà brûlé avec le marketing de réseau",
+    "Je ne vis pas en Italie. Est-ce que ça marche quand même ?",
+    "Et si cela ne me convient pas ou que je change d’avis ?"
+  ],
+  qBodies: [
+    "Un système pyramidal est celui où l’argent vient des cotisations des nouveaux venus, tandis que le produit est absent ou sert de prétexte. Ici la rémunération est calculée sur le chiffre d’affaires de produits réels, l’entrée ne coûte rien, et vous pouvez rester simplement client pour toujours.",
+    "Est-ce que cela ressemble de l’extérieur à une pyramide ? La structure de personnes, oui, et je ne prétendrai pas le contraire. La différence est l’origine de l’argent : le produit vendu ou la poche des nouveaux. Ne me croyez donc pas sur parole : demandez-moi le plan marketing et regardez ce qui est payé exactement.",
+    "Il n’est pas nécessaire de convaincre et, d’après mon expérience, c’est la seule chose qui ne marche jamais. Celui qu’on a convaincu part au bout d’un mois et vous en garde rancune.",
+    "La version qui fonctionne est plus ennuyeuse : vous utilisez les produits vous-même, vous avez quelque chose à raconter, et vous répondez à ceux qui posent la question. La liste des «cent contacts du téléphone», je ne la donne à personne.",
+    "L’inscription est gratuite : ici on ne paie pas le droit d’être partenaire. La seule dépense de départ est l’achat de produits pour vous, et la somme dépend entièrement de votre choix : un produit à base de plantes et un appareil coûtent très différemment.",
+    "Je donne les prix exacts en discussion : les garder sur le site n’a pas de sens, ils changent, et je ne veux pas que vous vous fiiez à des chiffres périmés. Demandez et je vous dirai le prix actuel, sans «et si vous ajoutiez aussi ceci».",
+    "Non. Les produits de l’association ne sont pas des médicaments, ne soignent pas et ne remplacent pas les prescriptions du médecin. Si vous avez une pathologie, c’est le médecin qui décide du traitement — et je ne suis pas la personne qui le commentera.",
+    "Ce que je peux faire : vous dire ce qu’est le produit et comment il s’utilise au quotidien. Ce dont j’ai besoin de vous : dire à votre médecin que vous avez commencé quelque chose, surtout si vous suivez déjà un traitement.",
+    "Non. Le plan marketing est combiné, il n’y a aucun volume mensuel obligatoire — et pour moi c’était l’un des arguments décisifs. Pas besoin d’acheter des produits les derniers jours du mois pour les stocker sous le lit.",
+    "Il y a toutefois une réserve : si vous n’utilisez pas les produits, vous n’aurez rien à raconter. Formellement vous n’y êtes pas obligé, en pratique cela n’a pas de sens.",
+    "Alors vous posez les bonnes questions, et je préfère ce genre de conversation à une conversation enthousiaste. On se brûle généralement à trois choses : les achats obligatoires, la pression du parrain et les promesses de revenus non tenues.",
+    "Ce que vous pouvez vérifier avant de payer quoi que ce soit : le plan marketing (ce qui est payé exactement), les certifications des produits, les conditions de sortie. Demandez-moi tout cela avant l’inscription : c’est une demande normale, pas un signe de méfiance.",
+    "Oui. L’association a des représentations en Europe et dans les pays de la CEI, l’expédition part de l’entrepôt local et non comme un colis venu de Chine à vos risques.",
+    "Tout se passe en ligne : Telegram, un appel si nécessaire. Écrivez-moi de quel pays vous êtes et je vous dirai comment y fonctionnent la commande et la livraison.",
+    "Alors cela ne vous convient pas : c’est une issue normale et cela arrive. Vous n’avez aucune obligation de continuer — il n’y a pas d’achats programmés, «partir» signifie simplement cesser de commander.",
+    "Dans ce cas je demande une seule chose : dites-moi ce qui n’a pas marché. C’est plus utile que n’importe quel silence poli — pour vous et pour moi."
+  ],
+  aboutSmall: ["Italie · partenaire indépendante de l’association VIEDA"],
+  aboutParas: [
+    "Je suis actuellement en congé maternité et, contrairement aux cartes postales, c’est le moment où l’on apprend à compter ses forces à la minute près. C’est justement là que la question «et moi, que fais-je pour ma santé et pour le budget familial ?» a cessé d’être abstraite.",
+    "Par ma première formation, je n’ai rien à voir avec la médecine : chiffres, documents, ordre dans les rapports. C’est pourquoi je suis venue à la médecine orientale en sceptique — j’ai d’abord lu et posé des questions, puis essayé six mois sur moi, et seulement après je suis devenue partenaire. Exactement dans cet ordre.",
+    "Je vis en Italie et je travaille en ligne, avec des personnes en Europe et dans les pays de la CEI. Le décalage horaire se règle en un message : écrivez-moi, je répondrai dès que je serai libre, en général le même jour."
+  ],
+  aboutList: [
+    "<b>Ce en quoi j’aide :</b> j’explique sans jargon, je montre par où commencer, et je vous dissuade honnêtement si je vois que cela ne vous sert à rien maintenant.",
+    "<b>Comment on travaille avec moi :</b> vous m’écrivez sur Telegram et posez vos questions, y compris les gênantes. Ensuite vous décidez, à votre rythme.",
+    "<b>Ce que je ne fais pas :</b> je ne pose pas de diagnostics, je ne promets pas de revenus, je n’annule pas un traitement et je n’écris pas au bout d’une semaine «alors, tu y as réfléchi ?»."
+  ],
+  ctaExtra: ["Je réponds en général le même jour. Si je tarde, c’est que l’enfant ne dort pas — pas qu’«un conseiller a perdu votre demande»."],
+  ctaBtns: ["Écrire directement", "Ouvrir la discussion sur Telegram"],
+  formLabels: [
+    "Comment vous appelez-vous",
+    "Telegram, téléphone ou e-mail",
+    "Une question ou deux mots sur vous <span style=\"text-transform:none;letter-spacing:0\">(facultatif)</span>"
+  ],
+  holders: ["Par exemple, Marie", "@nickname ou +39 ...", "Par exemple : je passe des heures devant l’ordinateur, le BEM m’intéresse — par où commencer ?"],
+  legend: ["Ce qui vous intéresse"],
+  choices: ["En tant que client", "La collaboration"],
+  submitBtn: ["Envoyer et ouvrir Telegram"],
+  formNote: ["Les données ne partent nulle part automatiquement : le bouton compose le message et ouvre la discussion avec moi. Vous verrez le texte avant l’envoi et pourrez le modifier."],
+  okH3: ["Le message est prêt"],
+  okText: ["Le texte est copié dans le presse-papiers. Si Telegram ne s’est pas ouvert tout seul, appuyez sur le bouton ci-dessous et collez le message dans la discussion."],
+  footH4: ["Contact", "Sections", "Important"],
+  footLinks: ["Telegram — @Gitavali1", "L’association", "Produits", "Deux voies", "Questions"],
+  footP: [
+    "Les produits ne sont pas des médicaments, ne sont pas destinés au diagnostic, au traitement ou à la prévention de maladies et ne remplacent pas l’avis d’un médecin. Les compléments alimentaires ne se substituent pas à une alimentation variée et équilibrée ni à un mode de vie sain.",
+    "Ce site appartient à une partenaire indépendante de l’association VIEDA (Whieda) et n’est pas une ressource officielle de l’entreprise. Les opinions et les formulations y sont personnelles.",
+    "Les résultats dans l’activité sont individuels et dépendent de vos efforts. Ni le revenu ni ses délais ne sont garantis."
+  ],
+  footBottom: [
+    "© <span id=\"year\">2026</span> Larisa · partenaire indépendante de l’association VIEDA",
+    "Italie · je travaille en ligne avec l’Europe et la CEI"
+  ]
+};
+
+/* ---------------------------- ESPAÑOL ---------------------------- */
+DICT.es = {
+  meta: {
+    title: "VIEDA (Whieda) — socia independiente Larisa | Productos y colaboración, sin presión",
+    desc: "Socia independiente de la asociación internacional VIEDA (Whieda). Con calma y honestidad: qué son los productos — BEM, Activador Celular, artículos de grafeno, productos a base de hierbas — y qué implica de verdad ser socio.",
+    hi: "¡Hola, Larisa! Me llamo ",
+    wantP: "Me interesa la colaboración con VIEDA",
+    wantC: "Me interesan los productos VIEDA como cliente",
+    my: "Mi contacto: ",
+    okPre: "Mensaje listo: «",
+    okPost: "» El texto se ha copiado al portapapeles. Si el chat no se abrió solo, pulsa el botón de abajo y pégalo."
+  },
+  skip: ["Ir al contenido"],
+  logoSub: ["Socia independiente"],
+  nav: ["La asociación", "Productos", "Dos caminos", "Sobre mí", "Preguntas"],
+  dots: ["Inicio", "Asociación", "Productos", "Por qué", "Dos caminos", "Sobre mí", "Preguntas", "Contacto"],
+  topBtn: ["Escríbeme"],
+  heroTag: ["<span aria-hidden=\"true\"></span>Asociación internacional · desde 2022"],
+  h1: ["Recetas de Oriente, laboratorio de hoy — y <em>ninguna promesa de milagros</em>"],
+  leads: [
+    "Soy socia independiente de la asociación VIEDA. Te ayudo a entender con calma qué son estos productos, a quién le sirven de verdad y qué hay detrás de la palabra «colaboración».",
+    "La asociación internacional VIEDA (Whieda) empezó en 2022 por iniciativa de la corporación biotecnológica FOHERB. Hoy tiene representaciones en Europa y en los países de la CEI: puedes pedir los productos viviendo en Milán, Madrid o Viena.",
+    "Aquí te los explico como se los explico a la gente: qué son, para quién son y en qué se diferencian de cosas parecidas del mercado. Sin listas de «indicaciones»: aquí no las habrá.",
+    "La medicina tradicional china no es magia. Es una práctica de observación muy larga: qué plantas, en qué combinaciones y a qué hora del día hacen que una persona se sienta mejor. Su punto débil siempre fue el mismo: la reproducibilidad.",
+    "Son dos decisiones distintas, y la segunda no es «mejor» que la primera en absoluto. Abajo está lo que da cada camino y lo que exige. La segunda columna la escribí con honestidad, incluida la parte incómoda.",
+    "Esta web es mía, no de la empresa. Así que de las palabras que hay aquí respondo yo.",
+    "He reunido las que me hacen más a menudo. Si falta la tuya, escríbeme: responderé con la misma franqueza.",
+    "Deja tu nombre y un contacto cómodo, o escríbeme directamente por Telegram, es más rápido. El primer mensaje no te compromete a nada: yo haré dos preguntas, tú harás las tuyas."
+  ],
+  heroBtns: ["Escribirme por Telegram", "Primero quiero entender"],
+  heroNote: ["No vendo nada en el primer mensaje. Primero las preguntas y las respuestas honestas; los productos VIEDA no son medicamentos y no sustituyen las indicaciones del médico."],
+  eyebrows: ["01 · La asociación", "02 · Productos", "03 · Cómo funciona", "04 · Dos caminos", "05 · Sobre mí", "06 · Preguntas", "07 · Contacto"],
+  h2s: [
+    "Qué es VIEDA, sin grandilocuencia",
+    "Cuatro direcciones",
+    "Por qué unir tradición y biotecnología no es solo una frase bonita",
+    "Puedes quedarte solo como cliente. O hacerte socio",
+    "Con quién vas a hablar",
+    "Las preguntas incómodas: aquí",
+    "Empecemos por una conversación, no por una compra"
+  ],
+  whiedaP: [
+    "Detrás de la asociación hay una producción china que trabaja desde hace décadas con recetas de hierbas. La asociación es la forma en que esos productos llegan directamente a la persona: sin el margen de la tienda, sin estante y sin un vendedor al que le da igual qué has comprado.",
+    "El surtido se divide en dos partes muy distintas. La primera: aparatos para uso doméstico — el masajeador bioenergético, el activador celular, los artículos de grafeno. La segunda: productos a base de hierbas — pastas, bebidas y complementos vegetales. Los une una cosa: están pensados para la regularidad, no para un efecto único. En la tradición oriental eso es justamente lo esencial: poco y durante mucho tiempo funciona mejor que mucho una sola vez.",
+    "Y el marco desde ya, para leer el resto con más calma: esto no es una farmacia ni es medicina. No hay curación, no hay diagnósticos, no hay sustitución del médico. Hay cuidado de uno mismo que cabe en una tarde normal, y hay la posibilidad — si quieres — de participar en la distribución y recibir una compensación por ello."
+  ],
+  cardTitles: ["BEM — masajeador bioenergético", "Activador Celular PRO", "Artículos de grafeno", "Productos a base de hierbas FOHERB"],
+  cardDt: ["Qué es", "Para quién", "En qué se diferencia", "Qué es", "Para quién", "En qué se diferencia", "Qué es", "Para quién", "En qué se diferencia", "Qué es", "Para quién", "En qué se diferencia"],
+  cardDd: [
+    "Un aparato para uso doméstico: calor suave y trabajo puntual sobre zonas concretas. La tecnología está patentada por la empresa y es, probablemente, su producto principal.",
+    "Para quien pasa el día sentado, llega a la tarde exprimido y quiere veinte minutos de silencio sin pedir cita con un especialista.",
+    "Trabaja sobre zonas concretas, no «calienta toda la espalda» como una funda de masaje. Está pensado para sesiones cortas y regulares, no para una hora heroica.",
+    "Un aparato para ciclos de uso en casa. El nombre suena grandioso, así que lo digo claro: es un aparato doméstico para el cuidado regular, no un equipo médico.",
+    "Para quien sabe ser sistemático: encenderlo según un horario, como la gimnasia, y no esperar milagros después de la primera vez.",
+    "La lógica de un ciclo, no del uso ocasional. Por eso mi primera pregunta es siempre: ¿tienes veinte minutos tranquilos al día? Si no, mejor empezar por otra cosa.",
+    "Gafas, artículos para el sueño y textiles con hilo de grafeno: objetos de uso diario, no aparatos.",
+    "Para quien siempre tiene frío, le cuesta dormirse o pasa el día delante de una pantalla.",
+    "Aquí trabaja la física del material: el grafeno reparte el calor de forma uniforme y lo retiene sin calentarse hasta molestar. Es una propiedad del tejido, no una promesa, y se comprueba en una semana con las propias sensaciones.",
+    "Pastas, bebidas y complementos de origen vegetal: recetas de la medicina tradicional china elaboradas en una planta moderna.",
+    "Para quien quiere apoyarse en las hierbas y la alimentación, pero no piensa pedir botes sin nombre por internet.",
+    "Los productos tienen certificaciones internacionales: GMP, ISO 22000, halal, kosher. Los documentos se pueden mirar en lugar de creer de palabra. Y sí: son complementos alimenticios, no medicamentos."
+  ],
+  pillarH: ["La receta", "La producción", "La regularidad"],
+  pillarP: [
+    "Las fórmulas no vienen del departamento de marketing, sino de una tradición en la que las combinaciones de hierbas se seleccionaron durante siglos. <strong>Aquí la novedad no es un objetivo.</strong>",
+    "Un laboratorio moderno da lo que una infusión casera no puede: control de la materia prima, dosificación estable y <strong>la misma composición en cada lote</strong>.",
+    "La parte más aburrida y más honesta. Sin repetición diaria ni el aparato ni el producto de hierbas muestran nada. <strong>No funciona la compra, funciona el hábito.</strong>"
+  ],
+  darkNote: ["Lo que esta lógica no contiene, y no aparecerá en mi página: promesas de que un aparato o una pasta te librarán de algo; historias «antes y después» de otras personas; referencias a estudios que no he leído. Si necesitas ayuda médica, la necesitas de un médico y no de mí."],
+  pathTitles: ["Como cliente", "Como socio"],
+  pathTags: ["Primer camino", "Segundo camino"],
+  pathIntros: [
+    "Simplemente usas los productos. Ningún negocio, ninguna persona a la que convencer, ningún informe.",
+    "Usas los productos y recibes una compensación por la facturación: la tuya y la de quienes llegaron a través de ti."
+  ],
+  pathH4: ["Qué obtienes", "Qué se te pide", "Qué obtienes", "Qué se te pide"],
+  pathLis: [
+    "El precio de la asociación en lugar del de tienda: compras directamente.",
+    "Mi ayuda para elegir: por dónde empezar y qué, con toda probabilidad, no necesitas.",
+    "Acompañamiento durante el camino: cómo encajarlo en el día, qué hacer si no arranca.",
+    "Libertad total: pides una vez y ya está, nadie vendrá a recordarte nada.",
+    "Elegir una dirección y probarla, en lugar de coger todo a la vez.",
+    "Mantener la regularidad al menos un mes: antes no hay nada de lo que sacar conclusiones.",
+    "Aceptar que no es un tratamiento y no suspender lo que ha indicado el médico.",
+    "Un plan de marketing combinado: la compensación se forma de varias partes, no de un único porcentaje.",
+    "Sin compras mensuales obligatorias: aquí no hay que «cubrir el plan» antes de fin de mes.",
+    "Formación y materiales de la asociación, más mi ayuda personal al empezar.",
+    "Una actividad que se lleva desde casa y desde el móvil: para mí, de baja por maternidad, fue decisivo.",
+    "Entender los productos tú mismo y usarlos. Vender lo que no has probado es un callejón sin salida.",
+    "Disposición a hablar con la gente y a oír «no», a menudo.",
+    "Unas horas a la semana con constancia, no a rachas una vez al mes.",
+    "Aceptar que los primeros meses pueden no dar ningún ingreso. Aquí no hay cantidades garantizadas ni puede haberlas."
+  ],
+  pathBtns: ["Preguntar como cliente", "Hablar de la colaboración"],
+  qButtons: [
+    "¿Es un esquema piramidal?",
+    "¿Hay que convencer a amigos y familiares?",
+    "¿Cuánto hay que invertir al principio?",
+    "¿Cura algo? Tengo problemas de salud",
+    "¿Son obligatorias las compras mensuales?",
+    "Ya me he quemado con el marketing multinivel",
+    "No vivo en Italia. ¿Funciona igualmente?",
+    "¿Y si no me conviene o cambio de opinión?"
+  ],
+  qBodies: [
+    "Un esquema piramidal es aquel en el que el dinero viene de las cuotas de los nuevos participantes, mientras el producto falta o sirve de pretexto. Aquí la compensación se calcula sobre la facturación de productos reales, por entrar no se paga nada, y puedes quedarte simplemente como cliente para siempre.",
+    "¿Se parece por fuera a una pirámide? La estructura de personas sí, y no voy a fingir lo contrario. La diferencia está en de dónde viene el dinero: del producto vendido o del bolsillo de los recién llegados. Así que no me creas de palabra: pídeme el plan de marketing y mira por qué se paga exactamente.",
+    "No hace falta convencer y, según mi experiencia, es lo único que seguro no funciona. Quien fue convencido se va al mes y encima se ofende.",
+    "La versión que funciona es más aburrida: usas tú los productos, tienes algo que contar y respondes a quien pregunta. La lista de «cien contactos del teléfono» no se la doy a nadie.",
+    "El registro es gratuito: aquí nadie paga por el derecho a ser socio. El único gasto inicial es comprar productos para ti, y la cantidad depende por completo de lo que elijas: un producto de hierbas y un aparato cuestan muy distinto.",
+    "Los precios exactos los digo en el chat: tenerlos en la web no tiene sentido, cambian, y no quiero que te orientes por cifras viejas. Pregunta y te digo el actual, sin «y si añades también esto».",
+    "No. Los productos de la asociación no son medicamentos, no curan y no sustituyen las indicaciones del médico. Si tienes una patología, el tratamiento lo decide el médico, y no soy yo quien va a comentarlo.",
+    "Lo que puedo hacer: contarte qué producto es y cómo se usa en el cuidado diario. Lo que necesito de ti: decirle a tu médico que has empezado a tomar algo, sobre todo si ya sigues un tratamiento.",
+    "No. El plan de marketing es combinado, no existe un volumen mensual obligatorio, y para mí fue uno de los argumentos decisivos. No hace falta comprar producto los últimos días del mes para guardarlo debajo de la cama.",
+    "Hay un matiz, eso sí: si no usas los productos, no tendrás nada que contar. Formalmente no estás obligado, en la práctica no tiene sentido.",
+    "Entonces haces las preguntas correctas, y prefiero esa conversación a una entusiasta. Normalmente uno se quema por tres cosas: las compras obligatorias, la presión de quien te metió y las promesas de ingresos que no se cumplieron.",
+    "Lo que puedes comprobar antes de pagar nada: el plan de marketing (por qué se paga exactamente), las certificaciones de los productos, las condiciones de salida. Pídeme todo eso antes del registro: es una petición normal, no una señal de desconfianza.",
+    "Sí. La asociación tiene representaciones en Europa y en los países de la CEI, el envío sale del almacén local y no como un paquete desde China a tu riesgo.",
+    "El contacto es todo en línea: Telegram y una llamada si hace falta. Escríbeme de qué país eres y te digo cómo funcionan allí el pedido y la entrega.",
+    "Entonces no te conviene: es un resultado normal y pasa. No tienes ninguna obligación de continuar: no hay compras programadas, «salir» significa simplemente dejar de pedir.",
+    "En ese caso pido una sola cosa: dime qué no funcionó. Es más útil que cualquier silencio educado, para ti y para mí."
+  ],
+  aboutSmall: ["Italia · socia independiente de la asociación VIEDA"],
+  aboutParas: [
+    "Ahora estoy de baja por maternidad y, al contrario de lo que muestran las postales, es el momento en el que aprendes a contar tus fuerzas al minuto. Fue justo entonces cuando la pregunta «¿y yo qué hago por mi salud y por el presupuesto familiar?» dejó de ser abstracta.",
+    "Por mi primera profesión no tengo nada que ver con la medicina: números, documentos, orden en los informes. Por eso llegué a la medicina oriental como escéptica: primero leí y pregunté, luego lo probé medio año en mí misma, y solo después me hice socia. Exactamente en ese orden.",
+    "Vivo en Italia y trabajo en línea, con personas de Europa y de los países de la CEI. La diferencia de horario se resuelve con un mensaje: escríbeme y te respondo en cuanto esté libre, normalmente el mismo día."
+  ],
+  aboutList: [
+    "<b>En qué ayudo:</b> explico sin tecnicismos, indico por dónde empezar y te disuado honestamente si veo que ahora no te hace falta.",
+    "<b>Cómo se trabaja conmigo:</b> me escribes por Telegram y haces tus preguntas, también las incómodas. Después decides tú, a tu ritmo.",
+    "<b>Qué no hago:</b> no doy diagnósticos, no prometo ingresos, no suspendo tratamientos del médico y no escribo a la semana «¿qué, lo has pensado?»."
+  ],
+  ctaExtra: ["Normalmente respondo el mismo día. Si tardo más, es que el niño no duerme, no que «un comercial ha perdido tu solicitud»."],
+  ctaBtns: ["Escribirme directamente", "Abrir el chat en Telegram"],
+  formLabels: [
+    "Cómo te llamas",
+    "Telegram, teléfono o correo",
+    "Una pregunta o dos palabras sobre ti <span style=\"text-transform:none;letter-spacing:0\">(opcional)</span>"
+  ],
+  holders: ["Por ejemplo, Carmen", "@nickname o +39 ...", "Por ejemplo: paso muchas horas ante el ordenador, me interesa el BEM, ¿por dónde empiezo?"],
+  legend: ["Qué te interesa"],
+  choices: ["Como cliente", "La colaboración"],
+  submitBtn: ["Enviar y abrir Telegram"],
+  formNote: ["Los datos no se envían a ninguna parte automáticamente: el botón compone el mensaje y abre el chat conmigo. Verás el texto antes de enviarlo y podrás corregirlo."],
+  okH3: ["El mensaje está listo"],
+  okText: ["El texto se ha copiado al portapapeles. Si Telegram no se abrió solo, pulsa el botón de abajo y pega el mensaje en el chat."],
+  footH4: ["Contacto", "Secciones", "Importante"],
+  footLinks: ["Telegram — @Gitavali1", "La asociación", "Productos", "Dos caminos", "Preguntas"],
+  footP: [
+    "Los productos no son medicamentos, no están destinados al diagnóstico, tratamiento ni prevención de enfermedades y no sustituyen la opinión de un médico. Los complementos alimenticios no deben utilizarse como sustitutos de una dieta variada y equilibrada y de un estilo de vida saludable.",
+    "Esta web pertenece a una socia independiente de la asociación VIEDA (Whieda) y no es un recurso oficial de la empresa. Las opiniones y formulaciones son personales.",
+    "Los resultados en la actividad son individuales y dependen de tu esfuerzo. No se garantizan ni los ingresos ni sus plazos."
+  ],
+  footBottom: [
+    "© <span id=\"year\">2026</span> Larisa · socia independiente de la asociación VIEDA",
+    "Italia · trabajo en línea con Europa y los países de la CEI"
+  ]
+};
+
+/* =========================================================================
+   Применение языка
+   ========================================================================= */
+const LANGS = ['it', 'en', 'ru', 'de', 'fr', 'es'];
+const langSelect = document.getElementById('lang-select');
+
+function applyLang(lang) {
+  const d = DICT[lang];
+  if (!d) return;
+
+  for (const key in GROUPS) {
+    const [sel, mode] = GROUPS[key];
+    const els = document.querySelectorAll(sel);
+    const vals = d[key];
+    if (!vals) continue;
+    els.forEach((el, i) => {
+      const v = vals[i];
+      if (v == null) return;
+      if (mode === 'html') el.innerHTML = v;
+      else if (mode.startsWith('attr:')) el.setAttribute(mode.slice(5), v);
+      else setText(el, v);
+    });
+  }
+
+  // заголовок, описание и язык страницы
+  document.documentElement.lang = lang;
+  document.title = d.meta.title;
+  document.querySelector('meta[name=description]').content = d.meta.desc;
+
+  // год в подвале мог быть перезаписан вместе с разметкой
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // после смены языка высота ответов другая — закрываем открытые
+  document.querySelectorAll('.q').forEach(q => {
+    q.classList.remove('open');
+    q.querySelector('button').setAttribute('aria-expanded', 'false');
+    q.querySelector('.q-body').style.maxHeight = '0px';
+  });
+
+  MSG = d.meta;
+  if (langSelect) langSelect.value = lang;
+  try { localStorage.setItem('viedaLang', lang); } catch (e) {}
+}
+
+/* Тексты для сообщения в Telegram — меняются вместе с языком */
+let MSG = META_IT;
+
+/* Выбор языка при загрузке: итальянский по умолчанию.
+   Исключения: ?lang=de в адресе (чтобы можно было дать ссылку сразу на нужный
+   язык) и выбор, который посетитель уже сделал сам в этой браузере. */
+(function initLang() {
+  const fromUrl = new URLSearchParams(location.search).get('lang');
+  let saved = null;
+  try { saved = localStorage.getItem('viedaLang'); } catch (e) {}
+  const lang = [fromUrl, saved].find(l => l && LANGS.includes(l)) || 'it';
+  if (lang !== 'it') applyLang(lang);
+  else if (langSelect) langSelect.value = 'it';
+})();
+
+if (langSelect) {
+  langSelect.addEventListener('change', e => applyLang(e.target.value));
 }
 </script>
 </body>
