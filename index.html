@@ -1,6 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ВИЕДА (Whieda) — независимый партнёр Лариса | Продукция и партнёрство без давления</title>
+
+<!-- Языковые версии: русская — здесь, итальянская — в папке /it/ -->
+<link rel="alternate" hreflang="ru" href="https://pavelpopov108-cloud.github.io/viyeda-partner/">
+<link rel="alternate" hreflang="it" href="https://pavelpopov108-cloud.github.io/viyeda-partner/it/">
+<link rel="alternate" hreflang="x-default" href="https://pavelpopov108-cloud.github.io/viyeda-partner/">
 <meta name="description" content="Независимый партнёр международной ассоциации ВИЕДА (Whieda). Спокойно и честно: что за продукция — БЭМ, Активатор клеток, графеновые изделия, фитопрепараты, и что реально даёт партнёрство. Без обещаний чуда и без уговоров.">
 <meta name="author" content="Лариса, независимый партнёр ассоциации ВИЕДА">
 
@@ -375,7 +383,24 @@ footer a{ color: var(--gold-soft); }
 /* Ссылка «к содержанию» для клавиатуры */
 .skip{ position: absolute; left: -9999px; }
 .skip:focus{ left: 12px; top: 12px; z-index: 50; background: var(--jade); color: var(--bg); padding: 10px 16px; }
+
+/* ===== Переключатель языка RU / IT ===== */
+.lang{
+  display: inline-flex; align-items: center; gap: 4px; flex: none;
+  font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-decoration: none;
+  color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 8px 11px; transition: .25s;
+}
+.lang:hover{ border-color: var(--jade); color: var(--jade); }
+.lang span{ opacity: .45; font-weight: 500; }
+.top-in{ gap: 12px; }
+@media (max-width: 420px){
+  .lang{ padding: 7px 8px; font-size: .72rem; }
+  .top .btn-sm{ padding: 10px 13px; font-size: .82rem; }
+}
 </style>
+</head>
+<body>
 
 <a class="skip" href="#whieda">Перейти к содержанию</a>
 
@@ -415,6 +440,8 @@ footer a{ color: var(--gold-soft); }
       <a href="#about">Обо мне</a>
       <a href="#faq">Вопросы</a>
     </nav>
+    <!-- Переключатель языка: ведёт на итальянскую версию в /it/ -->
+    <a class="lang" href="it/index.html" hreflang="it" lang="it" aria-label="Versione italiana del sito">IT <span>/ RU</span></a>
     <a class="btn btn-main btn-sm" href="https://t.me/Gitavali1" target="_blank" rel="noopener">Написать</a>
   </div>
 </header>
@@ -1039,3 +1066,5 @@ if (CONTACTS.regUrl) {
   });
 }
 </script>
+</body>
+</html>
