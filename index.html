@@ -382,7 +382,10 @@ footer a{ color: var(--gold-soft); }
 .skip:focus{ left: 12px; top: 12px; z-index: 50; background: var(--jade); color: var(--bg); padding: 10px 16px; }
 
 /* ===== Видео: до клика ничего с YouTube не загружается ===== */
-.videos{ display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.videos{ display: grid; gap: 30px; grid-template-columns: 1fr; }
+/* два видео в ряд начиная с планшета; auto-fit здесь не годится —
+   он добавляет пустую колонку и отъедает отступ справа */
+@media (min-width: 760px){ .videos{ grid-template-columns: 1fr 1fr; } }
 .vid{ margin: 0; }
 .vid-frame{
   position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius);
@@ -676,6 +679,23 @@ footer a{ color: var(--gold-soft); }
         <figcaption>
           <h3>Presentazione generale</h3>
           <p>Il materiale che mando di solito per primo. Guardalo con calma e poi scrivimi: le domande dopo la presentazione sono sempre le più utili.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="vid reveal">
+        <div class="vid-frame" data-yt="pan7usB2M6Q">
+          <button class="vid-play" type="button" aria-label="Avvia il video: il massaggiatore Magic FoHerb">
+            <svg width="66" height="66" viewBox="0 0 66 66" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
+              <circle cx="33" cy="33" r="32" stroke-opacity=".45"/>
+              <circle cx="33" cy="33" r="24"/>
+              <path d="M28 24.5 43 33l-15 8.5V24.5Z" stroke-linejoin="round"/>
+            </svg>
+            <span>Magic FoHerb</span>
+          </button>
+        </div>
+        <figcaption>
+          <h3>Magic FoHerb — il massaggiatore BEM</h3>
+          <p>Il video dedicato all’apparecchio della prima scheda qui sopra. Se è proprio quello che ti interessa, guardalo prima di scrivermi.</p>
         </figcaption>
       </figure>
     </div>
@@ -1419,10 +1439,10 @@ DICT.en = {
     "This site belongs to an independent partner of the VIEDA (Whieda) association and is not an official company resource. The opinions and wording on it are personal.",
     "Results in the business are individual and depend on your effort. Neither the income nor its timing is guaranteed."
   ],
-  videoTitles: ["General presentation"],
-  videoNotes: ["The material I usually send first. Watch it calmly and then write to me: the questions that come after a presentation are always the most useful."],
-  videoPlayLb: ["Play the video: general presentation"],
-  videoPlayTx: ["General presentation"],
+  videoTitles: ["General presentation", "Magic FoHerb — the BEM massager"],
+  videoNotes: ["The material I usually send first. Watch it calmly and then write to me: the questions that come after a presentation are always the most useful.", "The video about the device from the first card above. If that is the one you are curious about, watch this before writing to me."],
+  videoPlayLb: ["Play the video: general presentation", "Play the video: the Magic FoHerb massager"],
+  videoPlayTx: ["General presentation", "Magic FoHerb"],
   footBottom: [
     "© <span id=\"year\">2026</span> Larisa · independent partner of the VIEDA association",
     "Italy · working online with Europe and the CIS"
@@ -1585,10 +1605,10 @@ DICT.ru = {
     "Этот сайт принадлежит независимому партнёру ассоциации ВИЕДА (Whieda) и не является официальным ресурсом компании. Мнения и формулировки на нём — мои личные.",
     "Результаты в бизнесе индивидуальны и зависят от ваших усилий. Ни доход, ни его сроки не гарантируются."
   ],
-  videoTitles: ["Общая презентация"],
-  videoNotes: ["Материал, который я обычно отправляю первым. Посмотрите спокойно, а потом напишите мне: вопросы после презентации всегда самые полезные."],
-  videoPlayLb: ["Включить видео: общая презентация"],
-  videoPlayTx: ["Общая презентация"],
+  videoTitles: ["Общая презентация", "Magic FoHerb — массажёр БЭМ"],
+  videoNotes: ["Материал, который я обычно отправляю первым. Посмотрите спокойно, а потом напишите мне: вопросы после презентации всегда самые полезные.", "Видео о том самом приборе из первой карточки выше. Если интересует именно он — посмотрите перед тем, как писать мне."],
+  videoPlayLb: ["Включить видео: общая презентация", "Включить видео: массажёр Magic FoHerb"],
+  videoPlayTx: ["Общая презентация", "Magic FoHerb"],
   footBottom: [
     "© <span id=\"year\">2026</span> Лариса · независимый партнёр ассоциации ВИЕДА",
     "Италия · работаю онлайн со СНГ и Европой"
@@ -1751,10 +1771,10 @@ DICT.de = {
     "Diese Seite gehört einer unabhängigen Partnerin der Vereinigung VIEDA (Whieda) und ist keine offizielle Ressource des Unternehmens. Meinungen und Formulierungen darauf sind persönlich.",
     "Ergebnisse im Geschäft sind individuell und hängen von deinem Einsatz ab. Weder das Einkommen noch sein Zeitpunkt sind garantiert."
   ],
-  videoTitles: ["Allgemeine Präsentation"],
-  videoNotes: ["Das Material, das ich meist zuerst schicke. Sieh es in Ruhe an und schreib mir dann: die Fragen nach der Präsentation sind immer die nützlichsten."],
-  videoPlayLb: ["Video starten: allgemeine Präsentation"],
-  videoPlayTx: ["Allgemeine Präsentation"],
+  videoTitles: ["Allgemeine Präsentation", "Magic FoHerb — das BEM-Massagegerät"],
+  videoNotes: ["Das Material, das ich meist zuerst schicke. Sieh es in Ruhe an und schreib mir dann: die Fragen nach der Präsentation sind immer die nützlichsten.", "Das Video zu dem Gerät aus der ersten Karte oben. Wenn genau das dich interessiert, sieh es dir an, bevor du mir schreibst."],
+  videoPlayLb: ["Video starten: allgemeine Präsentation", "Video starten: das Massagegerät Magic FoHerb"],
+  videoPlayTx: ["Allgemeine Präsentation", "Magic FoHerb"],
   footBottom: [
     "© <span id=\"year\">2026</span> Larisa · unabhängige Partnerin der Vereinigung VIEDA",
     "Italien · online tätig in Europa und den GUS-Ländern"
@@ -1917,10 +1937,10 @@ DICT.fr = {
     "Ce site appartient à une partenaire indépendante de l’association VIEDA (Whieda) et n’est pas une ressource officielle de l’entreprise. Les opinions et les formulations y sont personnelles.",
     "Les résultats dans l’activité sont individuels et dépendent de vos efforts. Ni le revenu ni ses délais ne sont garantis."
   ],
-  videoTitles: ["Présentation générale"],
-  videoNotes: ["Le document que j’envoie d’habitude en premier. Regardez-le tranquillement puis écrivez-moi : les questions qui viennent après la présentation sont toujours les plus utiles."],
-  videoPlayLb: ["Lancer la vidéo : présentation générale"],
-  videoPlayTx: ["Présentation générale"],
+  videoTitles: ["Présentation générale", "Magic FoHerb — le masseur BEM"],
+  videoNotes: ["Le document que j’envoie d’habitude en premier. Regardez-le tranquillement puis écrivez-moi : les questions qui viennent après la présentation sont toujours les plus utiles.", "La vidéo consacrée à l’appareil de la première fiche ci-dessus. Si c’est justement lui qui vous intéresse, regardez-la avant de m’écrire."],
+  videoPlayLb: ["Lancer la vidéo : présentation générale", "Lancer la vidéo : le masseur Magic FoHerb"],
+  videoPlayTx: ["Présentation générale", "Magic FoHerb"],
   footBottom: [
     "© <span id=\"year\">2026</span> Larisa · partenaire indépendante de l’association VIEDA",
     "Italie · je travaille en ligne avec l’Europe et la CEI"
@@ -2083,10 +2103,10 @@ DICT.es = {
     "Esta web pertenece a una socia independiente de la asociación VIEDA (Whieda) y no es un recurso oficial de la empresa. Las opiniones y formulaciones son personales.",
     "Los resultados en la actividad son individuales y dependen de tu esfuerzo. No se garantizan ni los ingresos ni sus plazos."
   ],
-  videoTitles: ["Presentación general"],
-  videoNotes: ["El material que suelo enviar primero. Míralo con calma y luego escríbeme: las preguntas que llegan después de la presentación son siempre las más útiles."],
-  videoPlayLb: ["Reproducir el vídeo: presentación general"],
-  videoPlayTx: ["Presentación general"],
+  videoTitles: ["Presentación general", "Magic FoHerb — el masajeador BEM"],
+  videoNotes: ["El material que suelo enviar primero. Míralo con calma y luego escríbeme: las preguntas que llegan después de la presentación son siempre las más útiles.", "El vídeo dedicado al aparato de la primera ficha de arriba. Si es justo ese el que te interesa, míralo antes de escribirme."],
+  videoPlayLb: ["Reproducir el vídeo: presentación general", "Reproducir el vídeo: el masajeador Magic FoHerb"],
+  videoPlayTx: ["Presentación general", "Magic FoHerb"],
   footBottom: [
     "© <span id=\"year\">2026</span> Larisa · socia independiente de la asociación VIEDA",
     "Italia · trabajo en línea con Europa y los países de la CEI"
