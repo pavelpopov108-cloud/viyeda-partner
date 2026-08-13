@@ -381,6 +381,32 @@ footer a{ color: var(--gold-soft); }
 .skip{ position: absolute; left: -9999px; }
 .skip:focus{ left: 12px; top: 12px; z-index: 50; background: var(--jade); color: var(--bg); padding: 10px 16px; }
 
+/* ===== Видео: до клика ничего с YouTube не загружается ===== */
+.videos{ display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.vid{ margin: 0; }
+.vid-frame{
+  position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius);
+  overflow: hidden; background: var(--jade);
+  /* дуга меридиана как фон-заглушка вместо чужой картинки */
+  background-image: radial-gradient(circle at 78% 18%, rgba(217,184,114,.28), transparent 55%),
+                    radial-gradient(circle at 12% 88%, rgba(217,184,114,.14), transparent 50%);
+}
+.vid-frame iframe{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vid-play{
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  background: none; border: 0; cursor: pointer; color: var(--bg);
+  font-family: var(--sans); font-size: .72rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+}
+.vid-play svg{ transition: transform .3s ease, opacity .3s ease; opacity: .92; }
+.vid-play:hover svg, .vid-play:focus-visible svg{ transform: scale(1.06); opacity: 1; }
+.vid-play span{ opacity: .72; }
+.vid-play:focus-visible{ outline: 2px solid var(--gold-soft); outline-offset: -6px; }
+.vid figcaption{ padding-top: 20px; }
+.vid figcaption h3{ font-size: clamp(1.25rem, 2vw, 1.5rem); margin-bottom: 8px; }
+.vid figcaption p{ font-size: .95rem; color: var(--ink-muted); margin: 0; }
+
 /* ===== Переключатель языка RU / IT ===== */
 .lang{
   display: inline-flex; align-items: center; gap: 7px; flex: none;
@@ -425,6 +451,7 @@ footer a{ color: var(--gold-soft); }
     <a href="#hero"     data-label="Inizio"       aria-label="Inizio"></a>
     <a href="#whieda"   data-label="Associazione" aria-label="Che cos'è VIEDA"></a>
     <a href="#products" data-label="Prodotti"     aria-label="Le direzioni dei prodotti"></a>
+    <a href="#video"    data-label="Video"        aria-label="Video"></a>
     <a href="#why"      data-label="Perché"       aria-label="Perché ha senso"></a>
     <a href="#paths"    data-label="Due strade"   aria-label="Due strade"></a>
     <a href="#about"    data-label="Chi sono"     aria-label="Chi sono"></a>
@@ -450,6 +477,7 @@ footer a{ color: var(--gold-soft); }
     <nav class="nav" aria-label="Navigazione principale">
       <a href="#whieda">L'associazione</a>
       <a href="#products">Prodotti</a>
+      <a href="#video">Video</a>
       <a href="#paths">Due strade</a>
       <a href="#about">Chi sono</a>
       <a href="#faq">Domande</a>
@@ -624,6 +652,36 @@ footer a{ color: var(--gold-soft); }
 </section>
 
 <!-- ======================= 4. PERCHÉ HA SENSO ======================= -->
+<!-- ======================= 4. VIDEO ======================= -->
+<section id="video">
+  <div class="wrap">
+    <div class="reveal" style="max-width:56ch">
+      <p class="eyebrow">Video</p>
+      <h2>Guarda, invece di leggere</h2>
+      <p class="lead">Se leggere è troppo, qui c’è la stessa cosa a voce. Il video parte solo quando lo avvii tu: prima di quel momento la pagina non carica nulla da YouTube.</p>
+    </div>
+
+    <div class="videos" style="margin-top:52px">
+      <figure class="vid reveal">
+        <div class="vid-frame" data-yt="LXuNQ9cmUMY">
+          <button class="vid-play" type="button" aria-label="Avvia il video: presentazione generale">
+            <svg width="66" height="66" viewBox="0 0 66 66" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
+              <circle cx="33" cy="33" r="32" stroke-opacity=".45"/>
+              <circle cx="33" cy="33" r="24"/>
+              <path d="M28 24.5 43 33l-15 8.5V24.5Z" stroke-linejoin="round"/>
+            </svg>
+            <span>Presentazione generale</span>
+          </button>
+        </div>
+        <figcaption>
+          <h3>Presentazione generale</h3>
+          <p>Il materiale che mando di solito per primo. Guardalo con calma e poi scrivimi: le domande dopo la presentazione sono sempre le più utili.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="dark" id="why">
   <svg class="dark-art" viewBox="0 0 400 400" fill="none" stroke="#D9B872" stroke-width="1" aria-hidden="true">
     <circle cx="200" cy="200" r="180"/><circle cx="200" cy="200" r="130"/><circle cx="200" cy="200" r="80"/>
@@ -1089,6 +1147,28 @@ if (CONTACTS.regUrl) {
 }
 
 /* =========================================================================
+   5.1. Видео: плеер подставляется только по клику.
+   До клика к YouTube не уходит ни одного запроса — ни скриптов, ни cookie
+   (домен youtube-nocookie.com, режим без отслеживания).
+   ========================================================================= */
+document.querySelectorAll('.vid-frame').forEach(frame => {
+  const btn = frame.querySelector('.vid-play');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const id = frame.dataset.yt;
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
+                 '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    iframe.title = btn.getAttribute('aria-label') || 'YouTube';
+    iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.loading = 'lazy';
+    btn.remove();
+    frame.appendChild(iframe);
+  });
+});
+
+/* =========================================================================
    6. ПЕРЕКЛЮЧЕНИЕ ЯЗЫКОВ
    Итальянский — язык разметки, он снимается с самой страницы при загрузке
    (поэтому его не нужно дублировать в словаре и он всегда точный).
@@ -1143,6 +1223,10 @@ const GROUPS = {
   footH4:      ['.foot h4', 'text'],
   footLinks:   ['.foot ul li a', 'text'],
   footP:       ['.foot p', 'text'],
+  videoTitles: ['.vid figcaption h3', 'text'],
+  videoNotes:  ['.vid figcaption p', 'text'],
+  videoPlayLb: ['.vid-play', 'attr:aria-label'],
+  videoPlayTx: ['.vid-play span', 'text'],
   footBottom:  ['.foot-bottom > span', 'html']
 };
 
@@ -1193,8 +1277,8 @@ DICT.en = {
   },
   skip: ["Skip to content"],
   logoSub: ["Independent partner"],
-  nav: ["The association", "Products", "Two paths", "About me", "Questions"],
-  dots: ["Start", "Association", "Products", "Why", "Two paths", "About me", "Questions", "Contact"],
+  nav: ["The association", "Products", "Video", "Two paths", "About me", "Questions"],
+  dots: ["Start", "Association", "Products", "Video", "Why", "Two paths", "About me", "Questions", "Contact"],
   topBtn: ["Write to me"],
   heroTag: ["<span aria-hidden=\"true\"></span>International association · since 2022"],
   h1: ["Eastern formulas, a modern laboratory — and <em>no promises of miracles</em>"],
@@ -1202,6 +1286,7 @@ DICT.en = {
     "I am an independent partner of the VIEDA association. I help you work out calmly what these products are, who actually needs them, and what the word «partnership» really hides.",
     "The international VIEDA (Whieda) association started in 2022 on the initiative of the biotechnology corporation FOHERB. Today it has offices across Europe and the CIS: you can order the products living in Milan, Palermo or Vienna.",
     "Below is how I explain them to people: what they are, who they are for and how they differ from similar things on the market. No lists of «indications» — there will be none here.",
+    "If reading is too much, here is the same thing spoken aloud. The video starts only when you start it: until then the page loads nothing from YouTube.",
     "Traditional Chinese medicine is not magic. It is a very long practice of observation: which plants, in which combinations and at which time of day make a person feel better. This practice always had one weak spot — reproducibility.",
     "These are two different decisions, and the second is not «better» than the first at all. Below is what each path gives and what it requires. I wrote the second column honestly, including the uncomfortable part.",
     "This site is mine, not the company’s. So I am the one answering for the words on it.",
@@ -1210,10 +1295,11 @@ DICT.en = {
   ],
   heroBtns: ["Write to me on Telegram", "First I want to understand"],
   heroNote: ["I sell nothing in the first message. Questions and honest answers come first; VIEDA products are not medicines and do not replace your doctor’s instructions."],
-  eyebrows: ["01 · The association", "02 · Products", "03 · How it works", "04 · Two paths", "05 · About me", "06 · Questions", "07 · Contact"],
+  eyebrows: ["01 · The association", "02 · Products", "Video", "03 · How it works", "04 · Two paths", "05 · About me", "06 · Questions", "07 · Contact"],
   h2s: [
     "What VIEDA is, without the rhetoric",
     "Four directions",
+    "Watch instead of reading",
     "Why joining tradition and biotechnology is not just a nice phrase",
     "You can stay just a customer. Or become a partner",
     "Who you will be talking to",
@@ -1333,6 +1419,10 @@ DICT.en = {
     "This site belongs to an independent partner of the VIEDA (Whieda) association and is not an official company resource. The opinions and wording on it are personal.",
     "Results in the business are individual and depend on your effort. Neither the income nor its timing is guaranteed."
   ],
+  videoTitles: ["General presentation"],
+  videoNotes: ["The material I usually send first. Watch it calmly and then write to me: the questions that come after a presentation are always the most useful."],
+  videoPlayLb: ["Play the video: general presentation"],
+  videoPlayTx: ["General presentation"],
   footBottom: [
     "© <span id=\"year\">2026</span> Larisa · independent partner of the VIEDA association",
     "Italy · working online with Europe and the CIS"
@@ -1353,8 +1443,8 @@ DICT.ru = {
   },
   skip: ["Перейти к содержанию"],
   logoSub: ["Независимый партнёр"],
-  nav: ["Об ассоциации", "Продукция", "Два пути", "Обо мне", "Вопросы"],
-  dots: ["Начало", "О ВИЕДА", "Продукция", "Почему", "Два пути", "Обо мне", "Вопросы", "Связь"],
+  nav: ["Об ассоциации", "Продукция", "Видео", "Два пути", "Обо мне", "Вопросы"],
+  dots: ["Начало", "О ВИЕДА", "Продукция", "Видео", "Почему", "Два пути", "Обо мне", "Вопросы", "Связь"],
   topBtn: ["Написать"],
   heroTag: ["<span aria-hidden=\"true\"></span>Международная ассоциация · с 2022 года"],
   h1: ["Восточная рецептура, современная лаборатория — и <em>ни одного обещания чуда</em>"],
@@ -1362,6 +1452,7 @@ DICT.ru = {
     "Я независимый партнёр ассоциации ВИЕДА. Помогаю спокойно разобраться: что это за продукция, кому она подходит и что на самом деле стоит за словом «партнёрство».",
     "Международная ассоциация ВИЕДА (Whieda) начала работу в 2022 году по инициативе биотехнологической корпорации FOHERB. Сегодня у неё есть представительства в странах СНГ и Европе — и это значит, что заказать продукцию можно, живя в Милане, Алматы или Минске.",
     "Ниже — как я сама объясняю их людям: что это, кому подходит и чем отличается от похожих вещей на рынке. Без списков «показаний» — их здесь не будет.",
+    "Если читать долго — то же самое голосом. Видео запускается только тогда, когда вы сами его включите: до этого страница ничего с YouTube не загружает.",
     "Традиционная китайская медицина — это не магия. Это очень длинная практика наблюдения: какие растения в каком сочетании и в какое время суток человеку помогают чувствовать себя лучше. Слабое место такой практики всегда было одно — воспроизводимость.",
     "Это два разных решения, и второе совсем не «лучше» первого. Ниже — что даёт каждый путь и что он потребует от вас. Второй столбец я написала честно, включая неприятное.",
     "Сайт принадлежит мне, а не компании. Значит, отвечаю за слова на нём тоже я.",
@@ -1370,10 +1461,11 @@ DICT.ru = {
   ],
   heroBtns: ["Написать в Telegram", "Сначала разобраться"],
   heroNote: ["Ничего не продаю с первого сообщения. Сначала — вопросы и честные ответы; продукция ВИЕДА не является лекарственным средством и не заменяет назначения врача."],
-  eyebrows: ["01 · Об ассоциации", "02 · Продукция", "03 · Как это устроено", "04 · Два пути", "05 · Обо мне", "06 · Вопросы", "07 · Связь"],
+  eyebrows: ["01 · Об ассоциации", "02 · Продукция", "Видео", "03 · Как это устроено", "04 · Два пути", "05 · Обо мне", "06 · Вопросы", "07 · Связь"],
   h2s: [
     "Что такое ВИЕДА, если убрать пафос",
     "Четыре направления",
+    "Посмотреть вместо чтения",
     "Почему сочетание традиции и биотехнологии — это не красивая фраза",
     "Можно быть просто клиентом. А можно партнёром",
     "Кто с вами будет разговаривать",
@@ -1493,6 +1585,10 @@ DICT.ru = {
     "Этот сайт принадлежит независимому партнёру ассоциации ВИЕДА (Whieda) и не является официальным ресурсом компании. Мнения и формулировки на нём — мои личные.",
     "Результаты в бизнесе индивидуальны и зависят от ваших усилий. Ни доход, ни его сроки не гарантируются."
   ],
+  videoTitles: ["Общая презентация"],
+  videoNotes: ["Материал, который я обычно отправляю первым. Посмотрите спокойно, а потом напишите мне: вопросы после презентации всегда самые полезные."],
+  videoPlayLb: ["Включить видео: общая презентация"],
+  videoPlayTx: ["Общая презентация"],
   footBottom: [
     "© <span id=\"year\">2026</span> Лариса · независимый партнёр ассоциации ВИЕДА",
     "Италия · работаю онлайн со СНГ и Европой"
@@ -1513,8 +1609,8 @@ DICT.de = {
   },
   skip: ["Zum Inhalt springen"],
   logoSub: ["Unabhängige Partnerin"],
-  nav: ["Die Vereinigung", "Produkte", "Zwei Wege", "Über mich", "Fragen"],
-  dots: ["Start", "Vereinigung", "Produkte", "Warum", "Zwei Wege", "Über mich", "Fragen", "Kontakt"],
+  nav: ["Die Vereinigung", "Produkte", "Video", "Zwei Wege", "Über mich", "Fragen"],
+  dots: ["Start", "Vereinigung", "Produkte", "Video", "Warum", "Zwei Wege", "Über mich", "Fragen", "Kontakt"],
   topBtn: ["Schreib mir"],
   heroTag: ["<span aria-hidden=\"true\"></span>Internationale Vereinigung · seit 2022"],
   h1: ["Rezepturen des Ostens, ein Labor von heute — und <em>kein Versprechen von Wundern</em>"],
@@ -1522,6 +1618,7 @@ DICT.de = {
     "Ich bin unabhängige Partnerin der Vereinigung VIEDA. Ich helfe dir, in Ruhe zu verstehen, was diese Produkte sind, für wen sie wirklich taugen und was hinter dem Wort «Partnerschaft» steckt.",
     "Die internationale Vereinigung VIEDA (Whieda) startete 2022 auf Initiative des Biotechnologie-Konzerns FOHERB. Heute gibt es Vertretungen in Europa und den GUS-Ländern: bestellen kannst du also auch aus München, Wien oder Mailand.",
     "Hier erkläre ich sie so, wie ich sie Menschen erkläre: was sie sind, für wen sie taugen und wodurch sie sich von Ähnlichem unterscheiden. Ohne Listen von «Indikationen» — die gibt es hier nicht.",
+    "Wenn Lesen zu viel ist: hier dasselbe gesprochen. Das Video startet erst, wenn du es startest — vorher lädt die Seite nichts von YouTube.",
     "Traditionelle chinesische Medizin ist keine Magie. Sie ist eine sehr lange Praxis der Beobachtung: welche Pflanzen in welcher Kombination und zu welcher Tageszeit einem Menschen guttun. Ihre schwache Stelle war immer dieselbe — die Wiederholbarkeit.",
     "Das sind zwei verschiedene Entscheidungen, und die zweite ist keineswegs «besser» als die erste. Unten steht, was jeder Weg gibt und was er verlangt. Die zweite Spalte habe ich ehrlich geschrieben, samt dem Unangenehmen.",
     "Diese Seite gehört mir, nicht der Firma. Also stehe ich auch für die Worte darauf ein.",
@@ -1530,10 +1627,11 @@ DICT.de = {
   ],
   heroBtns: ["Auf Telegram schreiben", "Erst verstehen"],
   heroNote: ["Ich verkaufe nichts in der ersten Nachricht. Zuerst Fragen und ehrliche Antworten; die VIEDA-Produkte sind keine Arzneimittel und ersetzen keine Anweisungen des Arztes."],
-  eyebrows: ["01 · Die Vereinigung", "02 · Produkte", "03 · Wie es funktioniert", "04 · Zwei Wege", "05 · Über mich", "06 · Fragen", "07 · Kontakt"],
+  eyebrows: ["01 · Die Vereinigung", "02 · Produkte", "Video", "03 · Wie es funktioniert", "04 · Zwei Wege", "05 · Über mich", "06 · Fragen", "07 · Kontakt"],
   h2s: [
     "Was VIEDA ist, ohne Pathos",
     "Vier Richtungen",
+    "Ansehen statt lesen",
     "Warum Tradition plus Biotechnologie kein schöner Satz ist",
     "Du kannst einfach Kundin bleiben. Oder Partnerin werden",
     "Mit wem du sprechen wirst",
@@ -1653,6 +1751,10 @@ DICT.de = {
     "Diese Seite gehört einer unabhängigen Partnerin der Vereinigung VIEDA (Whieda) und ist keine offizielle Ressource des Unternehmens. Meinungen und Formulierungen darauf sind persönlich.",
     "Ergebnisse im Geschäft sind individuell und hängen von deinem Einsatz ab. Weder das Einkommen noch sein Zeitpunkt sind garantiert."
   ],
+  videoTitles: ["Allgemeine Präsentation"],
+  videoNotes: ["Das Material, das ich meist zuerst schicke. Sieh es in Ruhe an und schreib mir dann: die Fragen nach der Präsentation sind immer die nützlichsten."],
+  videoPlayLb: ["Video starten: allgemeine Präsentation"],
+  videoPlayTx: ["Allgemeine Präsentation"],
   footBottom: [
     "© <span id=\"year\">2026</span> Larisa · unabhängige Partnerin der Vereinigung VIEDA",
     "Italien · online tätig in Europa und den GUS-Ländern"
@@ -1673,8 +1775,8 @@ DICT.fr = {
   },
   skip: ["Aller au contenu"],
   logoSub: ["Partenaire indépendante"],
-  nav: ["L’association", "Produits", "Deux voies", "À propos de moi", "Questions"],
-  dots: ["Début", "Association", "Produits", "Pourquoi", "Deux voies", "À propos", "Questions", "Contact"],
+  nav: ["L’association", "Produits", "Vidéo", "Deux voies", "À propos de moi", "Questions"],
+  dots: ["Début", "Association", "Produits", "Vidéo", "Pourquoi", "Deux voies", "À propos", "Questions", "Contact"],
   topBtn: ["Écrivez-moi"],
   heroTag: ["<span aria-hidden=\"true\"></span>Association internationale · depuis 2022"],
   h1: ["Recettes d’Orient, laboratoire d’aujourd’hui — et <em>aucune promesse de miracle</em>"],
@@ -1682,6 +1784,7 @@ DICT.fr = {
     "Je suis partenaire indépendante de l’association VIEDA. Je vous aide à comprendre calmement ce que sont ces produits, à qui ils servent vraiment et ce que cache le mot «collaboration».",
     "L’association internationale VIEDA (Whieda) a démarré en 2022 à l’initiative de la corporation biotechnologique FOHERB. Elle a aujourd’hui des représentations en Europe et dans les pays de la CEI : vous pouvez donc commander depuis Milan, Lyon ou Bruxelles.",
     "Voici comment je les explique aux gens : ce qu’ils sont, à qui ils servent et en quoi ils diffèrent de choses semblables sur le marché. Sans listes d’«indications» — il n’y en aura pas ici.",
+    "Si lire est trop long, voici la même chose à l’oral. La vidéo ne démarre que lorsque vous la lancez : avant cela, la page ne charge rien depuis YouTube.",
     "La médecine traditionnelle chinoise n’est pas de la magie. C’est une très longue pratique d’observation : quelles plantes, dans quelles combinaisons et à quel moment de la journée font qu’une personne se sent mieux. Son point faible a toujours été le même — la reproductibilité.",
     "Ce sont deux décisions différentes, et la seconde n’est pas du tout «meilleure» que la première. Ci-dessous ce que donne chaque voie et ce qu’elle exige. J’ai écrit la seconde colonne honnêtement, y compris la partie désagréable.",
     "Ce site est le mien, pas celui de l’entreprise. C’est donc moi qui réponds des mots qui s’y trouvent.",
@@ -1690,10 +1793,11 @@ DICT.fr = {
   ],
   heroBtns: ["Écrire sur Telegram", "D’abord comprendre"],
   heroNote: ["Je ne vends rien dès le premier message. D’abord les questions et les réponses honnêtes ; les produits VIEDA ne sont pas des médicaments et ne remplacent pas les prescriptions du médecin."],
-  eyebrows: ["01 · L’association", "02 · Produits", "03 · Comment ça marche", "04 · Deux voies", "05 · À propos de moi", "06 · Questions", "07 · Contact"],
+  eyebrows: ["01 · L’association", "02 · Produits", "Vidéo", "03 · Comment ça marche", "04 · Deux voies", "05 · À propos de moi", "06 · Questions", "07 · Contact"],
   h2s: [
     "Ce qu’est VIEDA, sans emphase",
     "Quatre directions",
+    "Regarder au lieu de lire",
     "Pourquoi unir tradition et biotechnologie n’est pas qu’une belle phrase",
     "Vous pouvez rester simplement client. Ou devenir partenaire",
     "Avec qui vous allez parler",
@@ -1813,6 +1917,10 @@ DICT.fr = {
     "Ce site appartient à une partenaire indépendante de l’association VIEDA (Whieda) et n’est pas une ressource officielle de l’entreprise. Les opinions et les formulations y sont personnelles.",
     "Les résultats dans l’activité sont individuels et dépendent de vos efforts. Ni le revenu ni ses délais ne sont garantis."
   ],
+  videoTitles: ["Présentation générale"],
+  videoNotes: ["Le document que j’envoie d’habitude en premier. Regardez-le tranquillement puis écrivez-moi : les questions qui viennent après la présentation sont toujours les plus utiles."],
+  videoPlayLb: ["Lancer la vidéo : présentation générale"],
+  videoPlayTx: ["Présentation générale"],
   footBottom: [
     "© <span id=\"year\">2026</span> Larisa · partenaire indépendante de l’association VIEDA",
     "Italie · je travaille en ligne avec l’Europe et la CEI"
@@ -1833,8 +1941,8 @@ DICT.es = {
   },
   skip: ["Ir al contenido"],
   logoSub: ["Socia independiente"],
-  nav: ["La asociación", "Productos", "Dos caminos", "Sobre mí", "Preguntas"],
-  dots: ["Inicio", "Asociación", "Productos", "Por qué", "Dos caminos", "Sobre mí", "Preguntas", "Contacto"],
+  nav: ["La asociación", "Productos", "Vídeo", "Dos caminos", "Sobre mí", "Preguntas"],
+  dots: ["Inicio", "Asociación", "Productos", "Vídeo", "Por qué", "Dos caminos", "Sobre mí", "Preguntas", "Contacto"],
   topBtn: ["Escríbeme"],
   heroTag: ["<span aria-hidden=\"true\"></span>Asociación internacional · desde 2022"],
   h1: ["Recetas de Oriente, laboratorio de hoy — y <em>ninguna promesa de milagros</em>"],
@@ -1842,6 +1950,7 @@ DICT.es = {
     "Soy socia independiente de la asociación VIEDA. Te ayudo a entender con calma qué son estos productos, a quién le sirven de verdad y qué hay detrás de la palabra «colaboración».",
     "La asociación internacional VIEDA (Whieda) empezó en 2022 por iniciativa de la corporación biotecnológica FOHERB. Hoy tiene representaciones en Europa y en los países de la CEI: puedes pedir los productos viviendo en Milán, Madrid o Viena.",
     "Aquí te los explico como se los explico a la gente: qué son, para quién son y en qué se diferencian de cosas parecidas del mercado. Sin listas de «indicaciones»: aquí no las habrá.",
+    "Si leer es demasiado, aquí está lo mismo contado en voz. El vídeo se pone en marcha solo cuando lo arrancas tú: hasta entonces la página no carga nada de YouTube.",
     "La medicina tradicional china no es magia. Es una práctica de observación muy larga: qué plantas, en qué combinaciones y a qué hora del día hacen que una persona se sienta mejor. Su punto débil siempre fue el mismo: la reproducibilidad.",
     "Son dos decisiones distintas, y la segunda no es «mejor» que la primera en absoluto. Abajo está lo que da cada camino y lo que exige. La segunda columna la escribí con honestidad, incluida la parte incómoda.",
     "Esta web es mía, no de la empresa. Así que de las palabras que hay aquí respondo yo.",
@@ -1850,10 +1959,11 @@ DICT.es = {
   ],
   heroBtns: ["Escribirme por Telegram", "Primero quiero entender"],
   heroNote: ["No vendo nada en el primer mensaje. Primero las preguntas y las respuestas honestas; los productos VIEDA no son medicamentos y no sustituyen las indicaciones del médico."],
-  eyebrows: ["01 · La asociación", "02 · Productos", "03 · Cómo funciona", "04 · Dos caminos", "05 · Sobre mí", "06 · Preguntas", "07 · Contacto"],
+  eyebrows: ["01 · La asociación", "02 · Productos", "Vídeo", "03 · Cómo funciona", "04 · Dos caminos", "05 · Sobre mí", "06 · Preguntas", "07 · Contacto"],
   h2s: [
     "Qué es VIEDA, sin grandilocuencia",
     "Cuatro direcciones",
+    "Verlo en lugar de leerlo",
     "Por qué unir tradición y biotecnología no es solo una frase bonita",
     "Puedes quedarte solo como cliente. O hacerte socio",
     "Con quién vas a hablar",
@@ -1973,6 +2083,10 @@ DICT.es = {
     "Esta web pertenece a una socia independiente de la asociación VIEDA (Whieda) y no es un recurso oficial de la empresa. Las opiniones y formulaciones son personales.",
     "Los resultados en la actividad son individuales y dependen de tu esfuerzo. No se garantizan ni los ingresos ni sus plazos."
   ],
+  videoTitles: ["Presentación general"],
+  videoNotes: ["El material que suelo enviar primero. Míralo con calma y luego escríbeme: las preguntas que llegan después de la presentación son siempre las más útiles."],
+  videoPlayLb: ["Reproducir el vídeo: presentación general"],
+  videoPlayTx: ["Presentación general"],
   footBottom: [
     "© <span id=\"year\">2026</span> Larisa · socia independiente de la asociación VIEDA",
     "Italia · trabajo en línea con Europa y los países de la CEI"
