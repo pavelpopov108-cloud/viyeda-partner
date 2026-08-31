@@ -390,11 +390,17 @@ footer a{ color: var(--gold-soft); }
 .vid-frame{
   position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius);
   overflow: hidden; background: var(--jade);
-  /* дуга меридиана как фон-заглушка вместо чужой картинки */
-  background-image: radial-gradient(circle at 78% 18%, rgba(217,184,114,.28), transparent 55%),
-                    radial-gradient(circle at 12% 88%, rgba(217,184,114,.14), transparent 50%);
 }
 .vid-frame iframe{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* Кадр из видео. Картинка приходит с i.ytimg.com — это единственный внешний
+   запрос до клика; cookie он не ставит. Обрезаем по центру: у превью 4:3
+   так отсекаются чёрные поля и остаётся сам кадр. */
+.vid-thumb{
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .5s ease, filter .3s ease;
+}
+.vid-frame:hover .vid-thumb{ transform: scale(1.03); }
 .vid-play{
   position: absolute; inset: 0; width: 100%; height: 100%;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
@@ -402,9 +408,23 @@ footer a{ color: var(--gold-soft); }
   font-family: var(--sans); font-size: .72rem; font-weight: 700;
   letter-spacing: .16em; text-transform: uppercase;
 }
-.vid-play svg{ transition: transform .3s ease, opacity .3s ease; opacity: .92; }
+/* Затемнение поверх кадра — чтобы белая кнопка читалась на любом кадре.
+   Два слоя: общий градиент сверху вниз плюс мягкое пятно под самой кнопкой,
+   иначе на светлых кадрах подпись теряется. */
+.vid-play::before{
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 58% 52% at 50% 54%, rgba(12,26,23,.58), rgba(12,26,23,0) 72%),
+              linear-gradient(180deg, rgba(12,26,23,.30), rgba(12,26,23,.62));
+  transition: background .3s ease;
+}
+.vid-play:hover::before, .vid-play:focus-visible::before{
+  background: radial-gradient(ellipse 58% 52% at 50% 54%, rgba(12,26,23,.50), rgba(12,26,23,0) 72%),
+              linear-gradient(180deg, rgba(12,26,23,.22), rgba(12,26,23,.55));
+}
+.vid-play svg, .vid-play span{ position: relative; z-index: 1; }
+.vid-play svg{ transition: transform .3s ease, opacity .3s ease; opacity: .95; filter: drop-shadow(0 2px 10px rgba(0,0,0,.45)); }
 .vid-play:hover svg, .vid-play:focus-visible svg{ transform: scale(1.06); opacity: 1; }
-.vid-play span{ opacity: .72; }
+.vid-play span{ opacity: .95; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
 .vid-play:focus-visible{ outline: 2px solid var(--gold-soft); outline-offset: -6px; }
 .vid figcaption{ padding-top: 20px; }
 .vid figcaption h3{ font-size: clamp(1.25rem, 2vw, 1.5rem); margin-bottom: 8px; }
@@ -667,6 +687,7 @@ footer a{ color: var(--gold-soft); }
     <div class="videos" style="margin-top:52px">
       <figure class="vid reveal">
         <div class="vid-frame" data-yt="LXuNQ9cmUMY">
+          <img class="vid-thumb" src="https://i.ytimg.com/vi/LXuNQ9cmUMY/sddefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720">
           <button class="vid-play" type="button" aria-label="Avvia il video: presentazione generale">
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
               <circle cx="33" cy="33" r="32" stroke-opacity=".45"/>
@@ -684,6 +705,7 @@ footer a{ color: var(--gold-soft); }
 
       <figure class="vid reveal">
         <div class="vid-frame" data-yt="pan7usB2M6Q">
+          <img class="vid-thumb" src="https://i.ytimg.com/vi/pan7usB2M6Q/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720">
           <button class="vid-play" type="button" aria-label="Avvia il video: il massaggiatore Magic FoHerb">
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
               <circle cx="33" cy="33" r="32" stroke-opacity=".45"/>
@@ -1184,8 +1206,22 @@ document.querySelectorAll('.vid-frame').forEach(frame => {
     iframe.allowFullscreen = true;
     iframe.loading = 'lazy';
     btn.remove();
+    const thumb = frame.querySelector('.vid-thumb');
+    if (thumb) thumb.remove();
     frame.appendChild(iframe);
   });
+
+  /* Если у видео нет превью в запрошенном размере, спускаемся к меньшему.
+     Пригодится, когда поменяешь ID видео и забудешь про размер картинки. */
+  const thumb = frame.querySelector('.vid-thumb');
+  if (thumb) {
+    const sizes = ['maxresdefault', 'sddefault', 'hqdefault'];
+    thumb.addEventListener('error', () => {
+      const now = thumb.src.split('/').pop().replace('.jpg', '');
+      const next = sizes[sizes.indexOf(now) + 1];
+      if (next) thumb.src = 'https://i.ytimg.com/vi/' + frame.dataset.yt + '/' + next + '.jpg';
+    });
+  }
 });
 
 /* =========================================================================
