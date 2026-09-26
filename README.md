@@ -26,7 +26,7 @@
 | Что менять | Где искать в `index.html` |
 | --- | --- |
 | Цвета | блок `:root` в самом начале `<style>` — все цвета переменными, с комментариями |
-| Telegram, WhatsApp, телефон, e-mail | блок `CONTACTS` в начале `<script>` + закомментированные строки в футере |
+| Telegram, WhatsApp, телефон, e-mail | блок `CONTACTS` в начале `<script>`: WhatsApp, телефон и e-mail появляются в футере сами, как только заполнены (Telegram в кнопках и футере пока прописан и в разметке) |
 | Ссылка регистрации по рекомендации | `CONTACTS.regUrl` в начале `<script>` (пока пустая) |
 | **Итальянские** тексты | прямо в разметке, секции подписаны комментариями: HERO, VIEDA, PRODOTTI, PERCHÉ, DUE STRADE, CHI SONO, DOMANDE, CTA, FOOTER |
 | Тексты остальных языков | объект `DICT` в конце `<script>`: `DICT.en`, `DICT.ru`, `DICT.de`, `DICT.fr`, `DICT.es` |

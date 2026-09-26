@@ -998,14 +998,9 @@ footer a{ color: var(--gold-soft); }
     <div class="foot-grid">
       <div class="foot">
         <h4>Contatti</h4>
-        <ul>
+        <!-- WhatsApp, telefono ed e-mail si aggiungono da soli dal blocco CONTACTS nello <script> -->
+        <ul class="foot-contacts">
           <li><a href="https://t.me/Gitavali1" target="_blank" rel="noopener">Telegram — @Gitavali1</a></li>
-          <!-- DA AGGIUNGERE: WhatsApp e telefono.
-               Togli il commento e inserisci il numero senza «+» e senza spazi:
-          <li><a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="tel:+39XXXXXXXXXX">+39 XXX XXX XX XX</a></li>
-          <li><a href="mailto:posta@example.com">posta@example.com</a></li>
-          -->
         </ul>
       </div>
       <div class="foot">
@@ -1037,8 +1032,30 @@ footer a{ color: var(--gold-soft); }
    ========================================================================= */
 const CONTACTS = {
   telegram: 'Gitavali1',   // nickname senza «@»
+  whatsapp: '',            // numero con prefisso, per esempio '+39 333 123 4567'; se vuoto, non compare
+  phone:    '',            // numero come deve apparire, per esempio '+39 333 123 4567'; se vuoto, non compare
+  email:    '',            // per esempio 'nome@example.com'; se vuoto, non compare
   regUrl:   ''             // link di registrazione su tua raccomandazione; se vuoto, i pulsanti non lo mostrano
 };
+
+/* Contatti nel piè di pagina: compaiono solo quelli compilati in CONTACTS.
+   Le etichette sono uguali in tutte le lingue, quindi non passano dalla traduzione. */
+(() => {
+  const list = document.querySelector('.foot-contacts');
+  const add = (href, label, external) => {
+    const a = document.createElement('a');
+    a.href = href;
+    a.textContent = label;
+    if (external) { a.target = '_blank'; a.rel = 'noopener'; }
+    const li = document.createElement('li');
+    li.appendChild(a);
+    list.appendChild(li);
+  };
+  const digits = v => v.replace(/[^\d]/g, '');
+  if (CONTACTS.whatsapp) add('https://wa.me/' + digits(CONTACTS.whatsapp), 'WhatsApp', true);
+  if (CONTACTS.phone)    add('tel:+' + digits(CONTACTS.phone), CONTACTS.phone, false);
+  if (CONTACTS.email)    add('mailto:' + CONTACTS.email, CONTACTS.email, false);
+})();
 
 /* Anno nel piè di pagina — per non correggerlo a mano ogni gennaio */
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -1277,7 +1294,7 @@ const GROUPS = {
   okH3:        ['#ok h3', 'text'],
   okText:      ['#ok p', 'text'],
   footH4:      ['.foot h4', 'text'],
-  footLinks:   ['.foot ul li a', 'text'],
+  footLinks:   ['.foot ul:not(.foot-contacts) li a', 'text'],
   footP:       ['.foot p', 'text'],
   videoTitles: ['.vid figcaption h3', 'text'],
   videoNotes:  ['.vid figcaption p', 'text'],
@@ -1469,7 +1486,7 @@ DICT.en = {
   okH3: ["Your message is ready"],
   okText: ["The text has been copied to your clipboard. If Telegram did not open by itself, press the button below and paste the message into the chat."],
   footH4: ["Contact", "Sections", "Important"],
-  footLinks: ["Telegram — @Gitavali1", "The association", "Products", "Two paths", "Questions"],
+  footLinks: ["The association", "Products", "Two paths", "Questions"],
   footP: [
     "The products are not medicines, are not intended for the diagnosis, treatment or prevention of disease and do not replace a doctor’s opinion. Food supplements should not be regarded as a substitute for a varied, balanced diet and a healthy lifestyle.",
     "This site belongs to an independent partner of the VIEDA (Whieda) association and is not an official company resource. The opinions and wording on it are personal.",
@@ -1635,7 +1652,7 @@ DICT.ru = {
   okH3: ["Сообщение готово"],
   okText: ["Текст скопирован в буфер обмена. Если Telegram не открылся автоматически — нажмите кнопку ниже и вставьте сообщение в чат."],
   footH4: ["Связаться", "Разделы", "Важное"],
-  footLinks: ["Telegram — @Gitavali1", "Об ассоциации", "Продукция", "Два пути", "Вопросы"],
+  footLinks: ["Об ассоциации", "Продукция", "Два пути", "Вопросы"],
   footP: [
     "Продукция не является лекарственным средством, не предназначена для диагностики, лечения или профилактики заболеваний и не заменяет консультацию врача. Перед применением проконсультируйтесь со специалистом.",
     "Этот сайт принадлежит независимому партнёру ассоциации ВИЕДА (Whieda) и не является официальным ресурсом компании. Мнения и формулировки на нём — мои личные.",
@@ -1801,7 +1818,7 @@ DICT.de = {
   okH3: ["Die Nachricht ist fertig"],
   okText: ["Der Text ist in der Zwischenablage. Wenn Telegram sich nicht von selbst geöffnet hat, drücke den Knopf unten und füge die Nachricht in den Chat ein."],
   footH4: ["Kontakt", "Bereiche", "Wichtig"],
-  footLinks: ["Telegram — @Gitavali1", "Die Vereinigung", "Produkte", "Zwei Wege", "Fragen"],
+  footLinks: ["Die Vereinigung", "Produkte", "Zwei Wege", "Fragen"],
   footP: [
     "Die Produkte sind keine Arzneimittel, nicht zur Diagnose, Behandlung oder Vorbeugung von Krankheiten bestimmt und ersetzen nicht den Rat eines Arztes. Nahrungsergänzungsmittel sind kein Ersatz für eine abwechslungsreiche, ausgewogene Ernährung und eine gesunde Lebensweise.",
     "Diese Seite gehört einer unabhängigen Partnerin der Vereinigung VIEDA (Whieda) und ist keine offizielle Ressource des Unternehmens. Meinungen und Formulierungen darauf sind persönlich.",
@@ -1967,7 +1984,7 @@ DICT.fr = {
   okH3: ["Le message est prêt"],
   okText: ["Le texte est copié dans le presse-papiers. Si Telegram ne s’est pas ouvert tout seul, appuyez sur le bouton ci-dessous et collez le message dans la discussion."],
   footH4: ["Contact", "Sections", "Important"],
-  footLinks: ["Telegram — @Gitavali1", "L’association", "Produits", "Deux voies", "Questions"],
+  footLinks: ["L’association", "Produits", "Deux voies", "Questions"],
   footP: [
     "Les produits ne sont pas des médicaments, ne sont pas destinés au diagnostic, au traitement ou à la prévention de maladies et ne remplacent pas l’avis d’un médecin. Les compléments alimentaires ne se substituent pas à une alimentation variée et équilibrée ni à un mode de vie sain.",
     "Ce site appartient à une partenaire indépendante de l’association VIEDA (Whieda) et n’est pas une ressource officielle de l’entreprise. Les opinions et les formulations y sont personnelles.",
@@ -2133,7 +2150,7 @@ DICT.es = {
   okH3: ["El mensaje está listo"],
   okText: ["El texto se ha copiado al portapapeles. Si Telegram no se abrió solo, pulsa el botón de abajo y pega el mensaje en el chat."],
   footH4: ["Contacto", "Secciones", "Importante"],
-  footLinks: ["Telegram — @Gitavali1", "La asociación", "Productos", "Dos caminos", "Preguntas"],
+  footLinks: ["La asociación", "Productos", "Dos caminos", "Preguntas"],
   footP: [
     "Los productos no son medicamentos, no están destinados al diagnóstico, tratamiento ni prevención de enfermedades y no sustituyen la opinión de un médico. Los complementos alimenticios no deben utilizarse como sustitutos de una dieta variada y equilibrada y de un estilo de vida saludable.",
     "Esta web pertenece a una socia independiente de la asociación VIEDA (Whieda) y no es un recurso oficial de la empresa. Las opiniones y formulaciones son personales.",
